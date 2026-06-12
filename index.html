@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATSUKO KARASAWA - 撮影・編集サポート</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Noto+Serif+JP:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['"Noto Serif JP"', 'serif'],
+                        en: ['"Cormorant Garamond"', 'serif'],
+                    },
+                    colors: {
+                        brand: {
+                            bg: '#FCFAF8', /* 温かみのあるアイボリー */
+                            text: '#5A4C46', /* 温もりのあるエスプレッソブラウン */
+                            light: '#A89995', /* モカグレー */
+                            accent: '#D49A89', /* 血色感のあるピンクベージュ（テラコッタ） */
+                            card: '#FFFFFF'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #EFE9E5; /* PC閲覧時の背景（ミルクティー色） */
+        }
+        .container-app {
+            max-width: 480px;
+            margin: 0 auto;
+            background-color: #FCFAF8;
+            box-shadow: 0 0 20px rgba(0,0,0,0.05);
+            min-height: 100vh;
+        }
+        .content-text {
+            font-size: 14px;
+            line-height: 2.0;
+            letter-spacing: 0.05em;
+        }
+        .list-item-custom {
+            position: relative;
+            padding-left: 1.2em;
+            margin-bottom: 0.5em;
+        }
+        .list-item-custom::before {
+            content: "・";
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: #D49A89; /* リストの点も同色に */
+        }
+        .list-indent {
+            display: inline-block;
+            padding-left: 1em;
+        }
+    </style>
+</head>
+<body class="text-brand-text font-serif antialiased selection:bg-brand-accent selection:text-white">
+
+    <div class="container-app overflow-hidden">
+        
+        <!-- Header -->
+        <header class="pt-24 pb-16 px-8 text-center flex flex-col items-center relative bg-white">
+            
+            <h1 class="font-en text-2xl tracking-[0.2em] mb-2 text-brand-text font-medium relative z-10">
+                ATSUKO KARASAWA
+            </h1>
+            <p class="font-en text-[11px] tracking-widest text-brand-light mb-12 relative z-10">
+                @kara_photo.douga
+            </p>
+            
+            <div class="w-[1px] h-12 bg-brand-accent/60 mb-10 relative z-10"></div>
+            
+            <p class="text-[15px] leading-[2.2] tracking-widest font-medium relative z-10">
+                SNSで使いやすい<br>
+                写真・動画素材の撮影と<br>
+                編集サポート
+            </p>
+        </header>
+
+        <!-- Menu Section -->
+        <section class="px-6 py-16 bg-white">
+            <div class="text-center mb-20">
+                <i data-lucide="camera" class="w-5 h-5 mx-auto text-brand-accent mb-4 stroke-[1.2]"></i>
+                <h2 class="text-xl font-medium tracking-widest border-b border-brand-accent/50 inline-block pb-2 px-4 text-brand-text">
+                    撮影メニュー
+                </h2>
+            </div>
+
+            <!-- Menu 1 -->
+            <div class="mb-24">
+                <div class="text-center mb-8">
+                    <h3 class="text-[17px] font-medium leading-relaxed tracking-wider mb-4">
+                        投稿に使える<br>
+                        iPhone写真素材撮影
+                    </h3>
+                    <p class="font-en text-xl text-brand-accent tracking-wider font-medium">
+                        1時間 12,800円
+                    </p>
+                </div>
+                
+                <div class="px-2 mb-10 content-text text-center text-brand-text/90">
+                    <p class="mb-5">
+                        投稿・ストーリーズに使いやすい写真素材を、<br>
+                        iPhoneで撮影します。
+                    </p>
+                    <p class="mb-5">
+                        自然な表情や手元、雰囲気が伝わるカットを中心に、<br>
+                        あとから発信に使いやすいよう<br>
+                        余白や背景を整えながら撮影します。
+                    </p>
+                    <p class="mb-5">
+                        1度の撮影で数百枚ほど撮影し、<br>
+                        その中から使いやすいカットを厳選。<br>
+                        約20枚の厳選・レタッチ済みデータとして<br>
+                        納品します。
+                    </p>
+                    <p>
+                        納品データは、1枚ずつ明るさや色味を<br>
+                        整えてお渡しします。
+                    </p>
+                </div>
+
+                <div class="bg-white rounded-lg p-7 mx-2 border border-brand-accent/20 shadow-sm">
+                    <h4 class="text-sm font-medium tracking-widest mb-5 text-center text-brand-accent">内容</h4>
+                    <ul class="content-text text-[13px] text-brand-text/80">
+                        <li class="list-item-custom">iPhoneでの写真撮影</li>
+                        <li class="list-item-custom">投稿・ストーリーズに使いやすい写真素材</li>
+                        <li class="list-item-custom">自然な表情、手元、雰囲気カット</li>
+                        <li class="list-item-custom">余白や背景を整えて撮影</li>
+                        <li class="list-item-custom">SNSに載せやすい明るさ・見え方を意識</li>
+                        <li class="list-item-custom">数百枚の中から厳選</li>
+                        <li class="list-item-custom">約20枚のレタッチ済みデータ納品</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="w-8 h-[1px] bg-brand-accent/30 mx-auto mb-20"></div>
+
+            <!-- Menu 2 -->
+            <div class="mb-24">
+                <i data-lucide="video" class="w-5 h-5 mx-auto text-brand-accent/80 mb-4 stroke-[1.2]"></i>
+                <div class="text-center mb-8">
+                    <h3 class="text-[17px] font-medium leading-relaxed tracking-wider mb-4">
+                        リールに使える<br>
+                        iPhone動画素材撮影
+                    </h3>
+                    <p class="font-en text-xl text-brand-accent tracking-wider font-medium">
+                        1時間 29,800円〜
+                    </p>
+                </div>
+                
+                <div class="px-2 mb-10 content-text text-center text-brand-text/90">
+                    <p class="mb-5">
+                        リールやストーリーズで使いやすいように、<br>
+                        iPhoneで動画素材を撮影します。
+                    </p>
+                    <p class="mb-5">
+                        動き・画角・流れを考えながら、<br>
+                        編集した時に伝わりやすい素材になるよう<br>
+                        撮影します。
+                    </p>
+                    <p class="mb-5">
+                        写真が「1枚の見え方」を整える撮影だとしたら、<br>
+                        動画は「発信に使える流れ」を設計して<br>
+                        撮る撮影です。
+                    </p>
+                    <p>
+                        1回の撮影素材を、リール・ストーリーズ・<br>
+                        告知などに使い回しやすい形で撮影します。
+                    </p>
+                </div>
+
+                <div class="bg-white rounded-lg p-7 mx-2 border border-brand-accent/20 shadow-sm">
+                    <h4 class="text-sm font-medium tracking-widest mb-5 text-center text-brand-accent">内容</h4>
+                    <ul class="content-text text-[13px] text-brand-text/80">
+                        <li class="list-item-custom">iPhoneでの動画撮影</li>
+                        <li class="list-item-custom">リール・ストーリーズに使いやすい動画素材</li>
+                        <li class="list-item-custom">冒頭・つなぎ・締めに使えるカット撮影</li>
+                        <li class="list-item-custom">引き／寄り／手元／表情など複数画角</li>
+                        <li class="list-item-custom">編集しやすい動きや流れをディレクション</li>
+                        <li class="list-item-custom">発信で使う前提の素材設計込み</li>
+                        <li class="list-item-custom">使い回ししやすい動画素材の撮影</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="w-8 h-[1px] bg-brand-accent/30 mx-auto mb-20"></div>
+
+            <!-- Menu 3 -->
+            <div class="mb-24">
+                <i data-lucide="smartphone" class="w-5 h-5 mx-auto text-brand-accent/80 mb-4 stroke-[1.2]"></i>
+                <div class="text-center mb-8">
+                    <h3 class="text-[17px] font-medium leading-relaxed tracking-wider mb-4">
+                        用途に合わせた<br>
+                        iPhone撮り方実践レッスン
+                    </h3>
+                    <p class="font-en text-xl text-brand-accent tracking-wider font-medium">
+                        2時間 16,500円
+                    </p>
+                </div>
+                
+                <div class="px-2 mb-10 content-text text-center text-brand-text/90">
+                    <p class="mb-5">
+                        ご自身でも投稿やストーリーズに<br>
+                        使いやすい写真が撮れるように、<br>
+                        iPhoneを使って実際に一緒に撮りながら<br>
+                        お伝えする実践レッスンです。
+                    </p>
+                    <p class="mb-5">
+                        角度、余白の整え方に加えて、<br>
+                        撮影後の明るさや色味の整え方まで、<br>
+                        あなたの発信内容や撮りたいものに合わせて<br>
+                        確認していきます。
+                    </p>
+                    <p class="mb-5">
+                        ただ写真の撮り方を学ぶだけではなく、<br>
+                        「自分の発信にはどんな写真が必要か」<br>
+                        「投稿やストーリーズで使いやすい写真は<br>
+                        どう撮るか」<br>
+                        「撮った写真をどう整えると雰囲気が出るか」<br>
+                        まで、用途に合わせて実践します。
+                    </p>
+                </div>
+
+                <div class="bg-white rounded-lg p-7 mx-2 border border-brand-accent/20 shadow-sm">
+                    <h4 class="text-sm font-medium tracking-widest mb-5 text-center text-brand-accent">内容</h4>
+                    <ul class="content-text text-[13px] text-brand-text/80 mb-6">
+                        <li class="list-item-custom">普段の撮り方チェック</li>
+                        <li class="list-item-custom">角度・距離感の調整</li>
+                        <li class="list-item-custom">余白の作り方</li>
+                        <li class="list-item-custom">投稿・ストーリーズに使いやすい構図</li>
+                        <li class="list-item-custom">実際に一緒に撮影しながらフィードバック</li>
+                        <li class="list-item-custom">Before／Afterで改善ポイントを確認</li>
+                        <li class="list-item-custom">iPhone写真アプリでの明るさ・色味調整</li>
+                        <li class="list-item-custom">発信に合う写真の雰囲気づくり</li>
+                        <li class="list-item-custom">今後ひとりで撮る時のポイント整理</li>
+                    </ul>
+                    <div class="text-[11px] leading-relaxed text-brand-light space-y-2 mt-5 pt-5 border-t border-brand-accent/20">
+                        <p>※写真納品・投稿作成・リール編集・後日添削は<br>　含まれません。</p>
+                        <p>※iPhoneでの撮影・編集を前提としています。<br>　Androidは機種により操作が異なるため、<br>　基本操作のレクチャー対象外となります。<br>　ご了承ください。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-8 h-[1px] bg-brand-accent/30 mx-auto mb-20"></div>
+
+            <!-- Menu 4 -->
+            <div class="mb-24">
+                <i data-lucide="aperture" class="w-5 h-5 mx-auto text-brand-accent/80 mb-4 stroke-[1.2]"></i>
+                <div class="text-center mb-8">
+                    <h3 class="text-[17px] font-medium leading-relaxed tracking-wider mb-4">
+                        カメラでの<br>
+                        スタジオ撮影
+                    </h3>
+                    <p class="font-en text-xl text-brand-accent tracking-wider font-medium">
+                        1時間 29,800円〜
+                    </p>
+                    <p class="text-[12px] text-brand-light mt-1">
+                        ※スタジオ代は別途
+                    </p>
+                </div>
+                
+                <div class="px-2 mb-10 content-text text-center text-brand-text/90">
+                    <p class="mb-5">
+                        カメラを使用し、スタジオでしっかりと<br>
+                        世界観や見え方を整えて撮影します。
+                    </p>
+                    <p class="mb-5">
+                        告知用素材、LPやSNSに使う写真など、<br>
+                        よりきちんとした印象で残したい方向けの<br>
+                        撮影です。
+                    </p>
+                    <p class="mb-5">
+                        スタジオの雰囲気や光を活かしながら、<br>
+                        表情・姿勢・手元・余白・背景を整えて<br>
+                        撮影します。
+                    </p>
+                    <p>
+                        納品データは、厳選後に1枚ずつ<br>
+                        明るさや色味を調整してお渡しします。
+                    </p>
+                </div>
+
+                <div class="bg-white rounded-lg p-7 mx-2 border border-brand-accent/20 shadow-sm">
+                    <h4 class="text-sm font-medium tracking-widest mb-5 text-center text-brand-accent">内容</h4>
+                    <ul class="content-text text-[13px] text-brand-text/80">
+                        <li class="list-item-custom">カメラでのスタジオ撮影</li>
+                        <li class="list-item-custom">告知・SNS・LP用素材に使いやすい写真</li>
+                        <li class="list-item-custom">表情、手元、雰囲気カット</li>
+                        <li class="list-item-custom">余白や背景を整えて撮影</li>
+                        <li class="list-item-custom">数百枚の中から厳選</li>
+                        <li class="list-item-custom">レタッチ済みデータ納品</li>
+                        <li class="list-item-custom">スタジオ代は別途</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="w-8 h-[1px] bg-brand-accent/30 mx-auto mb-20"></div>
+
+            <!-- Menu 5 -->
+            <div class="mb-10">
+                <i data-lucide="compass" class="w-5 h-5 mx-auto text-brand-accent/80 mb-4 stroke-[1.2]"></i>
+                <div class="text-center mb-8">
+                    <h3 class="text-[17px] font-medium leading-relaxed tracking-wider mb-4">
+                        自走を目指す<br>
+                        クリエイティブ伴走
+                    </h3>
+                    <p class="font-en text-[15px] text-brand-text tracking-wider font-medium">
+                        月4本投稿〜
+                    </p>
+                    <p class="text-[12px] text-brand-light mt-2">
+                        ※すでに商品や販売導線を<br>お持ちの方対象
+                    </p>
+                </div>
+                
+                <div class="px-2 mb-10 content-text text-center text-brand-text/90">
+                    <p class="mb-5">
+                        最終的にご自身でリール企画・<br>
+                        発信ができる「自走」を目指す<br>
+                        サポートです。
+                    </p>
+                    <p class="text-[12px] text-brand-light leading-relaxed">
+                        ※お一人お一人のインサイト分析や<br>
+                        台本添削に深く入り込み、<br>
+                        サポートの質を落とさないため、<br>
+                        【毎月2名様限定】と<br>
+                        させていただいております。
+                    </p>
+                </div>
+
+                <div class="bg-white rounded-lg p-7 mx-2 border border-brand-accent/20 shadow-sm mb-6 text-center">
+                    <h4 class="text-sm font-medium tracking-widest mb-5 text-brand-accent">料金</h4>
+                    <p class="content-text text-[14px] mb-5">
+                        <span class="font-medium text-brand-text">初回キックオフ</span><br>
+                        10,000円<br>
+                        <span class="text-[12px] text-brand-light">（Zoom30分＋方向性のすり合わせ）</span>
+                    </p>
+                    <div class="w-4 h-[1px] bg-brand-accent/30 mx-auto mb-5"></div>
+                    <p class="content-text text-[14px]">
+                        <span class="font-medium text-brand-text">伴走＋編集セット</span><br>
+                        1本 10,000円<br>
+                        <span class="text-[12px] text-brand-light">（月4本で 40,000円〜）</span>
+                    </p>
+                </div>
+
+                <div class="bg-white rounded-lg p-7 mx-2 border border-brand-accent/20 shadow-sm">
+                    <h4 class="text-sm font-medium tracking-widest mb-5 text-center text-brand-accent">サポート内容</h4>
+                    <ul class="content-text text-[13px] text-brand-text/80 mb-6">
+                        <li class="list-item-custom">台本添削</li>
+                        <li class="list-item-custom">撮影アドバイス</li>
+                        <li class="list-item-custom">インサイト確認</li>
+                    </ul>
+                    <div class="w-full h-[1px] bg-brand-accent/10 mb-5"></div>
+                    <h4 class="text-sm font-medium tracking-widest mb-5 text-center text-brand-accent">やり取りの流れ</h4>
+                    <ul class="content-text text-[13px] text-brand-text/80">
+                        <li class="list-item-custom">スタート時に一度30分ZOOM<br><span class="list-indent">（初回キックオフ）</span></li>
+                        <li class="list-item-custom">投稿前後のやり取り<br><span class="list-indent">（テキストベース）</span></li>
+                    </ul>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Other Info Section -->
+        <section class="px-6 py-20 bg-[#F8F1EB]">
+
+            <div class="mb-20">
+                <div class="flex items-center justify-center gap-4 mb-8">
+                    <div class="w-6 h-[1px] bg-brand-accent/50"></div>
+                    <h3 class="text-base font-medium tracking-widest text-brand-text leading-relaxed text-center">
+                        少人数セミナー・<br>
+                        グループレッスンについて
+                    </h3>
+                    <div class="w-6 h-[1px] bg-brand-accent/50"></div>
+                </div>
+                <div class="content-text text-center px-4 mb-10">
+                    <p class="mb-4">
+                        少人数での撮影レッスンや、<br>
+                        スマホ写真・リール素材の撮り方セミナーも<br>
+                        対応可能です。
+                    </p>
+                    <p>
+                        内容・人数・場所により料金が変わるため、<br>
+                        詳細はご相談ください。
+                    </p>
+                </div>
+                <div class="bg-white rounded-lg p-7 mx-2 border border-brand-accent/20">
+                    <h4 class="text-xs font-medium tracking-widest mb-4 text-brand-accent">例：</h4>
+                    <ul class="content-text text-[13px] text-brand-text/80">
+                        <li class="list-item-custom">iPhoneでの写真の撮り方</li>
+                        <li class="list-item-custom">投稿・ストーリーズに使いやすい構図</li>
+                        <li class="list-item-custom">角度・余白の整え方</li>
+                        <li class="list-item-custom">撮影後の明るさ・色味調整</li>
+                        <li class="list-item-custom">リールに使いやすい動画素材の撮り方</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div>
+                <div class="flex items-center justify-center gap-4 mb-8">
+                    <div class="w-6 h-[1px] bg-brand-accent/50"></div>
+                    <h3 class="text-base font-medium tracking-widest text-brand-text leading-relaxed text-center">
+                        動画編集サポートについて
+                    </h3>
+                    <div class="w-6 h-[1px] bg-brand-accent/50"></div>
+                </div>
+                <div class="content-text text-center px-4 mb-10">
+                    <p class="mb-5">
+                        撮影だけでなく、動画編集サポートの<br>
+                        別途プランもご用意しています。
+                    </p>
+                    <p class="mb-5">
+                        リール編集、テロップ調整、素材の見せ方、<br>
+                        編集の進め方など、内容に合わせてご提案します。
+                    </p>
+                    <p class="mb-8">
+                        編集サポートはチケット制での<br>
+                        ご相談も可能です。
+                    </p>
+                    <div class="text-[12px] text-brand-text/80 leading-relaxed border-t border-brand-accent/20 pt-6 inline-block text-left">
+                        <p class="font-medium text-[13px] mb-2 text-brand-accent text-center">対象の方は</p>
+                        <p>※スマホ編集からPC編集に移行したい方他</p>
+                        <p>※使用アプリはCapCut / Premiere</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg p-7 mx-2 border border-brand-accent/20 text-center">
+                    <h4 class="text-xs font-medium tracking-widest mb-4 text-brand-accent">例：</h4>
+                    <p class="content-text text-[15px] font-medium mb-1">
+                        6時間チケット：38,400円
+                    </p>
+                    <p class="text-[13px] text-brand-text/80 mb-5">
+                        30分単位で使用可能です。
+                    </p>
+                    <p class="text-[11px] leading-relaxed text-brand-light border-t border-brand-accent/10 pt-5">
+                        ※対応内容により、別途お見積もりとなる<br>　場合があります。
+                    </p>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Concept Section -->
+        <section class="py-24 px-8 bg-brand-bg relative overflow-hidden">
+            
+            <div class="text-center relative z-10 mb-16">
+                <h2 class="text-[22px] font-medium leading-loose tracking-widest border-b border-brand-accent/30 inline-block px-4 pb-2 text-brand-text">
+                    きれいに撮るより、<br>
+                    使いやすく撮る
+                </h2>
+            </div>
+
+            <div class="content-text text-center space-y-7 relative z-10 text-brand-text/90">
+                <p>
+                    写真や動画は、<br>
+                    ただきれいに撮れたら終わりではなく、
+                </p>
+                <p>
+                    その後、投稿やストーリーズ、リールで<br>
+                    「使いやすいか」がとても大切です。
+                </p>
+                <p>
+                    私はこれまで、Instagramのリール編集や<br>
+                    撮影、ストーリーズづくりに関わる中で、
+                </p>
+                <div class="py-4 font-medium text-[15px] text-brand-text space-y-5">
+                    <p>「撮ったけれど投稿に使いにくい」</p>
+                    <p>
+                        「写真はあるのに、<br>
+                        どこに文字を入れたらいいかわからない」
+                    </p>
+                    <p>
+                        「動画素材はあるのに、<br>
+                        リールにすると流れが作りにくい」
+                    </p>
+                </div>
+                <p>
+                    という場面をたくさん見てきました。
+                </p>
+                <p>
+                    だからこそ、撮影やレッスンでは、
+                </p>
+                <p>
+                    角度だけでなく、<br>
+                    投稿にした時の余白、<br>
+                    ストーリーズで文字を置く場所、<br>
+                    リールにした時のつながりまで考えています。
+                </p>
+                <p>
+                    大切にしているのは、<br>
+                    作り込みすぎた写真ではなく、
+                </p>
+                <p>
+                    その人らしい雰囲気が自然に伝わり、<br>
+                    あとから発信に使いやすい素材になること。
+                </p>
+                <p class="text-[15px] font-medium pt-6">
+                    「撮って終わり」ではなく、<br>
+                    「投稿に使えるところ」まで<br>
+                    一緒に整えることを大切にしています。
+                </p>
+            </div>
+        </section>
+
+        <!-- Reasons Section -->
+        <section class="py-20 px-6 bg-[#F8F1EB]">
+            <div class="text-center mb-16">
+                <i data-lucide="sparkles" class="w-5 h-5 mx-auto text-brand-accent mb-4 stroke-[1.2]"></i>
+                <h2 class="text-lg font-medium tracking-widest text-brand-text border-b border-brand-accent/50 inline-block pb-2 px-4">
+                    選ばれる理由
+                </h2>
+            </div>
+
+            <div class="space-y-16">
+                <!-- Reason 1 -->
+                <div>
+                    <div class="flex flex-col items-center mb-6">
+                        <span class="font-en text-4xl text-brand-accent/40 italic mb-3 font-light">01</span>
+                        <h3 class="text-[16px] font-medium leading-relaxed tracking-wider text-center">
+                            SNS発信に関わってきた<br>
+                            実績があります
+                        </h3>
+                    </div>
+                    <div class="content-text text-center px-2 text-brand-text/80 space-y-4">
+                        <p>
+                            これまで、フォロワー5.0万人の方の<br>
+                            インスタデザイン講義動画の編集、
+                        </p>
+                        <p>
+                            フォロワー7.1万人の方の<br>
+                            インタビューリール編集、
+                        </p>
+                        <p>
+                            フォロワー3.2万人の方の<br>
+                            美容系リール制作など、
+                        </p>
+                        <p>
+                            SNS発信に関わる動画編集・撮影サポートを<br>
+                            行ってきました。
+                        </p>
+                        <p>
+                            美容系発信では、リール300本以上の<br>
+                            制作実績があります。
+                        </p>
+                        <p>
+                            撮影した素材が、実際に投稿やリールで<br>
+                            使いやすいか。その視点を大切にしています。
+                        </p>
+                    </div>
+                </div>
+
+                <div class="w-8 h-[1px] bg-brand-accent/30 mx-auto"></div>
+
+                <!-- Reason 2 -->
+                <div>
+                    <div class="flex flex-col items-center mb-6">
+                        <span class="font-en text-4xl text-brand-accent/40 italic mb-3 font-light">02</span>
+                        <h3 class="text-[16px] font-medium leading-relaxed tracking-wider text-center">
+                            カメラに詳しくない方にも、<br>
+                            わかりやすくお伝えします
+                        </h3>
+                    </div>
+                    <div class="content-text text-center px-2 text-brand-text/80 space-y-4">
+                        <p>
+                            学生時代には、Canonの販売サポートとして、
+                        </p>
+                        <p>
+                            東京ビッグサイトなどで行われる大型イベントや、<br>
+                            新宿ヨドバシカメラなどの売場で<br>
+                            説明員をしていました。
+                        </p>
+                        <p>
+                            専門用語を並べるのではなく、<br>
+                            カメラに詳しくない方にもわかりやすく伝えること。
+                        </p>
+                        <p>
+                            その経験は、今の撮影レッスンや<br>
+                            サポートにも活きています。
+                        </p>
+                    </div>
+                </div>
+
+                <div class="w-8 h-[1px] bg-brand-accent/30 mx-auto"></div>
+
+                <!-- Reason 3 -->
+                <div>
+                    <div class="flex flex-col items-center mb-6">
+                        <span class="font-en text-4xl text-brand-accent/40 italic mb-3 font-light">03</span>
+                        <h3 class="text-[16px] font-medium leading-relaxed tracking-wider text-center">
+                            iPhoneでも、投稿に<br>
+                            使いやすい素材づくりを<br>
+                            大切にしています
+                        </h3>
+                    </div>
+                    <div class="content-text text-center px-2 text-brand-text/80 space-y-4">
+                        <p>
+                            iPhoneでも、光の見方・角度・余白・色味を<br>
+                            少し整えるだけで、写真や動画の見え方は<br>
+                            大きく変わります。
+                        </p>
+                        <p>
+                            難しい機材や専門用語よりも、<br>
+                            今あるスマホで、どう撮れば発信に<br>
+                            使いやすくなるか。
+                        </p>
+                        <p>
+                            そこを一緒に確認しながらお伝えします。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Information Section -->
+        <section class="py-20 px-6 bg-white">
+            <div class="text-center mb-16">
+                <i data-lucide="info" class="w-5 h-5 mx-auto text-brand-accent mb-4 stroke-[1.2]"></i>
+                <h2 class="text-lg font-medium tracking-widest text-brand-text border-b border-brand-accent/50 inline-block pb-2 px-4">
+                    お申し込み・ご案内
+                </h2>
+            </div>
+
+            <div class="space-y-16 px-2 content-text text-center text-brand-text/90">
+                
+                <div>
+                    <h3 class="text-[15px] font-medium tracking-widest text-brand-text mb-4">
+                        <span class="border-b border-brand-accent/40 pb-1">お支払い方法</span>
+                    </h3>
+                    <p class="mb-3">
+                        料金は原則として<br>
+                        「一括前払い」にて<br>
+                        お願いしております。
+                    </p>
+                    <p>
+                        お申し込みのご連絡を<br>
+                        いただいた後、振込先の<br>
+                        口座情報をご案内いたします。
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="text-[15px] font-medium tracking-widest text-brand-text mb-4">
+                        <span class="border-b border-brand-accent/40 pb-1">キャンセルポリシー</span>
+                    </h3>
+                    <p class="mb-3">
+                        編集枠の確保費用として<br>
+                        頂戴するため、お支払い後の<br>
+                        返金は致しかねます。
+                    </p>
+                    <p>
+                        あらかじめご了承ください。
+                    </p>
+                </div>
+                
+                <div class="bg-white rounded-lg p-8 border border-brand-accent/20 mt-10 shadow-sm text-center">
+                    <h3 class="text-[15px] font-medium tracking-widest text-brand-text mb-5">
+                        お申し込み
+                    </h3>
+                    <p class="mb-8 text-[13px] text-brand-text/80">
+                        お申し込み・お問い合わせは<br>
+                        InstagramのDMへ<br>
+                        ご連絡ください。
+                    </p>
+                    <a href="https://www.instagram.com/kara_photo.douga" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 bg-brand-text text-white px-8 py-4 rounded-full text-[13px] tracking-widest hover:bg-brand-text/80 transition-colors duration-300 shadow-md">
+                        <i data-lucide="instagram" class="w-4 h-4"></i>
+                        Instagram DMへ
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-14 px-6 bg-brand-text text-white text-center">
+            <p class="font-en text-xs tracking-widest text-white/80 mb-6">
+                ATSUKO KARASAWA
+            </p>
+            <div class="text-[10px] leading-relaxed text-white/50 tracking-wider">
+                <p class="mb-2 font-en">© 2026 kara_photo.douga All Rights Reserved.</p>
+                <p>掲載している文章の<br>無断転載はご遠慮ください。</p>
+            </div>
+        </footer>
+
+    </div>
+
+    <script>
+        // Lucideアイコンの初期化
+        lucide.createIcons();
+    </script>
+</body>
+</html>

@@ -74,9 +74,9 @@
         
         <!-- Header -->
         <header class="pt-24 pb-16 px-8 text-center flex flex-col items-center relative bg-white">
-<div class="relative z-10 mb-6 mt-4 w-full max-w-[280px]">
-            <img src="profile01.jpg" alt="profile01.jpg" class="w-full h-auto rounded-lg shadow-sm mx-auto">
-        </div>            
+            <div class="relative z-10 mb-6 mt-4 w-full max-w-[280px]">
+                <img src="profile01.jpg" alt="プロフィール画像" class="w-full h-auto rounded-lg shadow-sm mx-auto">
+            </div>            
             <h1 class="font-en text-2xl tracking-[0.2em] mb-2 text-brand-text font-medium relative z-10">
                 ATSUKO KARASAWA
             </h1>
@@ -110,7 +110,10 @@
                         iPhone写真素材撮影
                     </h3>
                     <p class="font-en text-xl text-brand-accent tracking-wider font-medium">
-                        1時間 12,800円
+                        12,800円
+                    </p>
+                    <p class="text-[12px] text-brand-light mt-1">
+                        ※所要時間：1時間
                     </p>
                 </div>
                 
@@ -161,7 +164,10 @@
                         iPhone動画素材撮影
                     </h3>
                     <p class="font-en text-xl text-brand-accent tracking-wider font-medium">
-                        1時間 29,800円〜
+                        29,800円〜
+                    </p>
+                    <p class="text-[12px] text-brand-light mt-1">
+                        ※所要時間：2時間
                     </p>
                 </div>
                 
@@ -211,7 +217,10 @@
                         iPhone撮り方実践レッスン
                     </h3>
                     <p class="font-en text-xl text-brand-accent tracking-wider font-medium">
-                        2時間 16,500円
+                        16,500円
+                    </p>
+                    <p class="text-[12px] text-brand-light mt-1">
+                        ※所要時間：2時間
                     </p>
                 </div>
                 
@@ -269,9 +278,10 @@
                         スタジオ撮影
                     </h3>
                     <p class="font-en text-xl text-brand-accent tracking-wider font-medium">
-                        1時間 29,800円〜
+                        29,800円〜
                     </p>
                     <p class="text-[12px] text-brand-light mt-1">
+                        ※所要時間：2時間<br>
                         ※スタジオ代は別途
                     </p>
                 </div>
@@ -416,13 +426,13 @@
                 <div class="flex items-center justify-center gap-4 mb-8">
                     <div class="w-6 h-[1px] bg-brand-accent/50"></div>
                     <h3 class="text-base font-medium tracking-widest text-brand-text leading-relaxed text-center">
-                        動画編集サポートについて
+                        動画編集レクチャーについて
                     </h3>
                     <div class="w-6 h-[1px] bg-brand-accent/50"></div>
                 </div>
                 <div class="content-text text-center px-4 mb-10">
                     <p class="mb-5">
-                        撮影だけでなく、動画編集サポートの<br>
+                        撮影だけでなく、動画編集レクチャーの<br>
                         別途プランもご用意しています。
                     </p>
                     <p class="mb-5">
@@ -430,7 +440,7 @@
                         編集の進め方など、内容に合わせてご提案します。
                     </p>
                     <p class="mb-8">
-                        編集サポートはチケット制での<br>
+                        編集レクチャーはチケット制での<br>
                         ご相談も可能です。
                     </p>
                     <div class="text-[12px] text-brand-text/80 leading-relaxed border-t border-brand-accent/20 pt-6 inline-block text-left">
@@ -625,26 +635,28 @@
                 </div>
             </div>
         </section>
+        
         <!-- Flow Section -->
         <section class="py-16 px-6 bg-white">
             <div class="text-center mb-12">
-                <i data-lucide="calendar-check" class="w-5 h-5 mx-auto text-brand-pink mb-3"></i>
+                <i data-lucide="calendar-check" class="w-5 h-5 mx-auto text-brand-accent mb-3"></i>
                 <h2 class="text-lg font-medium tracking-widest text-brand-text">
                     ご依頼からの流れ
                 </h2>
             </div>
 
+            <!-- ステップ全体を囲むコンテナ。左側に線を引くための基準点 -->
             <div class="relative max-w-[320px] mx-auto px-2">
                 
                 <!-- Step 1 -->
                 <div class="flex gap-5 mb-10 relative z-10">
                     <!-- 縦線（次のステップへ） -->
-                    <div class="absolute left-[23.5px] top-12 -bottom-10 w-[1px] bg-brand-pink/70 -z-10"></div>
+                    <div class="absolute left-[23.5px] top-12 -bottom-10 w-[1px] bg-brand-accent/30 -z-10"></div>
                     
-                    <div class="w-12 h-12 rounded-full bg-[#FDFBF9] border border-brand-pink flex items-center justify-center shrink-0 shadow-sm">
-                        <span class="font-en text-[17px] text-brand-pink font-medium">01</span>
+                    <div class="w-12 h-12 rounded-full bg-[#FDFBF9] border border-brand-accent/50 flex items-center justify-center shrink-0 shadow-sm bg-white">
+                        <span class="font-en text-[17px] text-brand-accent font-medium">01</span>
                     </div>
-                    <div class="pt-3">
+                    <div class="pt-3 pb-2">
                         <h3 class="text-[15px] font-medium tracking-wider mb-2 text-brand-text">お問い合わせ</h3>
                         <p class="text-[13px] text-brand-text/80 leading-relaxed">DMやフォームより、ご希望のメニューをご連絡ください。</p>
                     </div>
@@ -653,12 +665,12 @@
                 <!-- Step 2 -->
                 <div class="flex gap-5 mb-10 relative z-10">
                     <!-- 縦線（次のステップへ） -->
-                    <div class="absolute left-[23.5px] top-12 -bottom-10 w-[1px] bg-brand-pink/70 -z-10"></div>
+                    <div class="absolute left-[23.5px] top-12 -bottom-10 w-[1px] bg-brand-accent/30 -z-10"></div>
                     
-                    <div class="w-12 h-12 rounded-full bg-[#FDFBF9] border border-brand-pink flex items-center justify-center shrink-0 shadow-sm">
-                        <span class="font-en text-[17px] text-brand-pink font-medium">02</span>
+                    <div class="w-12 h-12 rounded-full bg-[#FDFBF9] border border-brand-accent/50 flex items-center justify-center shrink-0 shadow-sm bg-white">
+                        <span class="font-en text-[17px] text-brand-accent font-medium">02</span>
                     </div>
-                    <div class="pt-3">
+                    <div class="pt-3 pb-2">
                         <h3 class="text-[15px] font-medium tracking-wider mb-2 text-brand-text">日程調整・ヒアリング</h3>
                         <p class="text-[13px] text-brand-text/80 leading-relaxed">
                             お日にちの第3希望までと、撮影希望場所をお知らせください。<br>
@@ -670,12 +682,12 @@
                 <!-- Step 3 -->
                 <div class="flex gap-5 mb-10 relative z-10">
                     <!-- 縦線（次のステップへ） -->
-                    <div class="absolute left-[23.5px] top-12 -bottom-10 w-[1px] bg-brand-pink/70 -z-10"></div>
+                    <div class="absolute left-[23.5px] top-12 -bottom-10 w-[1px] bg-brand-accent/30 -z-10"></div>
                     
-                    <div class="w-12 h-12 rounded-full bg-[#FDFBF9] border border-brand-pink flex items-center justify-center shrink-0 shadow-sm">
-                        <span class="font-en text-[17px] text-brand-pink font-medium">03</span>
+                    <div class="w-12 h-12 rounded-full bg-[#FDFBF9] border border-brand-accent/50 flex items-center justify-center shrink-0 shadow-sm bg-white">
+                        <span class="font-en text-[17px] text-brand-accent font-medium">03</span>
                     </div>
-                    <div class="pt-3">
+                    <div class="pt-3 pb-2">
                         <h3 class="text-[15px] font-medium tracking-wider mb-2 text-brand-text">お支払い</h3>
                         <p class="text-[13px] text-brand-text/80 leading-relaxed">
                             日程が決まりましたら請求書をお送りします。<br>
@@ -688,12 +700,12 @@
                 <!-- Step 4 -->
                 <div class="flex gap-5 mb-10 relative z-10">
                     <!-- 縦線（次のステップへ） -->
-                    <div class="absolute left-[23.5px] top-12 -bottom-10 w-[1px] bg-brand-pink/70 -z-10"></div>
+                    <div class="absolute left-[23.5px] top-12 -bottom-10 w-[1px] bg-brand-accent/30 -z-10"></div>
                     
-                    <div class="w-12 h-12 rounded-full bg-[#FDFBF9] border border-brand-pink flex items-center justify-center shrink-0 shadow-sm">
-                        <span class="font-en text-[17px] text-brand-pink font-medium">04</span>
+                    <div class="w-12 h-12 rounded-full bg-[#FDFBF9] border border-brand-accent/50 flex items-center justify-center shrink-0 shadow-sm bg-white">
+                        <span class="font-en text-[17px] text-brand-accent font-medium">04</span>
                     </div>
-                    <div class="pt-3">
+                    <div class="pt-3 pb-2">
                         <h3 class="text-[15px] font-medium tracking-wider mb-2 text-brand-text">撮影・レッスン当日</h3>
                         <p class="text-[13px] text-brand-text/80 leading-relaxed">リラックスした雰囲気で、楽しく進めさせていただきます。</p>
                     </div>
@@ -701,8 +713,8 @@
 
                 <!-- Step 5 -->
                 <div class="flex gap-5 relative z-10">
-                    <div class="w-12 h-12 rounded-full bg-[#FDFBF9] border border-brand-pink flex items-center justify-center shrink-0 shadow-sm">
-                        <span class="font-en text-[17px] text-brand-pink font-medium">05</span>
+                    <div class="w-12 h-12 rounded-full bg-[#FDFBF9] border border-brand-accent/50 flex items-center justify-center shrink-0 shadow-sm bg-white">
+                        <span class="font-en text-[17px] text-brand-accent font-medium">05</span>
                     </div>
                     <div class="pt-3">
                         <h3 class="text-[15px] font-medium tracking-wider mb-2 text-brand-text">データ納品</h3>
@@ -711,7 +723,8 @@
                 </div>
             </div>
         </section>
-<!-- Information Section -->
+
+        <!-- Information Section -->
         <section class="py-20 px-6 bg-white">
             <div class="text-center mb-16">
                 <i data-lucide="info" class="w-5 h-5 mx-auto text-brand-accent mb-4 stroke-[1.2]"></i>
@@ -720,12 +733,12 @@
                 </h2>
                 
                 <div class="mt-8">
-                    <p class="mb-3 text-[14px] leading-relaxed">
+                    <p class="mb-3 text-[13px] text-brand-text/80 leading-relaxed">
                         編集枠の確保費用として<br>
                         頂戴するため、お支払い後の<br>
                         返金は致しかねます。
                     </p>
-                    <p class="text-[14px] leading-relaxed">
+                    <p class="text-[13px] text-brand-text/80 leading-relaxed">
                         あらかじめご了承ください。
                     </p>
                 </div>
@@ -747,11 +760,11 @@
                     お申し込み・お問い合わせは<br>
                     InstagramのDMへ<br>
                     ご連絡ください。
-                    </p>
-                    <a href="https://www.instagram.com/kara_photo.douga" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 bg-brand-text text-white px-8 py-4 rounded-full text-[13px] tracking-widest hover:bg-brand-text/80 transition-colors duration-300 shadow-md">
-                        <i data-lucide="instagram" class="w-4 h-4"></i>
-                        Instagram DMへ
-</a>
+                </p>
+                <a href="https://www.instagram.com/kara_photo.douga" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 bg-brand-text text-white px-8 py-4 rounded-full text-[13px] tracking-widest hover:bg-brand-text/80 transition-colors duration-300 shadow-md">
+                    <i data-lucide="instagram" class="w-4 h-4"></i>
+                    Instagram DMへ
+                </a>
             </div>
             
         </section>
@@ -762,7 +775,7 @@
                 ATSUKO KARASAWA
             </p>
             <div class="text-[10px] leading-relaxed text-white/50 tracking-wider">
-                <p class="mb-2 font-en">© 2026 kara_photo.douga All Rights Reserved.</p>
+                <p class="mb-2 font-en">&copy; 2026 kara_photo.douga All Rights Reserved.</p>
                 <p>掲載している文章の<br>無断転載はご遠慮ください。</p>
             </div>
         </footer>

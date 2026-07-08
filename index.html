@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -68,12 +68,18 @@
         }
     </style>
 </head>
-<body class="text-brand-text font-serif antialiased selection:bg-brand-accent selection:text-white">
+<body class="text-brand-text font-serif antialiased selection:bg-brand-accent selection:text-white relative">
 
-    <div class="container-app overflow-hidden">
+    <div class="container-app overflow-hidden relative">
         
         <!-- Header -->
-        <header class="pt-24 pb-16 px-8 text-center flex flex-col items-center relative bg-white">
+        <header class="pt-24 pb-16 px-8 text-center flex flex-col items-center relative bg-white" id="top">
+            
+            <!-- ハンバーガーメニューボタン -->
+            <button id="menuBtn" class="absolute top-6 right-6 p-2 text-brand-text hover:text-brand-accent transition-colors focus:outline-none z-20">
+                <i data-lucide="menu" class="w-7 h-7"></i>
+            </button>
+
             <div class="relative z-10 mb-6 mt-4 w-full max-w-[280px]">
                 <img src="profile01.jpg" alt="プロフィール画像" class="w-full h-auto rounded-lg shadow-sm mx-auto">
             </div>            
@@ -94,7 +100,7 @@
         </header>
 
         <!-- Menu Section -->
-        <section class="px-6 py-16 bg-white">
+        <section id="menu" class="px-6 py-16 bg-white">
             <div class="text-center mb-20">
                 <i data-lucide="camera" class="w-5 h-5 mx-auto text-brand-accent mb-4 stroke-[1.2]"></i>
                 <h2 class="text-xl font-medium tracking-widest border-b border-brand-accent/50 inline-block pb-2 px-4 text-brand-text">
@@ -262,7 +268,7 @@
                     </div>
                 </div>
 
-                <!-- Before/After作例 (修正: .png) -->
+                <!-- Before/After作例 -->
                 <div class="mt-8 bg-white rounded-lg p-6 border border-brand-accent/20 shadow-sm relative overflow-hidden mx-2">
                     <div class="absolute top-0 right-0 w-16 h-16 bg-brand-bg rounded-bl-full -z-10"></div>
                     <div class="text-center mb-6">
@@ -533,7 +539,7 @@
         </section>
 
         <!-- Concept Section -->
-        <section class="py-24 px-8 bg-brand-bg relative overflow-hidden">
+        <section id="concept" class="py-24 px-8 bg-brand-bg relative overflow-hidden">
             
             <div class="text-center relative z-10 mb-16">
                 <h2 class="text-[22px] font-medium leading-loose tracking-widest border-b border-brand-accent/30 inline-block px-4 pb-2 text-brand-text">
@@ -595,7 +601,7 @@
         </section>
 
         <!-- Reasons Section -->
-        <section class="py-20 px-6 bg-[#F8F1EB]">
+        <section id="reasons" class="py-20 px-6 bg-[#F8F1EB]">
             <div class="text-center mb-16">
                 <i data-lucide="sparkles" class="w-5 h-5 mx-auto text-brand-accent mb-4 stroke-[1.2]"></i>
                 <h2 class="text-lg font-medium tracking-widest text-brand-text border-b border-brand-accent/50 inline-block pb-2 px-4">
@@ -704,7 +710,7 @@
         </section>
         
         <!-- Flow Section -->
-        <section class="py-16 px-6 bg-white">
+        <section id="flow" class="py-16 px-6 bg-white">
             <div class="text-center mb-12">
                 <i data-lucide="calendar-check" class="w-5 h-5 mx-auto text-brand-accent mb-3"></i>
                 <h2 class="text-lg font-medium tracking-widest text-brand-text">
@@ -792,7 +798,7 @@
         </section>
 
         <!-- Information Section -->
-        <section class="py-20 px-6 bg-white">
+        <section id="info" class="py-20 px-6 bg-white">
             <div class="text-center mb-16">
                 <i data-lucide="info" class="w-5 h-5 mx-auto text-brand-accent mb-4 stroke-[1.2]"></i>
                 <h2 class="text-lg font-medium tracking-widest text-brand-text border-b border-brand-accent/50 inline-block pb-2 px-4">
@@ -818,7 +824,8 @@
                 </p>
             </div>
 
-            <div class="bg-white rounded-lg p-8 border border-brand-accent/20 shadow-sm text-center">
+            <!-- お申し込みボタンエリア -->
+            <div id="contact" class="bg-white rounded-lg p-8 border border-brand-accent/20 shadow-sm text-center">
                 <h3 class="text-[15px] font-medium tracking-widest text-brand-text mb-5">
                     お申し込み
                 </h3>
@@ -827,9 +834,10 @@
                     InstagramのDMへ<br>
                     ご連絡ください。
                 </p>
-                <a href="https://www.instagram.com/kara_photo.douga" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 bg-brand-text text-white px-8 py-4 rounded-full text-[13px] tracking-widest hover:bg-brand-text/80 transition-colors duration-300 shadow-md">
-                    <i data-lucide="instagram" class="w-4 h-4"></i>
-                    Instagram DMへ
+                <a href="https://www.instagram.com/kara_photo.douga" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center w-fit mx-auto gap-2 bg-brand-text text-white px-8 py-4 rounded-full text-[13px] tracking-widest hover:bg-brand-text/80 transition-colors duration-300 shadow-md">
+                    <i data-lucide="instagram" class="w-4 h-4 shrink-0"></i>
+                    <!-- letter-spacingによる右側の余白分を相殺してアイコンと文字を中央に -->
+                    <span class="translate-x-[0.1em]">Instagram DMへ</span>
                 </a>
             </div>
             
@@ -846,11 +854,54 @@
             </div>
         </footer>
 
+        <!-- Mobile Menu Overlay -->
+        <div id="mobileMenu" class="fixed inset-0 bg-brand-bg/95 backdrop-blur-sm z-[100] flex flex-col justify-center items-center opacity-0 pointer-events-none transition-all duration-300">
+            <!-- 閉じるボタン -->
+            <button id="closeMenuBtn" class="absolute top-6 right-6 p-2 text-brand-text hover:text-brand-accent transition-colors focus:outline-none">
+                <i data-lucide="x" class="w-8 h-8"></i>
+            </button>
+            
+            <nav class="flex flex-col items-center gap-8 text-center">
+                <a href="#menu" class="menu-link text-[15px] font-medium tracking-widest text-brand-text hover:text-brand-accent transition-colors">撮影メニュー</a>
+                <a href="#concept" class="menu-link text-[15px] font-medium tracking-widest text-brand-text hover:text-brand-accent transition-colors">大切にしていること</a>
+                <a href="#reasons" class="menu-link text-[15px] font-medium tracking-widest text-brand-text hover:text-brand-accent transition-colors">選ばれる理由</a>
+                <a href="#flow" class="menu-link text-[15px] font-medium tracking-widest text-brand-text hover:text-brand-accent transition-colors">ご依頼からの流れ</a>
+                <a href="#info" class="menu-link text-[15px] font-medium tracking-widest text-brand-text hover:text-brand-accent transition-colors">キャンセルポリシー</a>
+                <a href="#contact" class="menu-link inline-block mt-4 px-8 py-3 bg-brand-text text-white rounded-full text-[13px] tracking-widest hover:bg-brand-text/80 transition-colors">お申し込み</a>
+            </nav>
+        </div>
+
     </div>
 
     <script>
         // Lucideアイコンの初期化
         lucide.createIcons();
+
+        // ハンバーガーメニューの開閉ロジック
+        const menuBtn = document.getElementById('menuBtn');
+        const closeMenuBtn = document.getElementById('closeMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuLinks = document.querySelectorAll('.menu-link');
+
+        function openMenu() {
+            mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
+            mobileMenu.classList.add('opacity-100', 'pointer-events-auto');
+            document.body.style.overflow = 'hidden'; // 背景のスクロールを止める
+        }
+
+        function closeMenu() {
+            mobileMenu.classList.remove('opacity-100', 'pointer-events-auto');
+            mobileMenu.classList.add('opacity-0', 'pointer-events-none');
+            document.body.style.overflow = ''; // スクロールを再開
+        }
+
+        menuBtn.addEventListener('click', openMenu);
+        closeMenuBtn.addEventListener('click', closeMenu);
+
+        // リンクをクリックしたらメニューを閉じる
+        menuLinks.forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
     </script>
 </body>
 </html>

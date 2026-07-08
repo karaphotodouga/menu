@@ -76,9 +76,49 @@
         <header class="pt-24 pb-16 px-8 text-center flex flex-col items-center relative bg-white" id="top">
             
             <!-- ハンバーガーメニューボタン -->
-            <button id="menuBtn" class="absolute top-6 right-6 p-2 text-brand-text hover:text-brand-accent transition-colors focus:outline-none z-20">
-                <i data-lucide="menu" class="w-7 h-7"></i>
+            <button id="menuBtn" class="absolute top-6 right-6 p-2 text-brand-text hover:text-brand-accent transition-colors focus:outline-none z-50">
+                <i data-lucide="menu" id="icon-menu" class="w-7 h-7"></i>
+                <i data-lucide="x" id="icon-close" class="w-7 h-7 hidden"></i>
             </button>
+
+            <!-- メニュー用オーバーレイ（外側クリックで閉じる用） -->
+            <div id="menuOverlay" class="fixed inset-0 z-40 hidden"></div>
+
+            <!-- ドロップダウンメニュー（右上に小さく出る） -->
+            <div id="mobileMenu" class="absolute top-16 right-6 w-[260px] max-h-[85vh] overflow-y-auto bg-white/95 backdrop-blur-md rounded-2xl shadow-xl z-50 border border-brand-accent/20 p-5 opacity-0 scale-95 pointer-events-none origin-top-right transition-all duration-300 text-left">
+                <nav class="flex flex-col gap-4 text-[13px] tracking-wide text-brand-text">
+                    
+                    <div>
+                        <a href="#menu" class="menu-link font-medium text-brand-accent hover:opacity-70 transition-opacity">撮影メニュー</a>
+                        <div class="pl-3 mt-2 flex flex-col gap-3 border-l border-brand-accent/20">
+                            <a href="#menu1" class="menu-link hover:text-brand-accent transition-colors">・ iPhone写真素材撮影</a>
+                            <a href="#menu2" class="menu-link hover:text-brand-accent transition-colors">・ iPhone動画素材撮影</a>
+                            <a href="#menu3" class="menu-link hover:text-brand-accent transition-colors">・ iPhone撮り方レッスン</a>
+                            <a href="#menu4" class="menu-link hover:text-brand-accent transition-colors">・ スタジオ撮影</a>
+                            <a href="#menu5" class="menu-link hover:text-brand-accent transition-colors">・ クリエイティブ伴走</a>
+                        </div>
+                    </div>
+
+                    <div class="w-full h-[1px] bg-brand-accent/10"></div>
+
+                    <div>
+                        <span class="font-medium text-brand-accent">その他メニュー</span>
+                        <div class="pl-3 mt-2 flex flex-col gap-3 border-l border-brand-accent/20">
+                            <a href="#seminar" class="menu-link hover:text-brand-accent transition-colors">・ 少人数セミナー</a>
+                            <a href="#lecture" class="menu-link hover:text-brand-accent transition-colors">・ 動画編集の個別指導</a>
+                        </div>
+                    </div>
+
+                    <div class="w-full h-[1px] bg-brand-accent/10"></div>
+
+                    <a href="#concept" class="menu-link hover:text-brand-accent transition-colors">大切にしていること</a>
+                    <a href="#reasons" class="menu-link hover:text-brand-accent transition-colors">選ばれる理由</a>
+                    <a href="#flow" class="menu-link hover:text-brand-accent transition-colors">ご依頼からの流れ</a>
+                    <a href="#info" class="menu-link hover:text-brand-accent transition-colors">キャンセルポリシー</a>
+                    
+                    <a href="#contact" class="menu-link block mt-2 px-4 py-3 bg-brand-text text-white text-center rounded-full text-[12px] hover:bg-brand-text/80 transition-colors shadow-sm">お申し込み</a>
+                </nav>
+            </div>
 
             <div class="relative z-10 mb-6 mt-4 w-full max-w-[280px]">
                 <img src="profile01.jpg" alt="プロフィール画像" class="w-full h-auto rounded-lg shadow-sm mx-auto">
@@ -100,16 +140,32 @@
         </header>
 
         <!-- Menu Section -->
-        <section id="menu" class="px-6 py-16 bg-white">
-            <div class="text-center mb-20">
+        <section id="menu" class="px-6 py-16 bg-white scroll-mt-12">
+            <div class="text-center mb-16">
                 <i data-lucide="camera" class="w-5 h-5 mx-auto text-brand-accent mb-4 stroke-[1.2]"></i>
                 <h2 class="text-xl font-medium tracking-widest border-b border-brand-accent/50 inline-block pb-2 px-4 text-brand-text">
                     撮影メニュー
                 </h2>
             </div>
 
+            <!-- 目次 (Menu List) -->
+            <div class="mb-20 px-1">
+                <div class="bg-brand-bg rounded-xl p-6 border border-brand-accent/20 shadow-sm">
+                    <p class="text-[11px] font-en font-medium text-brand-accent mb-4 tracking-widest text-center border-b border-brand-accent/20 pb-2 inline-block w-full">MENU LIST</p>
+                    <ul class="space-y-4 text-[13px] text-brand-text/90 tracking-wide">
+                        <li><a href="#menu1" class="flex items-center gap-2.5 hover:text-brand-accent transition-colors"><div class="w-1.5 h-1.5 rounded-full bg-brand-accent/60 shrink-0"></div> 投稿に使える iPhone写真素材撮影</a></li>
+                        <li><a href="#menu2" class="flex items-center gap-2.5 hover:text-brand-accent transition-colors"><div class="w-1.5 h-1.5 rounded-full bg-brand-accent/60 shrink-0"></div> リールに使える iPhone動画素材撮影</a></li>
+                        <li><a href="#menu3" class="flex items-center gap-2.5 hover:text-brand-accent transition-colors"><div class="w-1.5 h-1.5 rounded-full bg-brand-accent/60 shrink-0"></div> 用途に合わせた iPhone撮り方実践レッスン</a></li>
+                        <li><a href="#menu4" class="flex items-center gap-2.5 hover:text-brand-accent transition-colors"><div class="w-1.5 h-1.5 rounded-full bg-brand-accent/60 shrink-0"></div> カメラでの スタジオ撮影</a></li>
+                        <li><a href="#menu5" class="flex items-center gap-2.5 hover:text-brand-accent transition-colors"><div class="w-1.5 h-1.5 rounded-full bg-brand-accent/60 shrink-0"></div> 自走を目指す クリエイティブ伴走</a></li>
+                        <li class="pt-3 mt-3 border-t border-brand-accent/10"><a href="#seminar" class="flex items-center gap-2.5 hover:text-brand-accent transition-colors"><div class="w-1.5 h-1.5 rounded-full bg-brand-accent/60 shrink-0"></div> 少人数セミナー・グループレッスン</a></li>
+                        <li><a href="#lecture" class="flex items-center gap-2.5 hover:text-brand-accent transition-colors"><div class="w-1.5 h-1.5 rounded-full bg-brand-accent/60 shrink-0"></div> 動画編集の個別指導</a></li>
+                    </ul>
+                </div>
+            </div>
+
             <!-- Menu 1 -->
-            <div class="mb-20">
+            <div id="menu1" class="mb-20 scroll-mt-12">
                 <div class="text-center mb-8">
                     <h3 class="text-[17px] font-medium leading-relaxed tracking-wider mb-4">
                         投稿に使える<br>
@@ -160,7 +216,7 @@
             </div>
 
             <!-- Menu 2 -->
-            <div class="mb-20">
+            <div id="menu2" class="mb-20 scroll-mt-12">
                 <i data-lucide="video" class="w-5 h-5 mx-auto text-brand-accent/80 mb-4 stroke-[1.2]"></i>
                 <div class="text-center mb-8">
                     <h3 class="text-[17px] font-medium leading-relaxed tracking-wider mb-4">
@@ -211,7 +267,7 @@
             </div>
 
             <!-- Menu 3 -->
-            <div class="mb-20">
+            <div id="menu3" class="mb-20 scroll-mt-12">
                 <i data-lucide="smartphone" class="w-5 h-5 mx-auto text-brand-accent/80 mb-4 stroke-[1.2]"></i>
                 <div class="text-center mb-8">
                     <h3 class="text-[17px] font-medium leading-relaxed tracking-wider mb-4">
@@ -293,7 +349,7 @@
             </div>
 
             <!-- Menu 4 -->
-            <div class="mb-20">
+            <div id="menu4" class="mb-20 scroll-mt-12">
                 <i data-lucide="aperture" class="w-5 h-5 mx-auto text-brand-accent/80 mb-4 stroke-[1.2]"></i>
                 <div class="text-center mb-8">
                     <h3 class="text-[17px] font-medium leading-relaxed tracking-wider mb-4">
@@ -371,7 +427,7 @@
             </div>
 
             <!-- Menu 5 -->
-            <div class="mb-10">
+            <div id="menu5" class="mb-10 scroll-mt-12">
                 <i data-lucide="compass" class="w-5 h-5 mx-auto text-brand-accent/80 mb-4 stroke-[1.2]"></i>
                 <div class="text-center mb-8">
                     <h3 class="text-[17px] font-medium leading-relaxed tracking-wider mb-4">
@@ -461,7 +517,7 @@
         <!-- Other Info Section -->
         <section class="px-6 py-20 bg-[#F8F1EB]">
 
-            <div class="mb-20">
+            <div id="seminar" class="mb-20 scroll-mt-12">
                 <div class="flex items-center justify-center gap-4 mb-8">
                     <div class="w-6 h-[1px] bg-brand-accent/50"></div>
                     <h3 class="text-base font-medium tracking-widest text-brand-text leading-relaxed text-center">
@@ -493,7 +549,7 @@
                 </div>
             </div>
 
-            <div>
+            <div id="lecture" class="scroll-mt-12">
                 <div class="flex items-center justify-center gap-4 mb-8">
                     <div class="w-6 h-[1px] bg-brand-accent/50"></div>
                     <h3 class="text-base font-medium tracking-widest text-brand-text leading-relaxed text-center">
@@ -539,7 +595,7 @@
         </section>
 
         <!-- Concept Section -->
-        <section id="concept" class="py-24 px-8 bg-brand-bg relative overflow-hidden">
+        <section id="concept" class="py-24 px-8 bg-brand-bg relative overflow-hidden scroll-mt-8">
             
             <div class="text-center relative z-10 mb-16">
                 <h2 class="text-[22px] font-medium leading-loose tracking-widest border-b border-brand-accent/30 inline-block px-4 pb-2 text-brand-text">
@@ -601,7 +657,7 @@
         </section>
 
         <!-- Reasons Section -->
-        <section id="reasons" class="py-20 px-6 bg-[#F8F1EB]">
+        <section id="reasons" class="py-20 px-6 bg-[#F8F1EB] scroll-mt-8">
             <div class="text-center mb-16">
                 <i data-lucide="sparkles" class="w-5 h-5 mx-auto text-brand-accent mb-4 stroke-[1.2]"></i>
                 <h2 class="text-lg font-medium tracking-widest text-brand-text border-b border-brand-accent/50 inline-block pb-2 px-4">
@@ -710,7 +766,7 @@
         </section>
         
         <!-- Flow Section -->
-        <section id="flow" class="py-16 px-6 bg-white">
+        <section id="flow" class="py-16 px-6 bg-white scroll-mt-8">
             <div class="text-center mb-12">
                 <i data-lucide="calendar-check" class="w-5 h-5 mx-auto text-brand-accent mb-3"></i>
                 <h2 class="text-lg font-medium tracking-widest text-brand-text">
@@ -798,7 +854,7 @@
         </section>
 
         <!-- Information Section -->
-        <section id="info" class="py-20 px-6 bg-white">
+        <section id="info" class="py-20 px-6 bg-white scroll-mt-8">
             <div class="text-center mb-16">
                 <i data-lucide="info" class="w-5 h-5 mx-auto text-brand-accent mb-4 stroke-[1.2]"></i>
                 <h2 class="text-lg font-medium tracking-widest text-brand-text border-b border-brand-accent/50 inline-block pb-2 px-4">
@@ -825,7 +881,7 @@
             </div>
 
             <!-- お申し込みボタンエリア -->
-            <div id="contact" class="bg-white rounded-lg p-8 border border-brand-accent/20 shadow-sm text-center">
+            <div id="contact" class="bg-white rounded-lg p-8 border border-brand-accent/20 shadow-sm text-center scroll-mt-8">
                 <h3 class="text-[15px] font-medium tracking-widest text-brand-text mb-5">
                     お申し込み
                 </h3>
@@ -854,23 +910,6 @@
             </div>
         </footer>
 
-        <!-- Mobile Menu Overlay -->
-        <div id="mobileMenu" class="fixed inset-0 bg-brand-bg/95 backdrop-blur-sm z-[100] flex flex-col justify-center items-center opacity-0 pointer-events-none transition-all duration-300">
-            <!-- 閉じるボタン -->
-            <button id="closeMenuBtn" class="absolute top-6 right-6 p-2 text-brand-text hover:text-brand-accent transition-colors focus:outline-none">
-                <i data-lucide="x" class="w-8 h-8"></i>
-            </button>
-            
-            <nav class="flex flex-col items-center gap-8 text-center">
-                <a href="#menu" class="menu-link text-[15px] font-medium tracking-widest text-brand-text hover:text-brand-accent transition-colors">撮影メニュー</a>
-                <a href="#concept" class="menu-link text-[15px] font-medium tracking-widest text-brand-text hover:text-brand-accent transition-colors">大切にしていること</a>
-                <a href="#reasons" class="menu-link text-[15px] font-medium tracking-widest text-brand-text hover:text-brand-accent transition-colors">選ばれる理由</a>
-                <a href="#flow" class="menu-link text-[15px] font-medium tracking-widest text-brand-text hover:text-brand-accent transition-colors">ご依頼からの流れ</a>
-                <a href="#info" class="menu-link text-[15px] font-medium tracking-widest text-brand-text hover:text-brand-accent transition-colors">キャンセルポリシー</a>
-                <a href="#contact" class="menu-link inline-block mt-4 px-8 py-3 bg-brand-text text-white rounded-full text-[13px] tracking-widest hover:bg-brand-text/80 transition-colors">お申し込み</a>
-            </nav>
-        </div>
-
     </div>
 
     <script>
@@ -879,24 +918,49 @@
 
         // ハンバーガーメニューの開閉ロジック
         const menuBtn = document.getElementById('menuBtn');
-        const closeMenuBtn = document.getElementById('closeMenuBtn');
         const mobileMenu = document.getElementById('mobileMenu');
+        const menuOverlay = document.getElementById('menuOverlay');
         const menuLinks = document.querySelectorAll('.menu-link');
+        const iconMenu = document.getElementById('icon-menu');
+        const iconClose = document.getElementById('icon-close');
 
         function openMenu() {
-            mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
-            mobileMenu.classList.add('opacity-100', 'pointer-events-auto');
-            document.body.style.overflow = 'hidden'; // 背景のスクロールを止める
+            // 背景のオーバーレイを表示
+            menuOverlay.classList.remove('hidden');
+            
+            // ドロップダウンを表示（スケールとフェードイン）
+            mobileMenu.classList.remove('opacity-0', 'scale-95', 'pointer-events-none');
+            mobileMenu.classList.add('opacity-100', 'scale-100', 'pointer-events-auto');
+            
+            // ボタンのアイコンを「×」に変更
+            iconMenu.classList.add('hidden');
+            iconClose.classList.remove('hidden');
         }
 
         function closeMenu() {
-            mobileMenu.classList.remove('opacity-100', 'pointer-events-auto');
-            mobileMenu.classList.add('opacity-0', 'pointer-events-none');
-            document.body.style.overflow = ''; // スクロールを再開
+            // 背景のオーバーレイを非表示
+            menuOverlay.classList.add('hidden');
+            
+            // ドロップダウンを非表示（スケールとフェードアウト）
+            mobileMenu.classList.remove('opacity-100', 'scale-100', 'pointer-events-auto');
+            mobileMenu.classList.add('opacity-0', 'scale-95', 'pointer-events-none');
+            
+            // ボタンのアイコンを「メニュー」に戻す
+            iconMenu.classList.remove('hidden');
+            iconClose.classList.add('hidden');
         }
 
-        menuBtn.addEventListener('click', openMenu);
-        closeMenuBtn.addEventListener('click', closeMenu);
+        // ボタンクリック時の切り替え
+        menuBtn.addEventListener('click', () => {
+            if (mobileMenu.classList.contains('opacity-0')) {
+                openMenu();
+            } else {
+                closeMenu();
+            }
+        });
+
+        // 背景（透明なオーバーレイ）をクリックしてもメニューを閉じる
+        menuOverlay.addEventListener('click', closeMenu);
 
         // リンクをクリックしたらメニューを閉じる
         menuLinks.forEach(link => {

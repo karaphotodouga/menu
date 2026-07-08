@@ -88,6 +88,7 @@
             <div id="mobileMenu" class="absolute top-16 right-6 w-[260px] max-h-[85vh] overflow-y-auto bg-white/95 backdrop-blur-md rounded-2xl shadow-xl z-50 border border-brand-accent/20 p-5 opacity-0 scale-95 pointer-events-none origin-top-right transition-all duration-300 text-left">
                 <nav class="flex flex-col gap-4 text-[13px] tracking-wide text-brand-text">
                     
+                    <!-- 撮影メニュー -->
                     <div>
                         <a href="#menu" class="menu-link font-medium text-brand-accent hover:opacity-70 transition-opacity">撮影メニュー</a>
                         <div class="pl-3 mt-2 flex flex-col gap-3 border-l border-brand-accent/20">
@@ -95,12 +96,23 @@
                             <a href="#menu2" class="menu-link hover:text-brand-accent transition-colors">・ iPhone動画素材撮影</a>
                             <a href="#menu3" class="menu-link hover:text-brand-accent transition-colors">・ iPhone撮り方レッスン</a>
                             <a href="#menu4" class="menu-link hover:text-brand-accent transition-colors">・ スタジオ撮影</a>
-                            <a href="#menu5" class="menu-link hover:text-brand-accent transition-colors">・ クリエイティブ伴走</a>
                         </div>
                     </div>
 
                     <div class="w-full h-[1px] bg-brand-accent/10"></div>
 
+                    <!-- リールメニュー -->
+                    <div>
+                        <a href="#reel" class="menu-link font-medium text-brand-accent hover:opacity-70 transition-opacity">リールメニュー</a>
+                        <div class="pl-3 mt-2 flex flex-col gap-3 border-l border-brand-accent/20">
+                            <a href="#menu5" class="menu-link hover:text-brand-accent transition-colors">・ クリエイティブ伴走</a>
+                            <a href="#menu6" class="menu-link hover:text-brand-accent transition-colors">・ ショート動画編集</a>
+                        </div>
+                    </div>
+
+                    <div class="w-full h-[1px] bg-brand-accent/10"></div>
+
+                    <!-- その他メニュー -->
                     <div>
                         <span class="font-medium text-brand-accent">その他メニュー</span>
                         <div class="pl-3 mt-2 flex flex-col gap-3 border-l border-brand-accent/20">
@@ -151,16 +163,36 @@
             <!-- 目次 (Menu List) -->
             <div class="mb-20 px-1">
                 <div class="bg-brand-bg rounded-xl p-6 border border-brand-accent/20 shadow-sm">
-                    <p class="text-[11px] font-en font-medium text-brand-accent mb-4 tracking-widest text-center border-b border-brand-accent/20 pb-2 inline-block w-full">MENU LIST</p>
-                    <ul class="space-y-4 text-[13px] text-brand-text/90 tracking-wide">
-                        <li><a href="#menu1" class="flex items-center gap-2.5 hover:text-brand-accent transition-colors"><div class="w-1.5 h-1.5 rounded-full bg-brand-accent/60 shrink-0"></div> 投稿に使える iPhone写真素材撮影</a></li>
-                        <li><a href="#menu2" class="flex items-center gap-2.5 hover:text-brand-accent transition-colors"><div class="w-1.5 h-1.5 rounded-full bg-brand-accent/60 shrink-0"></div> リールに使える iPhone動画素材撮影</a></li>
-                        <li><a href="#menu3" class="flex items-center gap-2.5 hover:text-brand-accent transition-colors"><div class="w-1.5 h-1.5 rounded-full bg-brand-accent/60 shrink-0"></div> 用途に合わせた iPhone撮り方実践レッスン</a></li>
-                        <li><a href="#menu4" class="flex items-center gap-2.5 hover:text-brand-accent transition-colors"><div class="w-1.5 h-1.5 rounded-full bg-brand-accent/60 shrink-0"></div> カメラでの スタジオ撮影</a></li>
-                        <li><a href="#menu5" class="flex items-center gap-2.5 hover:text-brand-accent transition-colors"><div class="w-1.5 h-1.5 rounded-full bg-brand-accent/60 shrink-0"></div> 自走を目指す クリエイティブ伴走</a></li>
-                        <li class="pt-3 mt-3 border-t border-brand-accent/10"><a href="#seminar" class="flex items-center gap-2.5 hover:text-brand-accent transition-colors"><div class="w-1.5 h-1.5 rounded-full bg-brand-accent/60 shrink-0"></div> 少人数セミナー・グループレッスン</a></li>
-                        <li><a href="#lecture" class="flex items-center gap-2.5 hover:text-brand-accent transition-colors"><div class="w-1.5 h-1.5 rounded-full bg-brand-accent/60 shrink-0"></div> 動画編集の個別指導</a></li>
-                    </ul>
+                    <p class="text-[11px] font-en font-medium text-brand-accent mb-6 tracking-widest text-center border-b border-brand-accent/20 pb-2 inline-block w-full">MENU LIST</p>
+                    
+                    <!-- 目次: 撮影メニュー -->
+                    <div class="mb-6">
+                        <p class="text-[12px] font-medium text-brand-text mb-3 border-l-2 border-brand-accent pl-2">撮影メニュー</p>
+                        <ul class="space-y-3 text-[13px] text-brand-text/90 tracking-wide pl-3">
+                            <li><a href="#menu1" class="flex items-center gap-2.5 hover:text-brand-accent transition-colors"><div class="w-1.5 h-1.5 rounded-full bg-brand-accent/60 shrink-0"></div> 投稿に使える iPhone写真素材撮影</a></li>
+                            <li><a href="#menu2" class="flex items-center gap-2.5 hover:text-brand-accent transition-colors"><div class="w-1.5 h-1.5 rounded-full bg-brand-accent/60 shrink-0"></div> リールに使える iPhone動画素材撮影</a></li>
+                            <li><a href="#menu3" class="flex items-center gap-2.5 hover:text-brand-accent transition-colors"><div class="w-1.5 h-1.5 rounded-full bg-brand-accent/60 shrink-0"></div> 用途に合わせた iPhone撮り方レッスン</a></li>
+                            <li><a href="#menu4" class="flex items-center gap-2.5 hover:text-brand-accent transition-colors"><div class="w-1.5 h-1.5 rounded-full bg-brand-accent/60 shrink-0"></div> カメラでの スタジオ撮影</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- 目次: リールメニュー -->
+                    <div class="mb-6">
+                        <p class="text-[12px] font-medium text-brand-text mb-3 border-l-2 border-brand-accent pl-2">リールメニュー</p>
+                        <ul class="space-y-3 text-[13px] text-brand-text/90 tracking-wide pl-3">
+                            <li><a href="#menu5" class="flex items-center gap-2.5 hover:text-brand-accent transition-colors"><div class="w-1.5 h-1.5 rounded-full bg-brand-accent/60 shrink-0"></div> 自走を目指す クリエイティブ伴走</a></li>
+                            <li><a href="#menu6" class="flex items-center gap-2.5 hover:text-brand-accent transition-colors"><div class="w-1.5 h-1.5 rounded-full bg-brand-accent/60 shrink-0"></div> ショート動画編集 <span class="text-[10px] bg-brand-light text-white px-1.5 py-0.5 rounded ml-1">満席</span></a></li>
+                        </ul>
+                    </div>
+
+                    <!-- 目次: その他メニュー -->
+                    <div>
+                        <p class="text-[12px] font-medium text-brand-text mb-3 border-l-2 border-brand-accent pl-2">その他メニュー</p>
+                        <ul class="space-y-3 text-[13px] text-brand-text/90 tracking-wide pl-3">
+                            <li><a href="#seminar" class="flex items-center gap-2.5 hover:text-brand-accent transition-colors"><div class="w-1.5 h-1.5 rounded-full bg-brand-accent/60 shrink-0"></div> 少人数セミナー・グループレッスン</a></li>
+                            <li><a href="#lecture" class="flex items-center gap-2.5 hover:text-brand-accent transition-colors"><div class="w-1.5 h-1.5 rounded-full bg-brand-accent/60 shrink-0"></div> 動画編集の個別指導</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
 
@@ -349,7 +381,7 @@
             </div>
 
             <!-- Menu 4 -->
-            <div id="menu4" class="mb-20 scroll-mt-12">
+            <div id="menu4" class="mb-12 scroll-mt-12">
                 <i data-lucide="aperture" class="w-5 h-5 mx-auto text-brand-accent/80 mb-4 stroke-[1.2]"></i>
                 <div class="text-center mb-8">
                     <h3 class="text-[17px] font-medium leading-relaxed tracking-wider mb-4">
@@ -426,9 +458,16 @@
                 </div>
             </div>
 
+            <!-- リールメニュー見出し -->
+            <div id="reel" class="text-center mb-16 pt-16 border-t border-brand-accent/20 scroll-mt-12">
+                <i data-lucide="film" class="w-5 h-5 mx-auto text-brand-accent mb-4 stroke-[1.2]"></i>
+                <h2 class="text-xl font-medium tracking-widest border-b border-brand-accent/50 inline-block pb-2 px-4 text-brand-text">
+                    リールメニュー
+                </h2>
+            </div>
+
             <!-- Menu 5 -->
             <div id="menu5" class="mb-10 scroll-mt-12">
-                <i data-lucide="compass" class="w-5 h-5 mx-auto text-brand-accent/80 mb-4 stroke-[1.2]"></i>
                 <div class="text-center mb-8">
                     <h3 class="text-[17px] font-medium leading-relaxed tracking-wider mb-4">
                         自走を目指す<br>
@@ -509,6 +548,40 @@
                             伴走サポートを行っています。
                         </p>
                     </div>
+                </div>
+            </div>
+
+            <!-- Menu 6 (ショート動画編集) -->
+            <div id="menu6" class="mb-10 scroll-mt-12">
+                <i data-lucide="scissors" class="w-5 h-5 mx-auto text-brand-accent/80 mb-4 stroke-[1.2]"></i>
+                <div class="text-center mb-8 relative">
+                    <!-- 満席バッジ -->
+                    <div class="inline-block bg-brand-light text-white text-[11px] font-medium tracking-widest px-3 py-1 rounded-full mb-3 shadow-sm">
+                        現在満席
+                    </div>
+                    <h3 class="text-[17px] font-medium leading-relaxed tracking-wider mb-4 text-brand-light">
+                        ショート動画編集
+                    </h3>
+                    <p class="font-en text-[17px] text-brand-light tracking-wider font-medium">
+                        1本 4,500円〜7,000円
+                    </p>
+                </div>
+                
+                <div class="px-2 mb-10 content-text text-center text-brand-text/90 opacity-70">
+                    <p class="mb-5">
+                        InstagramのリールやYouTubeショートなど、<br>
+                        縦型ショート動画の編集を代行します。
+                    </p>
+                    <p class="mb-5">
+                        いただいた素材をもとに、<br>
+                        カット、テロップ挿入、BGM選定などを行い、<br>
+                        発信の目的に合わせた動画に仕上げます。
+                    </p>
+                    <p class="text-[12px] text-brand-accent font-medium mt-6 p-4 bg-brand-bg rounded-lg border border-brand-accent/10">
+                        ※大変ありがたいことに、現在こちらのメニューは<br>
+                        【満席】のため新規受付を停止しております。<br>
+                        募集再開時はInstagramにてお知らせいたします。
+                    </p>
                 </div>
             </div>
 
@@ -880,19 +953,22 @@
                 </p>
             </div>
 
-            <!-- お申し込みボタンエリア -->
-            <div id="contact" class="bg-white rounded-lg p-8 border border-brand-accent/20 shadow-sm text-center scroll-mt-8">
-                <h3 class="text-[15px] font-medium tracking-widest text-brand-text mb-5">
-                    お申し込み
+            <!-- お申し込みエリア -->
+            <div id="contact" class="bg-white rounded-lg p-6 sm:p-8 border border-brand-accent/20 shadow-sm text-center scroll-mt-8 relative overflow-hidden">
+                <div class="absolute -top-10 -right-10 w-32 h-32 bg-brand-bg rounded-full -z-10"></div>
+                <h3 class="text-[16px] font-medium tracking-widest text-brand-text mb-6">
+                    お申し込み・お問い合わせ
                 </h3>
-                <p class="mb-8 text-[13px] text-brand-text/80 leading-relaxed">
-                    お申し込み・お問い合わせは<br>
-                    InstagramのDMへ<br>
-                    ご連絡ください。
-                </p>
-                <a href="https://www.instagram.com/kara_photo.douga" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center w-fit mx-auto gap-2 bg-brand-text text-white px-8 py-4 rounded-full text-[13px] tracking-widest hover:bg-brand-text/80 transition-colors duration-300 shadow-md">
+                
+                <!-- フォームで申し込むボタン -->
+                <button id="openFormBtn" class="w-full flex items-center justify-center gap-2 bg-brand-text text-white px-6 py-4 rounded-full text-[13px] tracking-widest hover:bg-brand-text/80 transition-all shadow-md mb-4 font-medium">
+                    <i data-lucide="mail" class="w-4 h-4 shrink-0"></i>
+                    <span class="translate-x-[0.1em]">フォームからお申し込み</span>
+                </button>
+
+                <!-- Instagram DMボタン -->
+                <a href="https://www.instagram.com/kara_photo.douga" target="_blank" rel="noopener noreferrer" class="w-full flex items-center justify-center gap-2 bg-white text-brand-text border border-brand-text/30 px-6 py-4 rounded-full text-[13px] tracking-widest hover:bg-brand-bg transition-colors shadow-sm font-medium">
                     <i data-lucide="instagram" class="w-4 h-4 shrink-0"></i>
-                    <!-- letter-spacingによる右側の余白分を相殺してアイコンと文字を中央に -->
                     <span class="translate-x-[0.1em]">Instagram DMへ</span>
                 </a>
             </div>
@@ -912,11 +988,90 @@
 
     </div>
 
+    <!-- お申し込みフォームモーダル（ポップアップ） -->
+    <div id="formModal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4">
+        <!-- 背景の暗いオーバーレイ -->
+        <div id="formOverlayBtn" class="absolute inset-0 bg-brand-text/50 backdrop-blur-sm transition-opacity"></div>
+        
+        <!-- モーダル本体 -->
+        <div class="relative bg-white rounded-2xl shadow-xl w-full max-w-md max-h-[90vh] flex flex-col overflow-hidden animate-[fadeIn_0.3s_ease-out]">
+            <!-- ヘッダー部分 -->
+            <div class="px-6 py-5 border-b border-brand-accent/20 flex justify-between items-center bg-brand-bg">
+                <h3 class="font-medium text-brand-text tracking-widest text-[15px] flex items-center gap-2">
+                    <i data-lucide="mail" class="w-4 h-4 text-brand-accent"></i>お申し込み
+                </h3>
+                <button id="closeFormBtn" class="text-brand-light hover:text-brand-accent transition-colors p-1">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+            
+            <!-- フォーム入力部分 -->
+            <div class="p-6 overflow-y-auto bg-white">
+                <form id="applyForm" class="space-y-5">
+                    
+                    <div>
+                        <label for="entryName" class="block text-[12px] font-medium text-brand-text mb-1.5">お名前 <span class="text-brand-accent">*</span></label>
+                        <input type="text" id="entryName" required placeholder="例：山田 花子" class="w-full border border-brand-accent/30 rounded-lg px-3.5 py-2.5 text-[14px] text-brand-text focus:outline-none focus:border-brand-accent focus:ring-1 focus:ring-brand-accent/50 bg-[#FDFBF9] placeholder:text-brand-light/60">
+                    </div>
+
+                    <div>
+                        <label for="entryKana" class="block text-[12px] font-medium text-brand-text mb-1.5">なまえ（ふりがな） <span class="text-brand-accent">*</span></label>
+                        <input type="text" id="entryKana" required placeholder="例：やまだ はなこ" class="w-full border border-brand-accent/30 rounded-lg px-3.5 py-2.5 text-[14px] text-brand-text focus:outline-none focus:border-brand-accent focus:ring-1 focus:ring-brand-accent/50 bg-[#FDFBF9] placeholder:text-brand-light/60">
+                    </div>
+
+                    <div>
+                        <label for="entryPlan" class="block text-[12px] font-medium text-brand-text mb-1.5">ご希望のプラン <span class="text-brand-accent">*</span></label>
+                        <select id="entryPlan" required class="w-full border border-brand-accent/30 rounded-lg px-3.5 py-2.5 text-[14px] text-brand-text focus:outline-none focus:border-brand-accent focus:ring-1 focus:ring-brand-accent/50 bg-[#FDFBF9] appearance-none cursor-pointer">
+                            <option value="" disabled selected>選択してください</option>
+                            <option value="iPhone写真素材撮影">投稿に使える iPhone写真素材撮影</option>
+                            <option value="iPhone動画素材撮影">リールに使える iPhone動画素材撮影</option>
+                            <option value="iPhone撮り方実践レッスン">用途に合わせた iPhone撮り方実践レッスン</option>
+                            <option value="スタジオ撮影">カメラでの スタジオ撮影</option>
+                            <option value="クリエイティブ伴走">自走を目指す クリエイティブ伴走</option>
+                            <option value="少人数セミナー・グループレッスン">少人数セミナー・グループレッスン</option>
+                            <option value="動画編集の個別指導">動画編集の個別指導</option>
+                            <option value="ショート動画編集（満席）" disabled>ショート動画編集（※現在満席）</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="entryComment" class="block text-[12px] font-medium text-brand-text mb-1.5">フリーコメント欄</label>
+                        <textarea id="entryComment" rows="4" placeholder="ご質問や、希望する日程の候補などがあればご記入ください。" class="w-full border border-brand-accent/30 rounded-lg px-3.5 py-2.5 text-[14px] text-brand-text focus:outline-none focus:border-brand-accent focus:ring-1 focus:ring-brand-accent/50 bg-[#FDFBF9] placeholder:text-brand-light/60 resize-none"></textarea>
+                    </div>
+
+                    <div class="pt-2">
+                        <button type="submit" class="w-full bg-brand-text text-white py-3.5 rounded-full text-[13px] tracking-widest font-medium hover:bg-brand-text/80 transition-shadow shadow-md flex items-center justify-center gap-2">
+                            <i data-lucide="send" class="w-4 h-4"></i> メールアプリを起動して送信
+                        </button>
+                    </div>
+                </form>
+                
+                <div class="mt-4 p-3 bg-brand-bg rounded-lg border border-brand-accent/10">
+                    <p class="text-[10px] text-brand-light text-center leading-relaxed">
+                        ※送信ボタンを押すと、お使いのスマホ・PCの<br>
+                        <strong>メールアプリ（メール画面）</strong>が自動で立ち上がります。<br>
+                        内容をご確認の上、そのまま送信をお願いいたします。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- モーダル出現時のアニメーション用CSS -->
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+    </style>
+
     <script>
         // Lucideアイコンの初期化
         lucide.createIcons();
 
+        // ----------------------------------------------------
         // ハンバーガーメニューの開閉ロジック
+        // ----------------------------------------------------
         const menuBtn = document.getElementById('menuBtn');
         const mobileMenu = document.getElementById('mobileMenu');
         const menuOverlay = document.getElementById('menuOverlay');
@@ -925,32 +1080,21 @@
         const iconClose = document.getElementById('icon-close');
 
         function openMenu() {
-            // 背景のオーバーレイを表示
             menuOverlay.classList.remove('hidden');
-            
-            // ドロップダウンを表示（スケールとフェードイン）
             mobileMenu.classList.remove('opacity-0', 'scale-95', 'pointer-events-none');
             mobileMenu.classList.add('opacity-100', 'scale-100', 'pointer-events-auto');
-            
-            // ボタンのアイコンを「×」に変更
             iconMenu.classList.add('hidden');
             iconClose.classList.remove('hidden');
         }
 
         function closeMenu() {
-            // 背景のオーバーレイを非表示
             menuOverlay.classList.add('hidden');
-            
-            // ドロップダウンを非表示（スケールとフェードアウト）
             mobileMenu.classList.remove('opacity-100', 'scale-100', 'pointer-events-auto');
             mobileMenu.classList.add('opacity-0', 'scale-95', 'pointer-events-none');
-            
-            // ボタンのアイコンを「メニュー」に戻す
             iconMenu.classList.remove('hidden');
             iconClose.classList.add('hidden');
         }
 
-        // ボタンクリック時の切り替え
         menuBtn.addEventListener('click', () => {
             if (mobileMenu.classList.contains('opacity-0')) {
                 openMenu();
@@ -959,13 +1103,69 @@
             }
         });
 
-        // 背景（透明なオーバーレイ）をクリックしてもメニューを閉じる
         menuOverlay.addEventListener('click', closeMenu);
-
-        // リンクをクリックしたらメニューを閉じる
         menuLinks.forEach(link => {
             link.addEventListener('click', closeMenu);
         });
+
+        // ----------------------------------------------------
+        // お申し込みフォーム（モーダル）のロジック
+        // ----------------------------------------------------
+        const openFormBtn = document.getElementById('openFormBtn');
+        const closeFormBtn = document.getElementById('closeFormBtn');
+        const formModal = document.getElementById('formModal');
+        const formOverlayBtn = document.getElementById('formOverlayBtn');
+        const applyForm = document.getElementById('applyForm');
+
+        // フォームを開く
+        openFormBtn.addEventListener('click', () => {
+            formModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // 背景のスクロールを止める
+        });
+
+        // フォームを閉じる関数
+        function closeForm() {
+            formModal.classList.add('hidden');
+            document.body.style.overflow = ''; // スクロールを戻す
+        }
+
+        // ×ボタンや背景クリックで閉じる
+        closeFormBtn.addEventListener('click', closeForm);
+        formOverlayBtn.addEventListener('click', closeForm);
+
+        // フォーム送信（メーラー起動）の処理
+        applyForm.addEventListener('submit', (e) => {
+            e.preventDefault(); // 画面遷移を防ぐ
+
+            // 入力された値を取得
+            const name = document.getElementById('entryName').value;
+            const kana = document.getElementById('entryKana').value;
+            const plan = document.getElementById('entryPlan').value;
+            const comment = document.getElementById('entryComment').value;
+
+            // 送信先と件名
+            const toEmail = "a2kara12@gmail.com";
+            const subject = "【お申し込み】" + plan + " - " + name + "様";
+            
+            // メールの本文（改行を含めて組み立てる）
+            let body = "以下の内容でお申し込みを受け付けました。\n\n";
+            body += "【お名前】\n" + name + " (" + kana + ")\n\n";
+            body += "【ご希望のプラン】\n" + plan + "\n\n";
+            body += "【フリーコメント】\n" + (comment ? comment : "なし") + "\n\n";
+            body += "--------------------------------------\n";
+            body += "※このまま送信ボタンを押してください。";
+
+            // mailto リンクを作成してページ遷移（メーラーを起動）
+            // encodeURIComponent で文字化けを防ぐ
+            const mailtoLink = `mailto:${toEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            
+            // メーラーを起動
+            window.location.href = mailtoLink;
+            
+            // メーラー起動後にフォームを閉じる
+            setTimeout(closeForm, 500);
+        });
+
     </script>
 </body>
 </html>

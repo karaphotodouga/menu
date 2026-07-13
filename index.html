@@ -1,1171 +1,978 @@
 <!DOCTYPE html>
 <html lang="ja" class="scroll-smooth">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ATSUKO KARASAWA - 撮影・編集サポート</title>
-<!-- Tailwind CSS -->
-<script src="https://cdn.tailwindcss.com"></script>
-<!-- Google Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Noto+Serif+JP:wght@300;400;500;600&display=swap" rel="stylesheet">
-<!-- Lucide Icons -->
-<script src="https://unpkg.com/lucide@latest"></script>
-<script>
-tailwind.config = {
-theme: {
-extend: {
-fontFamily: {
-serif: ['"Noto Serif JP"', 'serif'],
-en: ['"Cormorant Garamond"', 'serif'],
-},
-colors: {
-brand: {
-bg: '#FCFAF8', /* 温かみのあるアイボリー */
-text: '#5A4C46', /* 温もりのあるエスプレッソブラウン */
-light: '#A89995', /* モカグレー */
-accent: '#D49A89', /* 血色感のあるピンクベージュ（テラコッタ） */
-card: '#FFFFFF'
-}
-}
-}
-}
-}
-</script>
-<style>
-body {
-background-color: #EFE9E5; /* PC閲覧時の背景（ミルクティー色） */
-}
-.container-app {
-max-width: 480px;
-margin: 0 auto;
-background-color: #FCFAF8;
-box-shadow: 0 0 20px rgba(0,0,0,0.05);
-min-height: 100vh;
-}
-.content-text {
-font-size: 14px;
-line-height: 2.0;
-letter-spacing: 0.05em;
-}
-.list-item-custom {
-position: relative;
-padding-left: 1.2em;
-margin-bottom: 0.5em;
-}
-.list-item-custom::before {
-content: "・";
-position: absolute;
-left: 0;
-top: 0;
-color: #D49A89; /* リストの点も同色に */
-}
-.list-indent {
-display: inline-block;
-padding-left: 1em;
-}
-.text-format-optimized {
-  word-break: normal;
-  overflow-wrap: break-word;
-  line-break: strict;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATSUKO KARASAWA - 撮影・編集サポート</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Noto Sans JP (ゴシック) & Jost (英語) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Noto Sans JP"', 'sans-serif'],
+                        en: ['"Jost"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            bg: '#ffffff',        /* 基本背景 */
+                            section: '#ecf5f1',   /* 薄い緑（指定カラー） */
+                            main: '#82b899',      /* 濃い緑（指定カラー） */
+                            yellow: '#f9e8b4',    /* 黄色（指定カラー） */
+                            text: '#5f5f5f',      /* テキストカラー（指定カラー） */
+                            light: '#949494',     /* 薄いグレー */
+                            border: '#D8E0DA'     /* ボーダー */
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #E6E9E6; } /* PC時の外側背景 */
+        .container-app {
+            max-width: 480px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            box-shadow: 0 0 30px rgba(0,0,0,0.05);
+            min-height: 100vh;
+        }
+
+        .content-text {
+            font-size: 13.5px;
+            line-height: 1.8;
+            letter-spacing: 0.025em; 
+        }
+        
+        /* リストの点（・）を緑色に */
+        .list-item-custom {
+            position: relative;
+            padding-left: 1.2em;
+            margin-bottom: 0.5em;
+        }
+        .list-item-custom::before {
+            content: "・";
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: #82b899;
+            font-weight: bold;
+        }
+        
+        /* ★ 日本語の美しい文節改行（孤立文字防止）のためのユーティリティ */
+        .ib {
+            display: inline-block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        /* アコーディオンのアイコン */
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+        .accordion-icon::before { content: '+'; font-size: 1.2rem; font-weight: 400; }
+        details[open] .accordion-icon::before { content: '−'; }
+    </style>
 </head>
-<body class="text-brand-text font-serif antialiased selection:bg-brand-accent selection:text-white relative text-format-optimized">
+<body class="text-brand-text font-sans antialiased selection:bg-brand-main selection:text-white relative">
 
 <div class="container-app overflow-hidden relative">
-<!-- Header -->
-<header class="pt-14 pb-12 px-8 text-center flex flex-col items-center relative bg-white" id="top">
-<!-- ハンバーガーメニューボタン -->
-<button id="menuBtn" class="absolute top-6 right-6 p-2 text-brand-text hover:text-brand-accent transition-colors focus:outline-none z-50">
-<i data-lucide="menu" id="icon-menu" class="w-7 h-7"></i>
-<i data-lucide="x" id="icon-close" class="w-7 h-7 hidden"></i>
-</button>
 
-<!-- メニュー用オーバーレイ（外側クリックで閉じる用） -->
-<div id="menuOverlay" class="fixed inset-0 z-40 hidden"></div>
+    <header class="pt-16 pb-12 px-8 text-center flex flex-col items-center relative z-10 bg-white" id="top">
+        <button id="menuBtn" class="absolute top-6 right-6 p-2 text-brand-text hover:text-brand-main transition-colors focus:outline-none z-50">
+            <i data-lucide="menu" id="icon-menu" class="w-7 h-7 stroke-[1.5]"></i>
+            <i data-lucide="x" id="icon-close" class="w-7 h-7 hidden stroke-[1.5]"></i>
+        </button>
 
-<!-- ドロップダウンメニュー（右上に小さく出る） -->
-<div id="mobileMenu" class="absolute top-16 right-6 w-[260px] max-h-[85vh] overflow-y-auto bg-white/95 backdrop-blur-md rounded-2xl shadow-xl z-50 border border-brand-accent/20 p-5 opacity-0 scale-95 pointer-events-none origin-top-right transition-all duration-300 text-left">
-<nav class="flex flex-col gap-4 text-[13px] tracking-wide text-brand-text">
-<!-- 撮影メニュー -->
-<div>
-<a href="#menu" class="menu-link font-medium text-brand-accent hover:opacity-70 transition-opacity">撮影メニュー</a>
-<div class="pl-3 mt-2 flex flex-col gap-3 border-l border-brand-accent/20">
-<a href="#menu1" class="menu-link hover:text-brand-accent transition-colors">・ iPhone写真素材撮影</a>
-<a href="#menu2" class="menu-link hover:text-brand-accent transition-colors">・ iPhone動画素材撮影</a>
-<a href="#menu3" class="menu-link hover:text-brand-accent transition-colors">・ iPhone撮り方レッスン</a>
-<a href="#menu4" class="menu-link hover:text-brand-accent transition-colors">・ スタジオ撮影</a>
-</div>
-</div>
+        <div id="menuOverlay" class="fixed inset-0 z-40 hidden"></div>
 
-<div class="w-full h-[1px] bg-brand-accent/10"></div>
-
-<!-- リールメニュー -->
-<div>
-<a href="#reel" class="menu-link font-medium text-brand-accent hover:opacity-70 transition-opacity">リールメニュー</a>
-<div class="pl-3 mt-2 flex flex-col gap-3 border-l border-brand-accent/20">
-<a href="#menu5" class="menu-link hover:text-brand-accent transition-colors">・ クリエイティブ伴走</a>
-<a href="#menu6" class="menu-link hover:text-brand-accent transition-colors">・ ショート動画編集</a>
-</div>
-</div>
-
-<div class="w-full h-[1px] bg-brand-accent/10"></div>
-
-<!-- その他メニュー -->
-<div>
-<span class="font-medium text-brand-accent">その他メニュー</span>
-<div class="pl-3 mt-2 flex flex-col gap-3 border-l border-brand-accent/20">
-<a href="#seminar" class="menu-link hover:text-brand-accent transition-colors">・ 少人数セミナー</a>
-<a href="#lecture" class="menu-link hover:text-brand-accent transition-colors">・ 動画編集の個別指導</a>
-</div>
-</div>
-
-<div class="w-full h-[1px] bg-brand-accent/10"></div>
-
-<a href="#concept" class="menu-link hover:text-brand-accent transition-colors">大切にしていること</a>
-<a href="#reasons" class="menu-link hover:text-brand-accent transition-colors">選ばれる理由</a>
-<a href="#flow" class="menu-link hover:text-brand-accent transition-colors">ご依頼からの流れ</a>
-<a href="#info" class="menu-link hover:text-brand-accent transition-colors">キャンセルポリシー</a>
-<a href="#contact" class="menu-link block mt-2 px-4 py-3 bg-brand-text text-white text-center rounded-full text-[12px] hover:bg-brand-text/80 transition-colors shadow-sm">お申し込み</a>
-</nav>
-</div>
-
-<div class="relative z-10 mb-4 mt-0 w-full max-w-[280px]">
-<img src="profile01.jpg" alt="プロフィール画像" class="w-full h-auto rounded-lg shadow-sm mx-auto" onerror="this.src='https://placehold.co/280x280?text=Profile+Image'">
-</div>
-<h1 class="font-en text-2xl tracking-[0.2em] mb-2 text-brand-text font-medium relative z-10">
-ATSUKO KARASAWA
-</h1>
-<a href="https://www.instagram.com/kara_photo.douga/" target="_blank" rel="noopener noreferrer" class="font-en text-[12px] tracking-widest text-brand-light hover:text-brand-accent transition-colors mb-8 relative z-10 flex items-center justify-center gap-1.5">
-<i data-lucide="instagram" class="w-3.5 h-3.5"></i>
-@kara_photo.douga
-</a>
-<div class="w-[1px] h-10 bg-brand-accent/60 mb-8 relative z-10"></div>
-<p class="text-[15px] leading-[2.2] tracking-widest font-medium relative z-10">
-SNSで使いやすい<br>
-写真・動画素材の撮影と<br>
-編集サポート
-</p>
-</header>
-
-<!-- Menu Section -->
-<section class="px-6 py-16 bg-white">
-<!-- 目次 (Menu List) -->
-<div class="mb-20 px-1">
-<div class="bg-brand-bg rounded-xl p-6 border border-brand-accent/20 shadow-sm">
-<p class="text-[11px] font-en font-medium text-brand-accent mb-6 tracking-widest text-center border-b border-brand-accent/20 pb-2 inline-block w-full">MENU LIST</p>
-<!-- 目次: 撮影メニュー -->
-<div class="mb-6">
-<p class="text-[12px] font-medium text-brand-text mb-3 border-l-2 border-brand-accent pl-2">撮影メニュー</p>
-<ul class="space-y-3 text-[13px] text-brand-text/90 tracking-wide pl-3">
-<li><a href="#menu1" class="flex items-center gap-2.5 hover:text-brand-accent transition-colors"><div class="w-1.5 h-1.5 rounded-full bg-brand-accent/60 shrink-0"></div> 投稿に使える iPhone写真素材撮影</a></li>
-<li><a href="#menu2" class="flex items-center gap-2.5 hover:text-brand-accent transition-colors"><div class="w-1.5 h-1.5 rounded-full bg-brand-accent/60 shrink-0"></div> リールに使える iPhone動画素材撮影</a></li>
-<li><a href="#menu3" class="flex items-center gap-2.5 hover:text-brand-accent transition-colors"><div class="w-1.5 h-1.5 rounded-full bg-brand-accent/60 shrink-0"></div> 用途に合わせた iPhone撮り方レッスン</a></li>
-<li><a href="#menu4" class="flex items-center gap-2.5 hover:text-brand-accent transition-colors"><div class="w-1.5 h-1.5 rounded-full bg-brand-accent/60 shrink-0"></div> カメラでの スタジオ撮影</a></li>
-</ul>
-</div>
-
-<!-- 目次: リールメニュー -->
-<div class="mb-6">
-<p class="text-[12px] font-medium text-brand-text mb-3 border-l-2 border-brand-accent pl-2">リールメニュー</p>
-<ul class="space-y-3 text-[13px] text-brand-text/90 tracking-wide pl-3">
-<li><a href="#menu5" class="flex items-center gap-2.5 hover:text-brand-accent transition-colors"><div class="w-1.5 h-1.5 rounded-full bg-brand-accent/60 shrink-0"></div> 自走を目指す クリエイティブ伴走 <span class="text-[10px] bg-brand-light text-white px-1.5 py-0.5 rounded ml-1">満席</span></a></li>
-<li><a href="#menu6" class="flex items-center gap-2.5 hover:text-brand-accent transition-colors"><div class="w-1.5 h-1.5 rounded-full bg-brand-accent/60 shrink-0"></div> ショート動画編集 <span class="text-[10px] bg-brand-light text-white px-1.5 py-0.5 rounded ml-1">満席</span></a></li>
-</ul>
-</div>
-
-<!-- 目次: その他メニュー -->
-<div>
-<p class="text-[12px] font-medium text-brand-text mb-3 border-l-2 border-brand-accent pl-2">その他メニュー</p>
-<ul class="space-y-3 text-[13px] text-brand-text/90 tracking-wide pl-3">
-<li><a href="#seminar" class="flex items-center gap-2.5 hover:text-brand-accent transition-colors"><div class="w-1.5 h-1.5 rounded-full bg-brand-accent/60 shrink-0"></div> 少人数セミナー・グループレッスン</a></li>
-<li><a href="#lecture" class="flex items-center gap-2.5 hover:text-brand-accent transition-colors"><div class="w-1.5 h-1.5 rounded-full bg-brand-accent/60 shrink-0"></div> 動画編集の個別指導</a></li>
-</ul>
-</div>
-</div>
-</div>
-
-<!-- 撮影メニュー見出し -->
-<div id="menu" class="text-center mb-16 scroll-mt-12">
-<i data-lucide="camera" class="w-5 h-5 mx-auto text-brand-accent mb-4 stroke-[1.2]"></i>
-<h2 class="text-xl font-medium tracking-widest border-b border-brand-accent/50 inline-block pb-2 px-4 text-brand-text">
-撮影メニュー
-</h2>
-</div>
-
-<!-- Menu 1 -->
-<div id="menu1" class="mb-20 scroll-mt-12">
-<div class="text-center mb-8 text-balance">
-<h3 class="text-[17px] font-medium leading-relaxed tracking-wider mb-4">
-投稿に使える<br>
-iPhone写真素材撮影
-</h3>
-<p class="font-en text-xl text-brand-accent tracking-wider font-medium">
-12,800円
-</p>
-<p class="text-[12px] text-brand-light mt-1">
-※所要時間：1時間
-</p>
-</div>
-<div class="px-3 mb-10 content-text text-center text-brand-text/90">
-<p class="mb-5">
-投稿・ストーリーズに使いやすい写真素材を<br>
-iPhoneで撮影します。
-</p>
-<p class="mb-5">
-自然な表情や手元、雰囲気が伝わるカットを中心に<br>
-あとから発信に使いやすいよう<br>
-余白や背景を整えながら撮影します。
-</p>
-<p class="mb-5">
-1度の撮影で数百枚ほど撮影し<br>
-その中から使いやすいカットを厳選。<br>
-約20枚の厳選・レタッチ済みデータとして<br>
-納品します。
-</p>
-<p>
-納品データは、1枚ずつ明るさや色味を<br>
-整えてお渡しします。
-</p>
-</div>
-
-<div class="bg-white rounded-lg p-7 mx-2 border border-brand-accent/20 shadow-sm">
-<h4 class="text-sm font-medium tracking-widest mb-5 text-center text-brand-accent">内容</h4>
-<ul class="content-text text-[13px] text-brand-text/80">
-<li class="list-item-custom">iPhoneでの写真撮影</li>
-<li class="list-item-custom">投稿・ストーリーズに使いやすい写真素材</li>
-<li class="list-item-custom">自然な表情、手元、雰囲気カット</li>
-<li class="list-item-custom">余白や背景を整えて撮影</li>
-<li class="list-item-custom">SNSに載せやすい明るさ・見え方を意識</li>
-<li class="list-item-custom">数百枚の中から厳選</li>
-<li class="list-item-custom">約20枚のレタッチ済みデータ納品</li>
-</ul>
-</div>
-</div>
-
-<!-- Menu 2 -->
-<div id="menu2" class="mb-20 scroll-mt-12">
-<i data-lucide="video" class="w-5 h-5 mx-auto text-brand-accent/80 mb-4 stroke-[1.2]"></i>
-<div class="text-center mb-8 text-balance">
-<h3 class="text-[17px] font-medium leading-relaxed tracking-wider mb-4">
-リールに使える<br>
-iPhone動画素材撮影
-</h3>
-<p class="font-en text-xl text-brand-accent tracking-wider font-medium">
-29,800円〜
-</p>
-<p class="text-[12px] text-brand-light mt-1">
-※所要時間：2時間
-</p>
-</div>
-<div class="px-3 mb-10 content-text text-center text-brand-text/90">
-<p class="mb-5">
-リールやストーリーズで使いやすいように<br>
-iPhoneで動画素材を撮影します。
-</p>
-<p class="mb-5">
-動き・画角・流れを考えながら<br>
-編集した時に伝わりやすい素材になるよう<br>
-撮影します。
-</p>
-<p class="mb-5">
-写真が「1枚の見え方」を整える撮影だとしたら<br>
-動画は「発信に使える流れ」を設計して<br>
-撮る撮影です。
-</p>
-<p>
-1回の撮影素材を、リール・ストーリーズ・<br>
-告知などに使い回しやすい形で撮影します。
-</p>
-</div>
-
-<div class="bg-white rounded-lg p-7 mx-2 border border-brand-accent/20 shadow-sm">
-<h4 class="text-sm font-medium tracking-widest mb-5 text-center text-brand-accent">内容</h4>
-<ul class="content-text text-[13px] text-brand-text/80">
-<li class="list-item-custom">iPhoneでの動画撮影</li>
-<li class="list-item-custom">リール・ストーリーズに使いやすい動画素材</li>
-<li class="list-item-custom">冒頭・つなぎ・締めに使えるカット撮影</li>
-<li class="list-item-custom">引き／寄り／手元／表情など複数画角</li>
-<li class="list-item-custom">編集しやすい動きや流れをディレクション</li>
-<li class="list-item-custom">発信で使う前提の素材設計込み</li>
-<li class="list-item-custom">使い回ししやすい動画素材の撮影</li>
-</ul>
-</div>
-</div>
-
-<!-- Menu 3 -->
-<div id="menu3" class="mb-20 scroll-mt-12">
-<i data-lucide="smartphone" class="w-5 h-5 mx-auto text-brand-accent/80 mb-4 stroke-[1.2]"></i>
-<div class="text-center mb-8 text-balance">
-<h3 class="text-[17px] font-medium leading-relaxed tracking-wider mb-4">
-用途に合わせた<br>
-iPhone撮り方実践レッスン
-</h3>
-<p class="font-en text-xl text-brand-accent tracking-wider font-medium">
-16,500円
-</p>
-<p class="text-[12px] text-brand-light mt-1">
-※所要時間：2時間
-</p>
-</div>
-<div class="px-3 mb-10 content-text text-center text-brand-text/90">
-<p class="mb-5">
-ご自身でも投稿やストーリーズに<br>
-使いやすい写真が撮れるように<br>
-iPhoneを使って実際に一緒に撮りながら<br>
-お伝えする実践レッスンです。
-</p>
-<p class="mb-5">
-角度、余白の整え方に加えて<br>
-撮影後の明るさや色味の整え方まで<br>
-あなたの発信内容や撮りたいものに合わせて<br>
-確認していきます。
-</p>
-<p class="mb-5">
-ただ写真の撮り方を学ぶだけではなく<br>
-「自分の発信にはどんな写真が必要か」<br>
-「投稿やストーリーズで使いやすい写真は<br>
-どう撮るか」<br>
-「撮った写真をどう整えると雰囲気が出るか」<br>
-まで、用途に合わせて実践します。
-</p>
-</div>
-
-<div class="bg-white rounded-lg p-7 mx-2 border border-brand-accent/20 shadow-sm">
-<h4 class="text-sm font-medium tracking-widest mb-5 text-center text-brand-accent">内容</h4>
-<ul class="content-text text-[13px] text-brand-text/80 mb-6">
-<li class="list-item-custom">普段の撮り方チェック</li>
-<li class="list-item-custom">角度・距離感の調整</li>
-<li class="list-item-custom">余白の作り方</li>
-<li class="list-item-custom">投稿・ストーリーズに使いやすい構図</li>
-<li class="list-item-custom">実際に一緒に撮影しながらフィードバック</li>
-<li class="list-item-custom">Before／Afterで改善ポイントを確認</li>
-<li class="list-item-custom">iPhone写真アプリでの明るさ・色味調整</li>
-<li class="list-item-custom">発信に合う写真の雰囲気づくり</li>
-<li class="list-item-custom">今後ひとりで撮る時のポイント整理</li>
-</ul>
-<div class="text-[11px] leading-relaxed text-brand-light space-y-2 mt-5 pt-5 border-t border-brand-accent/20">
-<p>※写真納品・投稿作成・リール編集・後日添削は<br>　含まれません。</p>
-<p>※iPhoneでの撮影・編集を前提としています。<br>　Androidは機種により操作が異なるため、<br>　基本操作のレクチャー対象外となります。<br>　ご了承ください。</p>
-</div>
-</div>
-
-<!-- Before/After作例 -->
-<div class="mt-8 bg-white rounded-lg p-6 border border-brand-accent/20 shadow-sm relative overflow-hidden mx-2">
-<div class="absolute top-0 right-0 w-16 h-16 bg-brand-bg rounded-bl-full -z-10"></div>
-<div class="text-center mb-6 text-balance">
-<span class="font-en text-[11px] tracking-widest text-brand-light block mb-1">Before / After</span>
-<h4 class="text-sm font-medium tracking-widest text-brand-text">ちょっとの工夫で、ここまで変わる</h4>
-</div>
-<div class="mb-5">
-<img src="before-after.png" alt="iPhone撮影のBefore/After" class="w-full h-auto rounded shadow-sm" onerror="this.src='https://placehold.co/400x300?text=Before/After'">
-</div>
-<div class="content-text text-center px-2 text-brand-text/90">
-<p class="font-medium text-[14px] leading-relaxed mb-4 text-brand-accent">
-いつものカフェタイムも<br>
-文字が映える特別な一枚に。
-</p>
-<p class="text-[13px] leading-relaxed text-brand-text/80">
-ストーリーズで使いやすい余白の作り方や<br>
-明るさ・角度を少し変えるだけで<br>
-スマホで撮る日常がドラマチックに変わります。
-</p>
-</div>
-</div>
-
-<!-- お客様の声 (VOICE) 追加セクション -->
-<div class="mt-10 bg-white rounded-lg p-6 border border-brand-accent/20 shadow-sm relative overflow-hidden mx-2 mb-32">
-<div class="absolute top-0 right-0 w-16 h-16 bg-brand-bg rounded-bl-full -z-10"></div>
-<div class="text-center mb-6">
-<span class="font-en text-[11px] tracking-widest text-brand-light block mb-1">VOICE</span>
-<h4 class="text-sm font-medium tracking-widest text-brand-text">お客様の声</h4>
-</div>
-<div class="mb-6">
-<img src="VOICE.png" alt="お客様の声" class="w-full h-auto">
-</div>
-<div class="content-text text-center px-2 text-brand-text/90">
-<p class="text-[13px] leading-relaxed text-brand-text/80">
-「動画を撮るのが楽しくなった」「世界観が出た」など<br>
-実践ですぐに活かせる変化を実感いただいています。
-</p>
-</div>
-</div>
-</div>
-
-<!-- Menu 4 -->
-<div id="menu4" class="mb-12 scroll-mt-12">
-<i data-lucide="aperture" class="w-5 h-5 mx-auto text-brand-accent/80 mb-4 stroke-[1.2]"></i>
-<div class="text-center mb-8 text-balance">
-<h3 class="text-[17px] font-medium leading-relaxed tracking-wider mb-4">
-カメラでの<br>
-スタジオ撮影
-</h3>
-<p class="font-en text-xl text-brand-accent tracking-wider font-medium">
-29,800円〜
-</p>
-<p class="text-[12px] text-brand-light mt-1">
-※所要時間：2時間<br>
-※スタジオ代は別途
-</p>
-</div>
-<div class="px-3 mb-10 content-text text-center text-brand-text/90">
-<p class="mb-5">
-カメラを使用し、スタジオでしっかりと<br>
-世界観や見え方を整えて撮影します。
-</p>
-<p class="mb-5">
-告知用素材、LPやSNSに使う写真など<br>
-よりきちんとした印象で残したい方向けの<br>
-撮影です。
-</p>
-<p class="mb-5">
-スタジオの雰囲気や光を活かしながら<br>
-表情・姿勢・手元・余白・背景を整えて<br>
-撮影します。
-</p>
-<p>
-納品データは、厳選後に1枚ずつ<br>
-明るさや色味を調整してお渡しします。
-</p>
-</div>
-
-<div class="bg-white rounded-lg p-7 mx-2 border border-brand-accent/20 shadow-sm">
-<h4 class="text-sm font-medium tracking-widest mb-5 text-center text-brand-accent">内容</h4>
-<ul class="content-text text-[13px] text-brand-text/80">
-<li class="list-item-custom">カメラでのスタジオ撮影</li>
-<li class="list-item-custom">告知・SNS・LP用素材に使いやすい写真</li>
-<li class="list-item-custom">表情、手元、雰囲気カット</li>
-<li class="list-item-custom">余白や背景を整えて撮影</li>
-<li class="list-item-custom">数百枚の中から厳選</li>
-<li class="list-item-custom">レタッチ済みデータ納品</li>
-<li class="list-item-custom">スタジオ代は別途</li>
-</ul>
-</div>
-
-<!-- スタジオ撮影作例 -->
-<div class="mt-8 bg-white rounded-lg p-6 border border-brand-accent/20 shadow-sm relative overflow-hidden mx-2">
-<div class="absolute top-0 right-0 w-16 h-16 bg-brand-bg rounded-bl-full -z-10"></div>
-<div class="text-center mb-6">
-<span class="font-en text-[11px] tracking-widest text-brand-light block mb-1">Example - Studio</span>
-<h4 class="text-sm font-medium tracking-widest text-brand-text">撮影事例</h4>
-</div>
-<div class="mb-5">
-<img src="studio-example.png" alt="スタジオ撮影の事例" class="w-full h-auto rounded shadow-sm" onerror="this.src='https://placehold.co/400x300?text=Studio+Example'">
-</div>
-<div class="content-text text-center px-2 text-brand-text/90">
-<p class="font-medium text-[14px] leading-relaxed mb-4 text-brand-accent">
-LPはもちろん、<br>
-投稿やストーリーズにも。
-</p>
-<p class="text-[13px] leading-relaxed text-brand-text/80">
-レンタルルームで撮影した写真を、<br>
-ランディングページ（LP）に<br>
-ご使用いただいた一例です。<br><br>
-使い回ししやすい余白や構図を考えて撮るため、<br>
-LPだけでなく、日々の投稿やストーリーズにも<br>
-どんどんご活用いただいています。
-</p>
-</div>
-</div>
-</div>
-
-<!-- リールメニュー見出し -->
-<div id="reel" class="text-center mb-16 pt-16 border-t border-brand-accent/20 scroll-mt-12">
-<i data-lucide="film" class="w-5 h-5 mx-auto text-brand-accent mb-4 stroke-[1.2]"></i>
-<h2 class="text-xl font-medium tracking-widest border-b border-brand-accent/50 inline-block pb-2 px-4 text-brand-text">
-リールメニュー
-</h2>
-</div>
-
-<!-- Menu 5 -->
-<div id="menu5" class="mb-10 scroll-mt-12">
-<div class="text-center mb-8 relative text-balance">
-<!-- 満席バッジ -->
-<div class="inline-block bg-brand-light text-white text-[11px] font-medium tracking-widest px-3 py-1 rounded-full mb-3 shadow-sm">
-現在満席
-</div>
-<h3 class="text-[17px] font-medium leading-relaxed tracking-wider mb-4 text-brand-light">
-自走を目指す<br>
-クリエイティブ伴走
-</h3>
-<p class="font-en text-[15px] text-brand-light tracking-wider font-medium">
-月4本投稿〜
-</p>
-<p class="text-[12px] text-brand-light mt-2">
-※すでに商品や販売導線を<br>お持ちの方対象
-</p>
-</div>
-<div class="px-3 mb-10 content-text text-center text-brand-text/90 opacity-70">
-<p class="mb-5">
-最終的にご自身でリール企画・<br>
-発信ができる「自走」を目指す<br>
-サポートです
-</p>
-<p class="text-[12px] text-brand-light leading-relaxed">
-※お一人お一人のインサイト分析や<br>
-台本添削に深く入り込み<br>
-サポートの質を落とさないため<br>
-【毎月2名様限定】と<br>
-させていただいております
-</p>
-<p class="text-[12px] text-brand-accent font-medium mt-6 p-4 bg-brand-bg rounded-lg border border-brand-accent/10 text-balance opacity-100">
-※大変ありがたいことに、現在こちらのメニューは<br>
-【満席】のため新規受付を停止しております。<br>
-募集再開時はInstagramにてお知らせいたします。
-</p>
-</div>
-
-<div class="bg-white rounded-lg p-7 mx-2 border border-brand-accent/20 shadow-sm mb-6 text-center opacity-70">
-<h4 class="text-sm font-medium tracking-widest mb-5 text-brand-accent">料金</h4>
-<p class="content-text text-[14px] mb-5">
-<span class="font-medium text-brand-text">初回キックオフ</span><br>
-10,000円<br>
-<span class="text-[12px] text-brand-light">（Zoom30分＋方向性のすり合わせ）</span>
-</p>
-<div class="w-4 h-[1px] bg-brand-accent/30 mx-auto mb-5"></div>
-<p class="content-text text-[14px]">
-<span class="font-medium text-brand-text">伴走＋編集セット</span><br>
-1本 10,000円<br>
-<span class="text-[12px] text-brand-light">（月4本で 40,000円〜）</span>
-</p>
-</div>
-
-<div class="bg-white rounded-lg p-7 mx-2 border border-brand-accent/20 shadow-sm mb-12 opacity-70">
-<h4 class="text-sm font-medium tracking-widest mb-5 text-center text-brand-accent">サポート内容</h4>
-<ul class="content-text text-[13px] text-brand-text/80 mb-6">
-<li class="list-item-custom">台本添削</li>
-<li class="list-item-custom">撮影アドバイス</li>
-<li class="list-item-custom">インサイト確認</li>
-</ul>
-<div class="w-full h-[1px] bg-brand-accent/10 mb-5"></div>
-<h4 class="text-sm font-medium tracking-widest mb-5 text-center text-brand-accent">やり取りの流れ</h4>
-<ul class="content-text text-[13px] text-brand-text/80">
-<li class="list-item-custom">スタート時に一度30分ZOOM<br><span class="list-indent">（初回キックオフ）</span></li>
-<li class="list-item-custom">投稿前後のやり取り<br><span class="list-indent">（テキストベース）</span></li>
-</ul>
-</div>
-
-<!-- サポート事例 -->
-<div class="bg-white rounded-lg p-6 border border-brand-accent/20 shadow-sm relative overflow-hidden mx-2 opacity-70">
-<div class="absolute top-0 right-0 w-16 h-16 bg-brand-bg rounded-bl-full -z-10"></div>
-<div class="text-center mb-6">
-<span class="font-en text-[11px] tracking-widest text-brand-light block mb-1">Example - 2026</span>
-<h4 class="text-sm font-medium tracking-widest text-brand-text">サポート事例</h4>
-</div>
-<div class="mb-5">
-<img src="result.png" alt="サポート実績" class="w-full h-auto rounded shadow-sm" onerror="this.src='https://placehold.co/400x300?text=Support+Result'">
-</div>
-<div class="content-text text-center px-2 text-brand-text/90">
-<p class="font-medium text-[14px] leading-relaxed mb-4 text-brand-accent">
-コツコツと届けた12本のリールが<br>
-4,000人の共感と<br>
-ワークショップ開催に繋がりました
-</p>
-<p class="text-[13px] leading-relaxed text-brand-text/80">
-1ヶ月に3〜4本など<br>
-お客様の無理のないペースに合わせて<br>
-伴走サポートを行っています
-</p>
-</div>
-</div>
-</div>
-
-<!-- Menu 6 (ショート動画編集) -->
-<div id="menu6" class="mb-10 scroll-mt-12">
-<i data-lucide="scissors" class="w-5 h-5 mx-auto text-brand-accent/80 mb-4 stroke-[1.2]"></i>
-<div class="text-center mb-8 relative text-balance">
-<!-- 満席バッジ -->
-<div class="inline-block bg-brand-light text-white text-[11px] font-medium tracking-widest px-3 py-1 rounded-full mb-3 shadow-sm">
-現在満席
-</div>
-<h3 class="text-[17px] font-medium leading-relaxed tracking-wider mb-4 text-brand-light">
-ショート動画編集
-</h3>
-<p class="font-en text-[17px] text-brand-light tracking-wider font-medium">
-1本 4,500円〜7,000円
-</p>
-</div>
-<div class="px-3 mb-10 content-text text-center text-brand-text/90 opacity-70">
-<p class="mb-5">
-InstagramのリールやYouTubeショートなど<br>
-縦型ショート動画の編集を代行します。
-</p>
-<p class="mb-5">
-いただいた素材をもとに<br>
-カット、テロップ挿入などを行い<br>
-発信の目的に合わせた動画に仕上げます。
-</p>
-<p class="text-[12px] text-brand-accent font-medium mt-6 p-4 bg-brand-bg rounded-lg border border-brand-accent/10">
-※大変ありがたいことに、現在こちらのメニューは<br>
-【満席】のため新規受付を停止しております。<br>
-募集再開時はInstagramにてお知らせいたします。
-</p>
-</div>
-</div>
-
-</section>
-
-<!-- Other Info Section -->
-<section class="px-6 py-20 bg-[#F8F1EB]">
-
-<div id="seminar" class="mb-20 scroll-mt-12">
-<div class="flex items-center justify-center gap-4 mb-8">
-<div class="w-6 h-[1px] bg-brand-accent/50"></div>
-<h3 class="text-base font-medium tracking-widest text-brand-text leading-relaxed text-center text-balance">
-少人数セミナー・<br>
-グループレッスンについて
-</h3>
-<div class="w-6 h-[1px] bg-brand-accent/50"></div>
-</div>
-<div class="content-text text-center px-4 mb-10">
-<p class="mb-4">
-少人数での撮影レッスンや<br>
-スマホ写真・リール素材の撮り方セミナーも<br>
-対応可能です。
-</p>
-<p>
-内容・人数・場所により料金が変わるため<br>
-詳細はご相談ください。
-</p>
-</div>
-<div class="bg-white rounded-lg p-7 mx-2 border border-brand-accent/20">
-<h4 class="text-xs font-medium tracking-widest mb-4 text-brand-accent">例：</h4>
-<ul class="content-text text-[13px] text-brand-text/80">
-<li class="list-item-custom">iPhoneでの写真の撮り方</li>
-<li class="list-item-custom">投稿・ストーリーズに使いやすい構図</li>
-<li class="list-item-custom">角度・余白の整え方</li>
-<li class="list-item-custom">撮影後の明るさ・色味調整</li>
-<li class="list-item-custom">リールに使いやすい動画素材の撮り方</li>
-</ul>
-</div>
-</div>
-
-<div id="lecture" class="scroll-mt-12">
-<div class="flex items-center justify-center gap-4 mb-8">
-<div class="w-6 h-[1px] bg-brand-accent/50"></div>
-<h3 class="text-base font-medium tracking-widest text-brand-text leading-relaxed text-center text-balance">
-動画編集の個別指導<br>
-（マンツーマンレッスン）
-</h3>
-<div class="w-6 h-[1px] bg-brand-accent/50"></div>
-</div>
-<div class="content-text text-center px-4 mb-10">
-<p class="mb-5">
-まるで「あなた専用の動画編集スクール」のように<br>
-マンツーマンで教える個別指導プランもございます。
-</p>
-<p class="mb-5">
-リール編集、テロップ調整、素材の見せ方など<br>
-あなたのレベルと「やりたいこと」に合わせて<br>
-内容をカスタマイズしてお伝えします。
-</p>
-<p class="mb-8">
-自分のペースで学べる<br>
-チケット制でのご案内となります。
-</p>
-<div class="text-[12px] text-brand-text/80 leading-relaxed border-t border-brand-accent/20 pt-6 inline-block text-left">
-<p class="font-medium text-[13px] mb-2 text-brand-accent text-center">対象の方は</p>
-<p>※スマホ編集からPC編集に移行したい方他</p>
-<p>※使用アプリはCapCut / Premiere</p>
-</div>
-</div>
-<div class="bg-white rounded-lg p-7 mx-2 border border-brand-accent/20 text-center">
-<h4 class="text-xs font-medium tracking-widest mb-4 text-brand-accent">例：</h4>
-<p class="content-text text-[15px] font-medium mb-1">
-6時間チケット：38,400円
-</p>
-<p class="text-[13px] text-brand-text/80 mb-5">
-30分単位で使用可能です。
-</p>
-<p class="text-[11px] leading-relaxed text-brand-light border-t border-brand-accent/10 pt-5">
-※対応内容により、別途お見積もりとなる<br>　場合があります。
-</p>
-</div>
-</div>
-
-</section>
-
-<!-- Concept Section -->
-<section id="concept" class="py-24 px-8 bg-brand-bg relative overflow-hidden scroll-mt-8">
-<div class="text-center relative z-10 mb-16 text-balance">
-<h2 class="text-[22px] font-medium leading-loose tracking-widest border-b border-brand-accent/30 inline-block px-4 pb-2 text-brand-text">
-きれいに撮るより<br>
-使いやすく撮る
-</h2>
-</div>
-
-<div class="content-text text-center space-y-7 relative z-10 text-brand-text/90">
-<p>
-写真や動画は<br>
-ただきれいに撮れたら終わりではなく
-</p>
-<p>
-その後、投稿やストーリーズ、リールで<br>
-「使いやすいか」がとても大切です。
-</p>
-<p>
-私はこれまで、Instagramのリール編集や<br>
-撮影、ストーリーズづくりに関わる中で
-</p>
-<div class="py-4 font-medium text-[15px] text-brand-text space-y-5">
-<p>「撮ったけれど投稿に使いにくい」</p>
-<p>
-「写真はあるのに<br>
-どこに文字を入れたらいいかわからない」
-</p>
-<p>
-「動画素材はあるのに<br>
-リールにすると流れが作りにくい」
-</p>
-</div>
-<p>
-という場面をたくさん見てきました。
-</p>
-<p>
-だからこそ、撮影やレッスンでは
-</p>
-<p>
-角度だけでなく<br>
-投稿にした時の余白<br>
-ストーリーズで文字を置く場所<br>
-リールにした時のつながりまで考えています。
-</p>
-<p>
-大切にしているのは<br>
-作り込みすぎた写真ではなく
-</p>
-<p>
-その人らしい雰囲気が自然に伝わり<br>
-あとから発信に使いやすい素材になること。
-</p>
-<p class="text-[15px] font-medium pt-6">
-「撮って終わり」ではなく<br>
-「投稿に使えるところ」まで<br>
-一緒に整えることを大切にしています。
-</p>
-</div>
-</section>
-
-<!-- Reasons Section -->
-<section id="reasons" class="py-20 px-6 bg-[#F8F1EB] scroll-mt-8">
-<div class="text-center mb-16">
-<i data-lucide="sparkles" class="w-5 h-5 mx-auto text-brand-accent mb-4 stroke-[1.2]"></i>
-<h2 class="text-lg font-medium tracking-widest text-brand-text border-b border-brand-accent/50 inline-block pb-2 px-4">
-選ばれる理由
-</h2>
-</div>
-
-<div class="space-y-16">
-<!-- Reason 1 -->
-<div>
-<div class="flex flex-col items-center mb-6">
-<span class="font-en text-4xl text-brand-accent/40 italic mb-3 font-light">01</span>
-<h3 class="text-[16px] font-medium leading-relaxed tracking-wider text-center text-balance">
-SNS発信に関わってきた<br>
-実績があります
-</h3>
-</div>
-<div class="content-text text-center px-2 text-brand-text/80 space-y-4">
-<p>
-これまで、フォロワー5.0万人の方の<br>
-インスタデザイン講義動画の編集
-</p>
-<p>
-フォロワー7.1万人の方の<br>
-インタビューリール編集
-</p>
-<p>
-フォロワー3.2万人の方の<br>
-美容系リール制作など
-</p>
-<p>
-SNS発信に関わる動画編集・撮影サポートを<br>
-行ってきました。
-</p>
-<p>
-撮影した素材が、実際に投稿やリールで<br>
-使いやすいか。その視点を大切にしています。
-</p>
-</div>
-</div>
-
-<div class="w-8 h-[1px] bg-brand-accent/30 mx-auto"></div>
-
-<!-- Reason 2 -->
-<div>
-<div class="flex flex-col items-center mb-6">
-<span class="font-en text-4xl text-brand-accent/40 italic mb-3 font-light">02</span>
-<h3 class="text-[16px] font-medium leading-relaxed tracking-wider text-center text-balance">
-カメラに詳しくない方にも、<br>
-わかりやすくお伝えします
-</h3>
-</div>
-<div class="content-text text-center px-2 text-brand-text/80 space-y-4">
-<p>
-学生時代には、Canonの販売サポートとして
-</p>
-<p>
-東京ビッグサイトなどで行われる大型イベントや<br>
-新宿ヨドバシカメラなどの売場で<br>
-説明員をしていました。
-</p>
-<p>
-専門用語を並べるのではなく<br>
-カメラに詳しくない方にもわかりやすく伝えること。
-</p>
-<p>
-その経験は、今の撮影レッスンや<br>
-サポートにも活きています。
-</p>
-</div>
-</div>
-
-<div class="w-8 h-[1px] bg-brand-accent/30 mx-auto"></div>
-
-<!-- Reason 3 -->
-<div>
-<div class="flex flex-col items-center mb-6">
-<span class="font-en text-4xl text-brand-accent/40 italic mb-3 font-light">03</span>
-<h3 class="text-[16px] font-medium leading-relaxed tracking-wider text-center text-balance">
-iPhoneでも、投稿に<br>
-使いやすい素材づくりを<br>
-大切にしています
-</h3>
-</div>
-<div class="content-text text-center px-2 text-brand-text/80 space-y-4">
-<p>
-iPhoneでも、光の見方・角度・余白・色味を<br>
-少し整えるだけで<br>
-写真や動画の見え方は大きく変わります。
-</p>
-<p>
-難しい機材や専門用語よりも<br>
-今あるスマホで、どう撮れば発信に<br>
-使いやすくなるか。
-</p>
-<p>
-そこを一緒に確認しながらお伝えします。
-</p>
-</div>
-</div>
-</div>
-</section>
-<!-- Flow Section -->
-<section id="flow" class="py-16 px-6 bg-white scroll-mt-8">
-<div class="text-center mb-12">
-<i data-lucide="calendar-check" class="w-5 h-5 mx-auto text-brand-accent mb-3"></i>
-<h2 class="text-lg font-medium tracking-widest text-brand-text">
-ご依頼からの流れ
-</h2>
-</div>
-
-<!-- ステップ全体を囲むコンテナ。左側に線を引くための基準点 -->
-<div class="relative max-w-[320px] mx-auto px-2">
-<!-- Step 1 -->
-<div class="flex gap-5 mb-10 relative z-10">
-<!-- 縦線（次のステップへ） -->
-<div class="absolute left-[23.5px] top-12 -bottom-10 w-[1px] bg-brand-accent/30 -z-10"></div>
-<div class="w-12 h-12 rounded-full bg-[#FDFBF9] border border-brand-accent/50 flex items-center justify-center shrink-0 shadow-sm bg-white">
-<span class="font-en text-[17px] text-brand-accent font-medium">01</span>
-</div>
-<div class="pt-3 pb-2">
-<h3 class="text-[15px] font-medium tracking-wider mb-2 text-brand-text">お問い合わせ</h3>
-<p class="text-[13px] text-brand-text/80 leading-relaxed">DMやフォームより、ご希望のメニューをご連絡ください。</p>
-</div>
-</div>
-
-<!-- Step 2 -->
-<div class="flex gap-5 mb-10 relative z-10">
-<!-- 縦線（次のステップへ） -->
-<div class="absolute left-[23.5px] top-12 -bottom-10 w-[1px] bg-brand-accent/30 -z-10"></div>
-<div class="w-12 h-12 rounded-full bg-[#FDFBF9] border border-brand-accent/50 flex items-center justify-center shrink-0 shadow-sm bg-white">
-<span class="font-en text-[17px] text-brand-accent font-medium">02</span>
-</div>
-<div class="pt-3 pb-2">
-<h3 class="text-[15px] font-medium tracking-wider mb-2 text-brand-text">日程調整・ヒアリング</h3>
-<p class="text-[13px] text-brand-text/80 leading-relaxed">
-お日にちの第3希望までと、撮影希望場所をお知らせください。<br>
-その後、撮影内容のすり合わせを行います。
-</p>
-</div>
-</div>
-
-<!-- Step 3 -->
-<div class="flex gap-5 mb-10 relative z-10">
-<!-- 縦線（次のステップへ） -->
-<div class="absolute left-[23.5px] top-12 -bottom-10 w-[1px] bg-brand-accent/30 -z-10"></div>
-<div class="w-12 h-12 rounded-full bg-[#FDFBF9] border border-brand-accent/50 flex items-center justify-center shrink-0 shadow-sm bg-white">
-<span class="font-en text-[17px] text-brand-accent font-medium">03</span>
-</div>
-<div class="pt-3 pb-2">
-<h3 class="text-[15px] font-medium tracking-wider mb-2 text-brand-text">お支払い</h3>
-<p class="text-[13px] text-brand-text/80 leading-relaxed">
-日程が決まりましたら請求書をお送りします。<br>
-指定の口座へのお振込みをお願いいたします。（事前決済）<br>
-<span class="text-[12px] text-brand-light mt-1 block">※領収書をご希望の場合は、当日手渡しかその他ご希望の方法でお渡しします。</span>
-</p>
-</div>
-</div>
-
-<!-- Step 4 -->
-<div class="flex gap-5 mb-10 relative z-10">
-<!-- 縦線（次のステップへ） -->
-<div class="absolute left-[23.5px] top-12 -bottom-10 w-[1px] bg-brand-accent/30 -z-10"></div>
-<div class="w-12 h-12 rounded-full bg-[#FDFBF9] border border-brand-accent/50 flex items-center justify-center shrink-0 shadow-sm bg-white">
-<span class="font-en text-[17px] text-brand-accent font-medium">04</span>
-</div>
-<div class="pt-3 pb-2">
-<h3 class="text-[15px] font-medium tracking-wider mb-2 text-brand-text">撮影・レッスン当日</h3>
-<p class="text-[13px] text-brand-text/80 leading-relaxed">リラックスした雰囲気で、楽しく進めさせていただきます。</p>
-</div>
-</div>
-
-<!-- Step 5 -->
-<div class="flex gap-5 relative z-10">
-<div class="w-12 h-12 rounded-full bg-[#FDFBF9] border border-brand-accent/50 flex items-center justify-center shrink-0 shadow-sm bg-white">
-<span class="font-en text-[17px] text-brand-accent font-medium">05</span>
-</div>
-<div class="pt-3">
-<h3 class="text-[15px] font-medium tracking-wider mb-2 text-brand-text">データ納品</h3>
-<p class="text-[13px] text-brand-text/80 leading-relaxed">厳選・編集後、ギガファイル便にてデータをお渡しします。<br>（納品まで1週間ほどお時間をいただきます）</p>
-</div>
-</div>
-</div>
-</section>
-
-<!-- Information Section & Footer -->
-<section id="info" class="py-12 px-6 bg-white scroll-mt-8">
-            <div class="text-center mb-10">
-                <i data-lucide="info" class="w-5 h-5 mx-auto text-brand-accent mb-4 stroke-[1.2]"></i>
-                <h2 class="text-lg font-medium tracking-widest text-brand-text border-b border-brand-accent/50 inline-block pb-2 px-4">
-                    キャンセルポリシー
-                </h2>
+        <div id="mobileMenu" class="absolute top-16 right-6 w-[260px] max-h-[85vh] overflow-y-auto bg-white/95 backdrop-blur-md rounded-2xl shadow-xl z-50 border border-brand-section p-5 opacity-0 scale-95 pointer-events-none origin-top-right transition-all duration-300 text-left">
+            <nav class="flex flex-col gap-4 text-[14px] tracking-wide text-brand-text font-medium">
+                <a href="#worries" class="menu-link hover:text-brand-main transition-colors">FOR YOU</a>
+                <a href="#concept" class="menu-link hover:text-brand-main transition-colors">大切にしていること</a>
+                <a href="#reasons" class="menu-link hover:text-brand-main transition-colors">選ばれる理由</a>
+                <a href="#cases" class="menu-link hover:text-brand-main transition-colors">サポート事例</a>
                 
-                <div class="mt-6">
-                    <p class="mb-2 text-[13px] text-brand-text/80 leading-relaxed">
-                        お支払い後の<br>
-                        返金は致しかねます。
+                <div class="w-full h-[1px] bg-brand-section"></div>
+                
+                <a href="#menu-section" class="menu-link text-brand-main hover:opacity-70 transition-opacity">撮影メニュー</a>
+                <div class="pl-3 flex flex-col gap-3 border-l-2 border-brand-yellow text-[13px]">
+                    <a href="#menu1" class="menu-link hover:text-brand-main transition-colors">・ iPhone写真素材撮影</a>
+                    <a href="#menu2" class="menu-link hover:text-brand-main transition-colors">・ iPhone動画素材撮影</a>
+                    <a href="#menu3" class="menu-link hover:text-brand-main transition-colors">・ iPhone撮り方レッスン</a>
+                    <a href="#menu4" class="menu-link hover:text-brand-main transition-colors">・ スタジオ撮影</a>
+                </div>
+                <a href="#menu-other" class="menu-link text-brand-main hover:opacity-70 transition-opacity">その他メニュー</a>
+
+                <div class="w-full h-[1px] bg-brand-section"></div>
+
+                <a href="#flow" class="menu-link hover:text-brand-main transition-colors">ご依頼からの流れ</a>
+                <a href="#contact" class="menu-link block mt-2 px-4 py-3 bg-brand-main text-white text-center rounded-full text-[13px] hover:bg-brand-main/90 transition-colors shadow-sm whitespace-nowrap font-medium">お申し込み</a>
+            </nav>
+        </div>
+
+        <!-- 横長プロフィール画像 -->
+        <div class="relative z-10 mb-8 mt-0 w-full max-w-[340px]">
+            <img src="profile01.jpg" alt="プロフィール画像" class="w-full h-auto rounded-[12px] object-cover aspect-[3/2] shadow-sm" onerror="this.src='https://placehold.co/340x227/ecf5f1/82b899?text=Profile+Image'">
+        </div>
+
+        <h1 class="font-en text-[22px] tracking-[0.15em] mb-2 text-brand-text font-medium relative z-10">
+            ATSUKO KARASAWA
+        </h1>
+        <a href="https://www.instagram.com/kara_photo.douga/" target="_blank" rel="noopener noreferrer" class="font-en text-[13px] tracking-wider text-brand-light hover:text-brand-main transition-colors mb-6 relative z-10 flex items-center justify-center gap-1.5 font-medium">
+            <i data-lucide="instagram" class="w-3.5 h-3.5 stroke-[1.5]"></i>
+            @kara_photo.douga
+        </a>
+        
+        <p class="text-[14.5px] leading-[2.2] tracking-wider font-medium relative z-10 mb-8 text-center">
+            <span class="ib">SNSで使いやすい</span>
+            <span class="ib">写真・動画素材の撮影と</span>
+            <span class="ib">編集サポート</span>
+        </p>
+        
+        <button onclick="openFormWithPlan('')" class="relative z-10 flex items-center justify-center gap-2 bg-brand-main text-white px-10 py-4 rounded-full text-[14px] tracking-widest hover:bg-opacity-90 transition-all shadow-sm font-medium whitespace-nowrap">
+            <i data-lucide="mail" class="w-4 h-4 shrink-0"></i>
+            <span>お申し込み</span>
+        </button>
+    </header>
+
+    <div class="w-full overflow-hidden leading-none relative z-10 bg-brand-section -mt-1">
+        <!-- 添付画像の角度を精密に再現した曲線 -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" preserveAspectRatio="none" class="w-full h-12 sm:h-16 fill-white">
+            <path d="M0,60 C320,110 600,10 1000,50 C1250,70 1350,60 1440,40 L1440,0 L0,0 Z"></path>
+        </svg>
+    </div>
+
+    <section id="worries" class="py-16 px-6 bg-brand-section scroll-mt-8 relative z-10">
+        <div class="text-center mb-10 relative z-10">
+            <h2 class="font-en text-[16px] tracking-[0.2em] text-brand-main mb-2 font-medium">FOR YOU</h2>
+            <div class="w-6 h-[1px] bg-brand-main/50 mx-auto mb-4"></div>
+            <p class="text-[15px] leading-[2] font-medium tracking-wide text-brand-text mx-auto">
+                <span class="ib">せっかく撮ったのに</span>
+                <span class="ib">投稿に使いにくい</span><br>
+                <span class="ib">そんな“あと一歩”を</span>
+                <span class="ib">撮る前から整えます</span>
+            </p>
+        </div>
+
+        <div class="space-y-4 relative z-10 max-w-[340px] mx-auto">
+            <!-- 悩み 1 (左アイコン、右テキスト) -->
+            <div class="bg-white rounded-[16px] p-5 shadow-sm flex items-center gap-5">
+                <div class="w-[46px] h-[46px] rounded-full bg-brand-yellow flex items-center justify-center shrink-0">
+                    <i data-lucide="image-off" class="w-[22px] h-[22px] text-brand-main stroke-[1.2]"></i>
+                </div>
+                <p class="text-[13.5px] leading-[1.7] text-brand-text text-left">
+                    <span class="ib">写真は綺麗に撮れたけれど</span>
+                    <span class="ib">いざ投稿にしようとすると使いにくい</span>
+                </p>
+            </div>
+            
+            <!-- 悩み 2 -->
+            <div class="bg-white rounded-[16px] p-5 shadow-sm flex items-center gap-5">
+                <div class="w-[46px] h-[46px] rounded-full bg-brand-yellow flex items-center justify-center shrink-0">
+                    <i data-lucide="type" class="w-[22px] h-[22px] text-brand-main stroke-[1.2]"></i>
+                </div>
+                <p class="text-[13.5px] leading-[1.7] text-brand-text text-left">
+                    <span class="ib">ストーリーズで告知したいのに</span>
+                    <span class="ib">文字を入れる「余白」がない</span>
+                </p>
+            </div>
+            
+            <!-- 悩み 3 -->
+            <div class="bg-white rounded-[16px] p-5 shadow-sm flex items-center gap-5">
+                <div class="w-[46px] h-[46px] rounded-full bg-brand-yellow flex items-center justify-center shrink-0">
+                    <i data-lucide="film" class="w-[22px] h-[22px] text-brand-main stroke-[1.2]"></i>
+                </div>
+                <p class="text-[13.5px] leading-[1.7] text-brand-text text-left">
+                    <span class="ib">動画素材はたくさんあるのに</span>
+                    <span class="ib">リールにする時の「流れ」が作れない</span>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <div class="w-full overflow-hidden leading-none relative z-10 bg-white -mt-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" preserveAspectRatio="none" class="w-full h-12 sm:h-16 fill-brand-section scale-x-[-1]">
+            <path d="M0,60 C320,110 600,10 1000,50 C1250,70 1350,60 1440,40 L1440,0 L0,0 Z"></path>
+        </svg>
+    </div>
+
+    <section id="concept" class="py-20 px-8 relative overflow-hidden scroll-mt-8 bg-white">
+        <div class="text-center relative z-10 mb-14">
+            <h2 class="font-en text-[16px] tracking-[0.2em] text-brand-main mb-2 font-medium">CONCEPT</h2>
+            <div class="w-6 h-[1px] bg-brand-main/50 mx-auto mb-6"></div>
+            
+            <p class="text-[18px] font-medium leading-[2] tracking-wider text-brand-text">
+                <span class="ib">きれいに撮るより</span>
+                <span class="text-brand-main ib">使いやすく撮る</span>
+            </p>
+        </div>
+
+        <div class="content-text space-y-7 relative z-10 text-brand-text text-center mx-auto max-w-[340px]">
+            <p>
+                <span class="ib">写真や動画はただきれいに撮れたら</span>
+                <span class="ib">終わりではなく</span>
+                <span class="ib">その後、投稿やストーリーズ、リールで</span>
+                <span class="ib">「使いやすいか」がとても大切です</span>
+            </p>
+            <p>
+                <span class="ib">私はこれまで、Instagramのリール編集や</span>
+                <span class="ib">撮影、ストーリーズづくりに関わる中で</span>
+                <span class="ib">素材が活かしきれていない場面を</span>
+                <span class="ib">たくさん見てきました</span>
+            </p>
+            <p>
+                <span class="ib">だからこそ、撮影やレッスンでは</span>
+                <span class="ib">角度や明るさだけでなく</span>
+                <span class="ib">投稿にした時の余白</span>
+                <span class="ib">ストーリーズで文字を置く場所</span>
+                <span class="ib">リールにした時のつながりまで</span>
+                <span class="ib">考えています</span>
+            </p>
+            <p>
+                <span class="ib">大切にしているのは</span>
+                <span class="ib">作り込みすぎた不自然な写真ではなく</span>
+                <span class="ib">その人らしい雰囲気が自然に伝わり</span>
+                <span class="ib">あとから発信に使いやすい素材になること</span>
+            </p>
+            <div class="mt-10 pt-8 border-t border-brand-section text-center">
+                <p class="font-medium text-[15px] text-brand-main leading-[2]">
+                    <span class="ib">「撮って終わり」ではなく</span>
+                    <span class="ib">「投稿に使えるところ」まで</span>
+                    <span class="ib">一緒に整えることを大切にしています</span>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="reasons" class="py-20 px-6 bg-white relative scroll-mt-8">
+        <div class="text-center mb-14">
+            <h2 class="font-en text-[16px] tracking-[0.2em] text-brand-main mb-2 font-medium">WHY ME</h2>
+            <div class="w-6 h-[1px] bg-brand-main/50 mx-auto mb-4"></div>
+            <p class="text-[15px] font-medium tracking-wider text-brand-text">選ばれる理由</p>
+        </div>
+
+        <div class="space-y-12 max-w-[340px] mx-auto">
+            <div class="flex flex-col items-center text-center">
+                <span class="font-en text-4xl text-brand-yellow font-medium block mb-2">01</span>
+                <h3 class="text-[16px] font-medium leading-[1.7] tracking-wide mb-4 text-brand-text">
+                    <span class="ib">SNS発信に関わってきた</span>
+                    <span class="ib">実績があります</span>
+                </h3>
+                <div class="content-text text-brand-text space-y-4">
+                    <p>
+                        <span class="ib">これまで、フォロワー5.0万人の方の</span>
+                        <span class="ib">インスタデザイン講義動画の編集や</span>
+                        <span class="ib">フォロワー7.1万人の方の</span>
+                        <span class="ib">インタビューリール編集などを</span>
+                        <span class="ib">行ってきました</span>
                     </p>
-                    <p class="text-[13px] text-brand-text/80 leading-relaxed">
-                        あらかじめご了承ください。
+                    <p>
+                        <span class="ib">撮影した素材が</span>
+                        <span class="ib">実際に投稿やリールで使いやすいか</span>
+                        <span class="ib">その現場視点を大切にしています</span>
                     </p>
                 </div>
             </div>
 
-            <div id="contact" class="bg-white rounded-lg p-8 border border-brand-accent/20 shadow-sm text-center scroll-mt-8 relative overflow-hidden mb-6">
-                <div class="absolute -top-10 -right-10 w-32 h-32 bg-brand-bg rounded-full -z-10"></div>
-                <h3 class="text-[15px] font-medium tracking-widest text-brand-text mb-6">
-                    お申し込み・お問い合わせ
+            <div class="w-10 h-[1px] bg-brand-section mx-auto"></div>
+
+            <div class="flex flex-col items-center text-center">
+                <span class="font-en text-4xl text-brand-yellow font-medium block mb-2">02</span>
+                <h3 class="text-[16px] font-medium leading-[1.7] tracking-wide mb-4 text-brand-text">
+                    <span class="ib">カメラに詳しくない方にも</span>
+                    <span class="ib">わかりやすく</span>
                 </h3>
+                <div class="content-text text-brand-text space-y-4">
+                    <p>
+                        <span class="ib">学生時代にはCanonの販売サポートとして</span>
+                        <span class="ib">大型イベントや売場で</span>
+                        <span class="ib">説明員をしていました</span>
+                    </p>
+                    <p>
+                        <span class="ib">専門用語を並べるのではなく</span>
+                        <span class="ib">カメラに詳しくない方にも</span>
+                        <span class="ib">わかりやすく伝える</span>
+                        <span class="ib">その経験は今のサポートにも活きています</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="w-10 h-[1px] bg-brand-section mx-auto"></div>
+
+            <div class="flex flex-col items-center text-center">
+                <span class="font-en text-4xl text-brand-yellow font-medium block mb-2">03</span>
+                <h3 class="text-[16px] font-medium leading-[1.7] tracking-wide mb-4 text-brand-text">
+                    <span class="ib">iPhoneでも投稿に</span>
+                    <span class="ib">使いやすい素材づくりを</span>
+                </h3>
+                <div class="content-text text-brand-text space-y-4">
+                    <!-- trackingを詰めて「す」が落ちるのを防ぐ -->
+                    <p class="tracking-[-0.02em]">
+                        <span class="ib">iPhoneでも光の見方・角度・余白・色味を</span>
+                        <span class="ib">少し整えるだけで見え方は大きく変わります</span>
+                    </p>
+                    <p>
+                        <span class="ib">難しい機材や専門用語よりも</span>
+                        <span class="ib">今あるスマホで</span>
+                        <span class="ib">どう撮れば発信に使いやすくなるか</span>
+                        <span class="ib">確認しながらお伝えします</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="w-full overflow-hidden leading-none relative z-10 bg-brand-section -mt-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" preserveAspectRatio="none" class="w-full h-12 sm:h-16 fill-white">
+            <path d="M0,60 C320,110 600,10 1000,50 C1250,70 1350,60 1440,40 L1440,0 L0,0 Z"></path>
+        </svg>
+    </div>
+
+    <section id="cases" class="py-20 px-6 bg-brand-section scroll-mt-8 relative z-10">
+        <div class="text-center mb-14 relative z-10">
+            <h2 class="font-en text-[16px] tracking-[0.2em] text-brand-main mb-2 font-medium">WORKS</h2>
+            <div class="w-6 h-[1px] bg-brand-main/50 mx-auto mb-4"></div>
+            <p class="text-[15px] font-medium tracking-wider text-brand-text">サポート事例</p>
+        </div>
+
+        <div class="space-y-10 relative z-10 max-w-[340px] mx-auto">
+            <!-- Case 1 -->
+            <div class="bg-white rounded-[16px] p-6 shadow-sm flex flex-col items-center">
+                <div class="mb-4 text-center">
+                    <span class="font-en text-[11px] font-medium tracking-widest text-brand-main block mb-1">CASE 01: Lesson</span>
+                    <h3 class="text-[15px] font-medium tracking-wide text-brand-text">
+                        <span class="ib">ちょっとの工夫でここまで変わる</span>
+                    </h3>
+                </div>
+                <div class="mb-5 w-full">
+                    <img src="before-after.png" alt="iPhone撮影のBefore/After" class="w-full h-auto rounded-[12px] object-cover aspect-[4/3]" onerror="this.src='https://placehold.co/400x300/ecf5f1/82b899?text=Before/After'">
+                </div>
+                <div class="content-text text-brand-text text-center space-y-4">
+                    <p class="font-medium text-[14px] leading-[1.7] text-brand-main">
+                        <span class="ib">いつものカフェタイムも</span>
+                        <span class="ib">特別な一枚に</span>
+                    </p>
+                    <p>
+                        <span class="ib">ストーリーズで使いやすい余白の作り方や</span>
+                        <span class="ib">明るさ・角度を変えるだけで</span>
+                        <span class="ib">スマホで撮る日常がドラマチックに変わります</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Case 2 -->
+            <div class="bg-white rounded-[16px] p-6 shadow-sm flex flex-col items-center">
+                <div class="mb-4 text-center">
+                    <span class="font-en text-[11px] font-medium tracking-widest text-brand-main block mb-1">CASE 02: Studio</span>
+                    <h3 class="text-[15px] font-medium tracking-wide text-brand-text">
+                        <span class="ib">LPはもちろん</span>
+                        <span class="ib">投稿やストーリーズにも</span>
+                    </h3>
+                </div>
+                <div class="mb-5 w-full">
+                    <img src="studio-example.png" alt="スタジオ撮影の事例" class="w-full h-auto rounded-[12px] object-cover aspect-[4/3]" onerror="this.src='https://placehold.co/400x300/ecf5f1/82b899?text=Studio+Example'">
+                </div>
+                <div class="content-text text-brand-text text-center">
+                    <p>
+                        <span class="ib">レンタルルームで撮影した写真を</span>
+                        <span class="ib">ランディングページ（LP）にご使用いただいた</span>
+                        <span class="ib">一例です。</span>
+                        <span class="ib">使い回ししやすい余白や構図を考えて撮るため</span>
+                        <span class="ib">日々の発信にもご活用いただいています。</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Case 3 -->
+            <div class="bg-white rounded-[16px] p-6 shadow-sm flex flex-col items-center">
+                <div class="mb-4 text-center">
+                    <span class="font-en text-[11px] font-medium tracking-widest text-brand-main block mb-1">CASE 03: Reel</span>
+                    <h3 class="text-[15px] font-medium tracking-wide text-brand-text">
+                        <span class="ib">届けたリールが共感と集客に繋がる</span>
+                    </h3>
+                </div>
+                <div class="mb-5 w-full">
+                    <img src="result.png" alt="サポート実績" class="w-full h-auto rounded-[12px] object-cover aspect-[4/3]" onerror="this.src='https://placehold.co/400x300/ecf5f1/82b899?text=Support+Result'">
+                </div>
+                <div class="content-text text-brand-text text-center space-y-4">
+                    <p class="font-medium text-[14px] leading-[1.7] text-brand-main">
+                        <span class="ib">12本のリールが</span>
+                        <span class="ib">4,000人の共感に</span>
+                    </p>
+                    <p>
+                        <span class="ib">お客様の無理のないペースに合わせて</span>
+                        <span class="ib">企画・台本・撮影アドバイスを行う</span>
+                        <span class="ib">伴走サポートの成果事例です</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="w-full overflow-hidden leading-none relative z-10 bg-white -mt-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" preserveAspectRatio="none" class="w-full h-12 sm:h-16 fill-brand-section scale-x-[-1]">
+            <path d="M0,60 C320,110 600,10 1000,50 C1250,70 1350,60 1440,40 L1440,0 L0,0 Z"></path>
+        </svg>
+    </div>
+
+    <section id="menu-section" class="py-20 px-4 scroll-mt-8 relative z-10 bg-white">
+        <div class="text-center mb-14 px-2">
+            <h2 class="font-en text-[16px] tracking-[0.2em] text-brand-main mb-2 font-medium">MENU</h2>
+            <div class="w-6 h-[1px] bg-brand-main/50 mx-auto mb-4"></div>
+            <p class="text-[16px] font-medium tracking-wider text-brand-text">撮影メニュー</p>
+            <p class="text-[13px] text-brand-light mt-4">
+                <span class="ib">まずは“発信で使える素材”を撮るところから</span>
+            </p>
+        </div>
+
+        <div class="space-y-12 max-w-[340px] mx-auto">
+            <!-- Menu 1 -->
+            <div id="menu1" class="bg-white rounded-[16px] p-6 shadow-sm border border-brand-section scroll-mt-12 flex flex-col items-center">
+                <div class="mb-5 pb-5 border-b border-brand-section text-center w-full">
+                    <h3 class="text-[16px] font-medium text-brand-text leading-[1.5] mb-3">iPhone写真素材撮影</h3>
+                    <p class="font-en text-[22px] text-brand-main font-medium tracking-wide">12,800<span class="text-[12px] text-brand-text ml-0.5 font-sans">円</span></p>
+                    <p class="text-[12px] text-brand-light mt-1">所要時間 約1時間</p>
+                </div>
+                <div class="content-text mb-6 text-brand-text text-center space-y-4">
+                    <p>
+                        <span class="ib">投稿やストーリーズに使いやすい写真素材を</span>
+                        <span class="ib">iPhoneで撮影します。</span>
+                        <span class="ib">あとから発信に使いやすいよう</span>
+                        <span class="ib">余白や背景を整えながら撮影します。</span>
+                    </p>
+                    <p>
+                        <span class="ib">数百枚の中から厳選し</span>
+                        <span class="ib tracking-[-0.02em] whitespace-nowrap">約20枚のレタッチ済みデータとして納品します。</span>
+                    </p>
+                </div>
                 
-                <button id="openFormBtn" class="flex items-center justify-center w-fit mx-auto gap-2 bg-brand-text text-white px-10 py-3.5 rounded-full text-[13px] tracking-widest hover:bg-brand-text/80 transition-all shadow-md font-medium mb-5">
-                    <i data-lucide="mail" class="w-4 h-4 shrink-0"></i>
-                    <span class="translate-x-[0.1em]">お申し込み</span>
-                </button>
+                <details class="group mb-6 border-t border-brand-section w-full">
+                    <summary class="flex justify-between items-center font-medium cursor-pointer text-[14px] text-brand-main py-4 px-2">
+                        <span class="tracking-wide">撮影に含まれる内容</span>
+                        <span class="accordion-icon text-brand-main leading-none"></span>
+                    </summary>
+                    <div class="content-text pb-4 text-[13px] text-brand-text flex flex-col items-center">
+                        <ul class="space-y-2 inline-block text-left">
+                            <li class="list-item-custom">iPhoneでの写真撮影</li>
+                            <li class="list-item-custom">余白や背景の調整</li>
+                            <li class="list-item-custom">数百枚からの厳選作業</li>
+                            <li class="list-item-custom">約20枚のレタッチ済みデータ納品</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <div class="px-4 w-full max-w-[280px]">
+                    <button onclick="openFormWithPlan('iPhone写真素材撮影')" class="w-full bg-brand-main text-white py-3.5 rounded-full text-[13px] tracking-widest font-medium hover:bg-opacity-90 transition-colors shadow-sm whitespace-nowrap">
+                        お申し込み
+                    </button>
+                </div>
+            </div>
+
+            <!-- Menu 2 -->
+            <div id="menu2" class="bg-white rounded-[16px] p-6 shadow-sm border border-brand-section scroll-mt-12 flex flex-col items-center">
+                <div class="mb-5 pb-5 border-b border-brand-section text-center w-full">
+                    <h3 class="text-[16px] font-medium text-brand-text leading-[1.5] mb-3">iPhone動画素材撮影</h3>
+                    <p class="font-en text-[22px] text-brand-main font-medium tracking-wide">29,800<span class="text-[12px] text-brand-text ml-0.5 font-sans">円〜</span></p>
+                    <p class="text-[12px] text-brand-light mt-1">所要時間 約2時間</p>
+                </div>
+                <div class="content-text mb-6 text-brand-text text-center space-y-4">
+                    <p>
+                        <span class="ib">リールやストーリーズで使いやすいよう</span>
+                        <span class="ib">iPhoneで動画素材を撮影します。</span>
+                        <span class="ib">動きや画角、流れを考え</span>
+                        <span class="ib">編集した時に伝わりやすい素材を設計します。</span>
+                    </p>
+                    <p>
+                        <span class="ib">1回の撮影素材を</span>
+                        <span class="ib">様々な発信に使い回しやすい形で撮影します。</span>
+                    </p>
+                </div>
                 
-                <p class="text-[12px] text-brand-text/80 leading-relaxed text-center">
-                    その他、ご不明な点やご相談も、<br>
-                    お気軽にお問い合わせください。
+                <details class="group mb-6 border-t border-brand-section w-full">
+                    <summary class="flex justify-between items-center font-medium cursor-pointer text-[14px] text-brand-main py-4 px-2">
+                        <span class="tracking-wide">撮影に含まれる内容</span>
+                        <span class="accordion-icon text-brand-main leading-none"></span>
+                    </summary>
+                    <div class="content-text pb-4 text-[13px] text-brand-text flex flex-col items-center">
+                        <ul class="space-y-2 inline-block text-left">
+                            <li class="list-item-custom">iPhoneでの動画素材撮影</li>
+                            <li class="list-item-custom">動きや流れを考えた素材設計</li>
+                            <li class="list-item-custom">様々な発信への使い回しを想定</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <div class="px-4 w-full max-w-[280px]">
+                    <button onclick="openFormWithPlan('iPhone動画素材撮影')" class="w-full bg-brand-main text-white py-3.5 rounded-full text-[13px] tracking-widest font-medium hover:bg-opacity-90 transition-colors shadow-sm whitespace-nowrap">
+                        お申し込み
+                    </button>
+                </div>
+            </div>
+
+            <!-- Menu 3 -->
+            <div id="menu3" class="bg-white rounded-[16px] p-6 shadow-sm border border-brand-section scroll-mt-12 flex flex-col items-center">
+                <div class="mb-5 pb-5 border-b border-brand-section text-center w-full">
+                    <h3 class="text-[16px] font-medium text-brand-text leading-[1.5] mb-3">iPhone撮り方実践レッスン</h3>
+                    <p class="font-en text-[22px] text-brand-main font-medium tracking-wide">16,500<span class="text-[12px] text-brand-text ml-0.5 font-sans">円</span></p>
+                    <p class="text-[12px] text-brand-light mt-1">所要時間 約2時間</p>
+                </div>
+                <div class="content-text mb-6 text-brand-text text-center space-y-4">
+                    <p>
+                        <span class="ib">ご自身で使いやすい写真が撮れるよう</span>
+                        <span class="ib">一緒に撮りながらお伝えする</span>
+                        <span class="ib">実践レッスンです。</span>
+                    </p>
+                    <p>
+                        <span class="ib">角度や余白の整え方から</span>
+                        <span class="ib">写真アプリでの明るさ・色味調整まで</span>
+                        <span class="ib">あなたの発信内容に合わせて確認します。</span>
+                    </p>
+                </div>
+                
+                <details class="group mb-6 border-t border-brand-section w-full">
+                    <summary class="flex justify-between items-center font-medium cursor-pointer text-[14px] text-brand-main py-4 px-2">
+                        <span class="tracking-wide">レッスンに含まれる内容</span>
+                        <span class="accordion-icon text-brand-main leading-none"></span>
+                    </summary>
+                    <div class="content-text pb-4 text-[13px] text-brand-text flex flex-col items-center">
+                        <ul class="space-y-2 inline-block text-left w-full max-w-[240px]">
+                            <li class="list-item-custom">実践形式での写真撮影レッスン</li>
+                            <li class="list-item-custom">角度や余白の整え方のアドバイス</li>
+                            <li class="list-item-custom">明るさ・色味調整レクチャー</li>
+                        </ul>
+                        <div class="mt-4 p-3 bg-brand-section rounded-lg text-[12px] text-brand-light text-center w-full">
+                            <p>※写真納品・リール編集は含まれません</p>
+                            <p>※Androidは基本操作レクチャー対象外</p>
+                        </div>
+                    </div>
+                </details>
+
+                <div class="px-4 w-full max-w-[280px]">
+                    <button onclick="openFormWithPlan('iPhone撮り方実践レッスン')" class="w-full bg-brand-main text-white py-3.5 rounded-full text-[13px] tracking-widest font-medium hover:bg-opacity-90 transition-colors shadow-sm whitespace-nowrap">
+                        お申し込み
+                    </button>
+                </div>
+            </div>
+
+            <!-- Menu 4 -->
+            <div id="menu4" class="bg-white rounded-[16px] p-6 shadow-sm border border-brand-section scroll-mt-12 flex flex-col items-center">
+                <div class="mb-5 pb-5 border-b border-brand-section text-center w-full">
+                    <h3 class="text-[16px] font-medium text-brand-text leading-[1.5] mb-3">カメラでのスタジオ撮影</h3>
+                    <p class="font-en text-[22px] text-brand-main font-medium tracking-wide">29,800<span class="text-[12px] text-brand-text ml-0.5 font-sans">円〜</span></p>
+                    <p class="text-[12px] text-brand-light mt-1">所要時間 約2時間</p>
+                </div>
+                <div class="content-text mb-6 text-brand-text text-center space-y-4">
+                    <p>
+                        <span class="ib">カメラを使用し、スタジオでしっかりと</span>
+                        <span class="ib">世界観や見え方を整えて撮影します。</span>
+                        <span class="ib">告知用素材やLPなど</span>
+                        <span class="ib">きちんとした印象で残したい方向けです。</span>
+                    </p>
+                    <p>
+                        <span class="ib">厳選後、1枚ずつ明るさや色味を調整した</span>
+                        <span class="ib">レタッチ済みデータをお渡しします。</span>
+                    </p>
+                </div>
+                
+                <details class="group mb-6 border-t border-brand-section w-full">
+                    <summary class="flex justify-between items-center font-medium cursor-pointer text-[14px] text-brand-main py-4 px-2">
+                        <span class="tracking-wide">撮影に含まれる内容</span>
+                        <span class="accordion-icon text-brand-main leading-none"></span>
+                    </summary>
+                    <div class="content-text pb-4 text-[13px] text-brand-text flex flex-col items-center">
+                        <ul class="space-y-2 inline-block text-left w-full max-w-[240px]">
+                            <li class="list-item-custom">カメラを使用したスタジオ撮影</li>
+                            <li class="list-item-custom">世界観や見え方の調整</li>
+                            <li class="list-item-custom">レタッチ済みデータ納品</li>
+                        </ul>
+                        <p class="mt-4 text-[12px] p-3 bg-brand-section rounded-lg text-brand-light w-full text-center">※スタジオ代は別途お客様負担</p>
+                    </div>
+                </details>
+
+                <div class="px-4 w-full max-w-[280px]">
+                    <button onclick="openFormWithPlan('スタジオ撮影')" class="w-full bg-brand-main text-white py-3.5 rounded-full text-[13px] tracking-widest font-medium hover:bg-opacity-90 transition-colors shadow-sm whitespace-nowrap">
+                        お申し込み
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="w-full overflow-hidden leading-none relative z-10 bg-brand-section -mt-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" preserveAspectRatio="none" class="w-full h-12 sm:h-16 fill-white">
+            <path d="M0,60 C320,110 600,10 1000,50 C1250,70 1350,60 1440,40 L1440,0 L0,0 Z"></path>
+        </svg>
+    </div>
+
+    <section id="menu-other" class="py-20 px-4 bg-brand-section scroll-mt-8 relative z-10">
+        <div class="text-center mb-10 px-2">
+            <h3 class="text-[15px] font-medium tracking-wide text-brand-text">リール・その他のサポート</h3>
+        </div>
+        
+        <div class="space-y-6 max-w-[340px] mx-auto">
+            <!-- 伴走（満席） -->
+            <div class="bg-white rounded-[16px] p-6 shadow-sm border border-brand-section flex flex-col items-center text-center">
+                <div class="flex flex-col items-center justify-center gap-2 mb-4 w-full">
+                    <span class="text-[11px] bg-brand-light/20 text-brand-text px-2.5 py-1 rounded-full font-medium tracking-widest shrink-0">満席</span>
+                    <h4 class="text-[15px] font-medium text-brand-text">自走を目指す クリエイティブ伴走</h4>
+                </div>
+                <p class="font-en font-medium text-[16px] text-brand-main mb-3">月4本 40,000円〜 <span class="text-[12px] font-sans font-normal text-brand-light">（＋初回10k）</span></p>
+                <p class="content-text text-[13px] text-brand-text">
+                    <span class="ib">台本添削 撮影アドバイス インサイト確認など</span><br>
+                    <span class="ib">※現在新規受付停止中</span>
                 </p>
             </div>
-            
-        </section>
 
-        <footer class="pt-10 pb-12 px-6 bg-brand-text text-white flex flex-col items-center text-center">
-            <p class="font-en text-[15.5px] tracking-[0.15em] text-white/90 mb-3">
-                ATSUKO KARASAWA
-            </p>
-            
-            <a href="https://www.instagram.com/kara_photo.douga/" target="_blank" rel="noopener noreferrer" class="text-white/90 hover:text-white transition-colors mb-4 p-1 focus:outline-none flex items-center justify-center">
-                <!-- 外部ライブラリに依存しないSVG直書きのInstagramアイコン -->
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5">
-                    <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
-                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
-                </svg>
-            </a>
-            
-            <div class="text-[10px] leading-relaxed text-white/50 tracking-wider">
-                <p class="mb-2 font-en">&copy; 2026 kara_photo.douga All Rights Reserved.</p>
-                <p>無断転載はご遠慮ください。</p>
+            <!-- ショート動画編集（満席） -->
+            <div class="bg-white rounded-[16px] p-6 shadow-sm border border-brand-section flex flex-col items-center text-center">
+                <div class="flex flex-col items-center justify-center gap-2 mb-4 w-full">
+                    <span class="text-[11px] bg-brand-light/20 text-brand-text px-2.5 py-1 rounded-full font-medium tracking-widest shrink-0">満席</span>
+                    <h4 class="text-[15px] font-medium text-brand-text">ショート動画編集</h4>
+                </div>
+                <p class="font-en font-medium text-[16px] text-brand-main mb-3">1本 4,500円〜7,000円</p>
+                <p class="content-text text-[13px] text-brand-text space-y-2">
+                    <span class="ib">いただいた素材をもとに発信目的に合わせ</span>
+                    <span class="ib">カットやテロップ挿入を行います。</span><br>
+                    <span class="ib">※現在新規受付停止中</span>
+                </p>
             </div>
-        </footer>
 
+            <!-- セミナー・個別指導 -->
+            <div class="bg-white rounded-[16px] p-6 shadow-sm mt-8 border border-brand-section flex flex-col items-center text-center">
+                <h4 class="text-[15px] font-medium mb-4 text-brand-text">少人数セミナー・動画編集個別指導</h4>
+                <div class="content-text text-[13.5px] mb-6 text-brand-text space-y-4">
+                    <p>
+                        <span class="ib">スマホ写真やリール素材の撮り方セミナー</span>
+                        <span class="ib">マンツーマンでの動画編集指導も承ります。</span>
+                    </p>
+                    <p class="text-[12px] text-brand-text text-center">
+                        <span class="ib">※チケット制など詳細はお問い合わせください</span>
+                    </p>
+                </div>
+                <div class="px-2 w-full max-w-[280px]">
+                    <button onclick="openFormWithPlan('その他・ご相談')" class="w-full bg-brand-main text-white py-3 rounded-full text-[13px] font-medium tracking-widest hover:bg-brand-main/90 transition-colors shadow-sm whitespace-nowrap">
+                        ご相談・お問い合わせ
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="w-full overflow-hidden leading-none relative z-10 bg-white -mt-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" preserveAspectRatio="none" class="w-full h-12 sm:h-16 fill-brand-section scale-x-[-1]">
+            <path d="M0,60 C320,110 600,10 1000,50 C1250,70 1350,60 1440,40 L1440,0 L0,0 Z"></path>
+        </svg>
+    </div>
+
+    <section id="flow" class="py-20 px-4 relative scroll-mt-8 z-10 bg-white">
+        <div class="text-center mb-14">
+            <h2 class="font-en text-[16px] tracking-[0.2em] text-brand-main mb-2 font-medium">FLOW</h2>
+            <div class="w-6 h-[1px] bg-brand-main/50 mx-auto mb-4"></div>
+            <p class="text-[13px] text-brand-light">
+                <span class="ib">お問い合わせから納品までの流れ</span>
+            </p>
+        </div>
+
+        <div class="max-w-[340px] mx-auto space-y-3">
+            
+            <!-- Step 1 -->
+            <div class="flex items-center">
+                <div class="w-12 h-12 rounded-full bg-brand-main flex items-center justify-center shrink-0 z-10 shadow-sm relative mr-[-16px]">
+                    <span class="font-en text-[18px] text-white font-medium">01</span>
+                </div>
+                <div class="flex-1 bg-brand-yellow/30 rounded-r-full py-4 pr-6 pl-8 text-left">
+                    <h3 class="text-[14px] font-medium text-brand-main tracking-wide">お問い合わせ</h3>
+                    <p class="text-[11px] text-brand-text mt-1 leading-relaxed">
+                        <span class="ib">下部フォームまたはDMよりご連絡ください</span>
+                    </p>
+                </div>
+            </div>
+            
+            <div class="flex justify-center py-1">
+                <i data-lucide="chevron-down" class="w-4 h-4 text-brand-light/30"></i>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="flex items-center">
+                <div class="w-12 h-12 rounded-full bg-brand-main flex items-center justify-center shrink-0 z-10 shadow-sm relative mr-[-16px]">
+                    <span class="font-en text-[18px] text-white font-medium">02</span>
+                </div>
+                <div class="flex-1 bg-brand-yellow/30 rounded-r-full py-4 pr-6 pl-8 text-left">
+                    <h3 class="text-[14px] font-medium text-brand-main tracking-wide">日程調整・ヒアリング</h3>
+                    <p class="text-[11px] text-brand-text mt-1 leading-relaxed">
+                        <span class="block">候補日と場所をお知らせいただき</span>
+                        <span class="block">内容をすり合わせます</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="flex justify-center py-1">
+                <i data-lucide="chevron-down" class="w-4 h-4 text-brand-light/30"></i>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="flex items-center">
+                <div class="w-12 h-12 rounded-full bg-brand-main flex items-center justify-center shrink-0 z-10 shadow-sm relative mr-[-16px]">
+                    <span class="font-en text-[18px] text-white font-medium">03</span>
+                </div>
+                <div class="flex-1 bg-brand-yellow/30 rounded-r-full py-4 pr-6 pl-8 text-left">
+                    <h3 class="text-[14px] font-medium text-brand-main tracking-wide">お支払い（事前決済）</h3>
+                    <p class="text-[11px] text-brand-text mt-1 leading-relaxed">
+                        <span class="ib">指定口座へのお振込みをお願いいたします</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="flex justify-center py-1">
+                <i data-lucide="chevron-down" class="w-4 h-4 text-brand-light/30"></i>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="flex items-center">
+                <div class="w-12 h-12 rounded-full bg-brand-main flex items-center justify-center shrink-0 z-10 shadow-sm relative mr-[-16px]">
+                    <span class="font-en text-[18px] text-white font-medium">04</span>
+                </div>
+                <div class="flex-1 bg-brand-yellow/30 rounded-r-full py-4 pr-6 pl-8 text-left">
+                    <h3 class="text-[14px] font-medium text-brand-main tracking-wide">撮影・レッスン当日</h3>
+                    <p class="text-[11px] text-brand-text mt-1 leading-relaxed">
+                        <span class="ib">リラックスした雰囲気で楽しく進めます</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="flex justify-center py-1">
+                <i data-lucide="chevron-down" class="w-4 h-4 text-brand-light/30"></i>
+            </div>
+
+            <!-- Step 5 -->
+            <div class="flex items-center">
+                <div class="w-12 h-12 rounded-full bg-brand-main flex items-center justify-center shrink-0 z-10 shadow-sm relative mr-[-16px]">
+                    <span class="font-en text-[18px] text-white font-medium">05</span>
+                </div>
+                <div class="flex-1 bg-brand-yellow/30 rounded-r-full py-4 pr-6 pl-8 text-left">
+                    <h3 class="text-[14px] font-medium text-brand-main tracking-wide">データ納品</h3>
+                    <p class="text-[11px] text-brand-text mt-1 leading-relaxed">
+                        <span class="ib">編集後、ギガファイル便にてお渡しします</span>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <div class="w-full overflow-hidden leading-none relative z-10 bg-brand-section -mt-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" preserveAspectRatio="none" class="w-full h-12 sm:h-16 fill-white">
+            <path d="M0,60 C320,110 600,10 1000,50 C1250,70 1350,60 1440,40 L1440,0 L0,0 Z"></path>
+        </svg>
+    </div>
+
+    <section id="contact" class="py-20 px-6 bg-brand-section scroll-mt-8 relative z-10">
+        <div class="mb-14 text-center">
+            <p class="text-[13px] font-medium tracking-widest text-brand-main mb-3">キャンセルポリシー</p>
+            <p class="text-[12px] text-brand-text leading-[1.8]">
+                <span class="ib">お支払い後の返金は致しかねます。</span>
+                <span class="ib">あらかじめご了承ください。</span>
+            </p>
+        </div>
+
+        <div class="text-center relative z-10 bg-white rounded-[24px] p-8 shadow-sm border border-brand-section max-w-[340px] mx-auto">
+            <h2 class="text-[16px] font-medium tracking-wide text-brand-text mb-4">
+                お申し込み・お問い合わせ
+            </h2>
+            <div class="text-[13px] text-brand-text leading-[1.8] mb-8 text-center space-y-2">
+                <p>
+                    <span class="ib">ご希望のメニューまたはご相談事項を</span>
+                    <span class="ib">下記よりお気軽にご連絡ください</span>
+                </p>
+            </div>
+
+            <div class="space-y-4 max-w-[280px] mx-auto">
+                <button onclick="openFormWithPlan('')" class="w-full flex items-center justify-center gap-2 bg-brand-main text-white px-8 py-3.5 rounded-full text-[14px] tracking-widest hover:bg-opacity-90 transition-shadow shadow-sm font-medium whitespace-nowrap">
+                    <i data-lucide="mail" class="w-4 h-4 shrink-0"></i>
+                    <span>お申し込み</span>
+                </button>
+                
+                <a href="https://www.instagram.com/kara_photo.douga/" target="_blank" rel="noopener noreferrer" class="w-full flex items-center justify-center gap-2 bg-white border border-brand-border text-brand-text px-8 py-3.5 rounded-full text-[13px] tracking-widest hover:bg-brand-section transition-colors font-medium whitespace-nowrap">
+                    <i data-lucide="instagram" class="w-4 h-4 shrink-0"></i>
+                    <span>Instagram DMから相談</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="pt-16 pb-16 px-6 bg-brand-main text-white flex flex-col items-center text-center relative z-10">
+        <p class="font-en text-[18px] font-medium tracking-[0.15em] mb-6 text-white/90">
+            ATSUKO KARASAWA
+        </p>
+        
+        <!-- 白抜きの美しいInstagramアイコン -->
+        <a href="https://www.instagram.com/kara_photo.douga/" target="_blank" rel="noopener noreferrer" class="text-white hover:opacity-70 transition-opacity mb-8 flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+            </svg>
+        </a>
+        
+        <div class="text-[11px] leading-[2] text-white/80 tracking-wider">
+            <p class="mb-1 font-en">&copy; 2026 kara_photo.douga</p>
+            <p>無断転載はご遠慮ください</p>
+        </div>
+    </footer>
+
+    <!-- モーダルフォーム -->
+    <div id="formModal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4">
+        <div id="formOverlayBtn" class="absolute inset-0 bg-brand-text/40 backdrop-blur-sm transition-opacity"></div>
+        
+        <div class="relative bg-white rounded-[20px] shadow-xl w-full max-w-md max-h-[90vh] flex flex-col overflow-hidden animate-[fadeIn_0.3s_ease-out]">
+            <div class="px-6 py-5 border-b border-brand-section flex justify-between items-center bg-brand-bg">
+                <h3 class="font-medium text-brand-text tracking-wide text-[15px] flex items-center gap-2">
+                    <i data-lucide="mail" class="w-4 h-4 text-brand-main"></i>お申し込み
+                </h3>
+                <button id="closeFormBtn" class="text-brand-light hover:text-brand-main transition-colors p-1">
+                    <i data-lucide="x" class="w-5 h-5 stroke-[1.5]"></i>
+                </button>
+            </div>
+            
+            <div class="p-6 overflow-y-auto bg-white">
+                <form id="applyForm" class="space-y-5 text-left">
+                    <div>
+                        <label for="entryName" class="block text-[12px] font-medium text-brand-text mb-1.5">お名前 <span class="text-brand-main">*</span></label>
+                        <input type="text" id="entryName" required placeholder="例：山田 花子" class="w-full border border-brand-border rounded-lg px-4 py-2.5 text-[14px] text-brand-text focus:outline-none focus:border-brand-main focus:ring-1 focus:ring-brand-main/50 bg-[#FCFDFD] placeholder:text-brand-light/50">
+                    </div>
+
+                    <div>
+                        <label for="entryKana" class="block text-[12px] font-medium text-brand-text mb-1.5">なまえ（ふりがな） <span class="text-brand-main">*</span></label>
+                        <input type="text" id="entryKana" required placeholder="例：やまだ はなこ" class="w-full border border-brand-border rounded-lg px-4 py-2.5 text-[14px] text-brand-text focus:outline-none focus:border-brand-main focus:ring-1 focus:ring-brand-main/50 bg-[#FCFDFD] placeholder:text-brand-light/50">
+                    </div>
+
+                    <div>
+                        <label for="entryPlan" class="block text-[12px] font-medium text-brand-text mb-1.5">お問い合わせ内容 <span class="text-brand-main">*</span></label>
+                        <select id="entryPlan" required class="w-full border border-brand-border rounded-lg px-4 py-2.5 text-[14px] text-brand-text focus:outline-none focus:border-brand-main focus:ring-1 focus:ring-brand-main/50 bg-[#FCFDFD] appearance-none cursor-pointer">
+                            <option value="" disabled selected>選択してください</option>
+                            <option value="iPhone写真素材撮影">投稿に使える iPhone写真素材撮影</option>
+                            <option value="iPhone動画素材撮影">リールに使える iPhone動画素材撮影</option>
+                            <option value="iPhone撮り方レッスン">用途に合わせた iPhone撮り方レッスン</option>
+                            <option value="スタジオ撮影">カメラでの スタジオ撮影</option>
+                            <option value="その他・ご相談">セミナー・個別指導・その他ご相談</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="entryComment" class="block text-[12px] font-medium text-brand-text mb-1.5">フリーコメント欄</label>
+                        <textarea id="entryComment" rows="4" placeholder="ご質問や、希望する日程の候補などがあればご記入ください。" class="w-full border border-brand-border rounded-lg px-4 py-2.5 text-[14px] text-brand-text focus:outline-none focus:border-brand-main focus:ring-1 focus:ring-brand-main/50 bg-[#FCFDFD] placeholder:text-brand-light/50 resize-none"></textarea>
+                    </div>
+
+                    <div class="pt-2">
+                        <button type="submit" class="w-full bg-brand-main text-white py-3.5 rounded-full text-[14px] tracking-widest font-medium hover:bg-opacity-90 transition-shadow shadow-sm flex items-center justify-center gap-2 whitespace-nowrap">
+                            <i data-lucide="send" class="w-4 h-4"></i> メールアプリを起動して送信
+                        </button>
+                    </div>
+                </form>
+                <div class="mt-5 p-4 bg-brand-section rounded-lg text-center border border-brand-border/50">
+                    <p class="text-[11px] text-brand-text/80 leading-[1.7] break-keep">
+                        ※送信ボタンを押すと、お使いの端末の<br>
+                        <strong class="text-brand-text">メールアプリ</strong>が自動で立ち上がります。<br>
+                        内容をご確認の上、そのまま送信をお願いいたします。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- スクリプト -->
+    <script>
+        lucide.createIcons();
+
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuOverlay = document.getElementById('menuOverlay');
+        const menuLinks = document.querySelectorAll('.menu-link');
+        const iconMenu = document.getElementById('icon-menu');
+        const iconClose = document.getElementById('icon-close');
+
+        function openMenu() {
+            menuOverlay.classList.remove('hidden');
+            mobileMenu.classList.remove('opacity-0', 'scale-95', 'pointer-events-none');
+            mobileMenu.classList.add('opacity-100', 'scale-100', 'pointer-events-auto');
+            iconMenu.classList.add('hidden');
+            iconClose.classList.remove('hidden');
+        }
+
+        function closeMenu() {
+            menuOverlay.classList.add('hidden');
+            mobileMenu.classList.remove('opacity-100', 'scale-100', 'pointer-events-auto');
+            mobileMenu.classList.add('opacity-0', 'scale-95', 'pointer-events-none');
+            iconMenu.classList.remove('hidden');
+            iconClose.classList.add('hidden');
+        }
+
+        menuBtn.addEventListener('click', () => {
+            if (mobileMenu.classList.contains('opacity-0')) openMenu();
+            else closeMenu();
+        });
+
+        menuOverlay.addEventListener('click', closeMenu);
+        menuLinks.forEach(link => link.addEventListener('click', closeMenu));
+
+        const formModal = document.getElementById('formModal');
+        const closeFormBtn = document.getElementById('closeFormBtn');
+        const formOverlayBtn = document.getElementById('formOverlayBtn');
+
+        function openFormWithPlan(planValue) {
+            const select = document.getElementById('entryPlan');
+            if(planValue) {
+                for(let i=0; i<select.options.length; i++) {
+                    if(select.options[i].value === planValue) {
+                        select.selectedIndex = i;
+                        break;
+                    }
+                }
+            } else {
+                select.selectedIndex = 0;
+            }
+            formModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeForm() {
+            formModal.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        closeFormBtn.addEventListener('click', closeForm);
+        formOverlayBtn.addEventListener('click', closeForm);
+
+        document.getElementById('applyForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('entryName').value;
+            const kana = document.getElementById('entryKana').value;
+            const plan = document.getElementById('entryPlan').value;
+            const comment = document.getElementById('entryComment').value;
+
+            const toEmail = "a2kara12@gmail.com";
+            const subject = "【お申し込み】" + plan + " - " + name + "様";
+            let body = "以下の内容でお申し込みを受け付けました。\n\n";
+            body += "【お名前】\n" + name + " (" + kana + ")\n\n";
+            body += "【内容】\n" + plan + "\n\n";
+            body += "【フリーコメント】\n" + (comment ? comment : "なし") + "\n\n";
+            body += "--------------------------------------\n";
+            body += "※このまま送信ボタンを押してください。";
+
+            window.location.href = `mailto:${toEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            setTimeout(closeForm, 500);
+        });
+    </script>
 </div>
-
-<!-- お申し込みフォームモーダル（ポップアップ） -->
-<div id="formModal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4">
-<!-- 背景の暗いオーバーレイ -->
-<div id="formOverlayBtn" class="absolute inset-0 bg-brand-text/50 backdrop-blur-sm transition-opacity"></div>
-<!-- モーダル本体 -->
-<div class="relative bg-white rounded-2xl shadow-xl w-full max-w-md max-h-[90vh] flex flex-col overflow-hidden animate-[fadeIn_0.3s_ease-out]">
-<!-- ヘッダー部分 -->
-<div class="px-6 py-5 border-b border-brand-accent/20 flex justify-between items-center bg-brand-bg">
-<h3 class="font-medium text-brand-text tracking-widest text-[15px] flex items-center gap-2">
-<i data-lucide="mail" class="w-4 h-4 text-brand-accent"></i>お申し込み
-</h3>
-<button id="closeFormBtn" class="text-brand-light hover:text-brand-accent transition-colors p-1">
-<i data-lucide="x" class="w-5 h-5"></i>
-</button>
-</div>
-<!-- フォーム入力部分 -->
-<div class="p-6 overflow-y-auto bg-white">
-<form id="applyForm" class="space-y-5">
-<div>
-<label for="entryName" class="block text-[12px] font-medium text-brand-text mb-1.5">お名前 <span class="text-brand-accent">*</span></label>
-<input type="text" id="entryName" required placeholder="例：山田 花子" class="w-full border border-brand-accent/30 rounded-lg px-3.5 py-2.5 text-[14px] text-brand-text focus:outline-none focus:border-brand-accent focus:ring-1 focus:ring-brand-accent/50 bg-[#FDFBF9] placeholder:text-brand-light/60">
-</div>
-
-<div>
-<label for="entryKana" class="block text-[12px] font-medium text-brand-text mb-1.5">なまえ（ふりがな） <span class="text-brand-accent">*</span></label>
-<input type="text" id="entryKana" required placeholder="例：やまだ はなこ" class="w-full border border-brand-accent/30 rounded-lg px-3.5 py-2.5 text-[14px] text-brand-text focus:outline-none focus:border-brand-accent focus:ring-1 focus:ring-brand-accent/50 bg-[#FDFBF9] placeholder:text-brand-light/60">
-</div>
-
-<div>
-<label for="entryPlan" class="block text-[12px] font-medium text-brand-text mb-1.5">ご希望のプラン <span class="text-brand-accent">*</span></label>
-<select id="entryPlan" required class="w-full border border-brand-accent/30 rounded-lg px-3.5 py-2.5 text-[14px] text-brand-text focus:outline-none focus:border-brand-accent focus:ring-1 focus:ring-brand-accent/50 bg-[#FDFBF9] appearance-none cursor-pointer">
-<option value="" disabled selected>選択してください</option>
-<option value="iPhone写真素材撮影">投稿に使える iPhone写真素材撮影</option>
-<option value="iPhone動画素材撮影">リールに使える iPhone動画素材撮影</option>
-<option value="iPhone撮り方実践レッスン">用途に合わせた iPhone撮り方実践レッスン</option>
-<option value="スタジオ撮影">カメラでの スタジオ撮影</option>
-<option value="クリエイティブ伴走（満席）" disabled>自走を目指す クリエイティブ伴走（※現在満席）</option>
-<option value="少人数セミナー・グループレッスン">少人数セミナー・グループレッスン</option>
-<option value="動画編集の個別指導">動画編集の個別指導</option>
-<option value="ショート動画編集（満席）" disabled>ショート動画編集（※現在満席）</option>
-</select>
-</div>
-
-<div>
-<label for="entryComment" class="block text-[12px] font-medium text-brand-text mb-1.5">フリーコメント欄</label>
-<textarea id="entryComment" rows="4" placeholder="ご質問や、希望する日程の候補などがあればご記入ください。" class="w-full border border-brand-accent/30 rounded-lg px-3.5 py-2.5 text-[14px] text-brand-text focus:outline-none focus:border-brand-accent focus:ring-1 focus:ring-brand-accent/50 bg-[#FDFBF9] placeholder:text-brand-light/60 resize-none"></textarea>
-</div>
-
-<div class="pt-2">
-<button type="submit" class="w-full bg-brand-text text-white py-3.5 rounded-full text-[13px] tracking-widest font-medium hover:bg-brand-text/80 transition-shadow shadow-md flex items-center justify-center gap-2">
-<i data-lucide="send" class="w-4 h-4"></i> メールアプリを起動して送信
-</button>
-</div>
-</form>
-<div class="mt-4 p-3 bg-brand-bg rounded-lg border border-brand-accent/10">
-<p class="text-[10px] text-brand-light text-center leading-relaxed">
-※送信ボタンを押すと、お使いのスマホ・PCの<br>
-<strong>メールアプリ（メール画面）</strong>が自動で立ち上がります。<br>
-内容をご確認の上、そのまま送信をお願いいたします。
-</p>
-</div>
-</div>
-</div>
-</div>
-
-<!-- モーダル出現時のアニメーション用CSS -->
-<style>
-@keyframes fadeIn {
-from { opacity: 0; transform: scale(0.95); }
-to { opacity: 1; transform: scale(1); }
-}
-</style>
-
-<script>
-// Lucideアイコンの初期化
-lucide.createIcons();
-
-// ----------------------------------------------------
-// ハンバーガーメニューの開閉ロジック
-// ----------------------------------------------------
-const menuBtn = document.getElementById('menuBtn');
-const mobileMenu = document.getElementById('mobileMenu');
-const menuOverlay = document.getElementById('menuOverlay');
-const menuLinks = document.querySelectorAll('.menu-link');
-const iconMenu = document.getElementById('icon-menu');
-const iconClose = document.getElementById('icon-close');
-
-function openMenu() {
-menuOverlay.classList.remove('hidden');
-mobileMenu.classList.remove('opacity-0', 'scale-95', 'pointer-events-none');
-mobileMenu.classList.add('opacity-100', 'scale-100', 'pointer-events-auto');
-iconMenu.classList.add('hidden');
-iconClose.classList.remove('hidden');
-}
-
-function closeMenu() {
-menuOverlay.classList.add('hidden');
-mobileMenu.classList.remove('opacity-100', 'scale-100', 'pointer-events-auto');
-mobileMenu.classList.add('opacity-0', 'scale-95', 'pointer-events-none');
-iconMenu.classList.remove('hidden');
-iconClose.classList.add('hidden');
-}
-
-menuBtn.addEventListener('click', () => {
-if (mobileMenu.classList.contains('opacity-0')) {
-openMenu();
-} else {
-closeMenu();
-}
-});
-
-menuOverlay.addEventListener('click', closeMenu);
-menuLinks.forEach(link => {
-link.addEventListener('click', closeMenu);
-});
-
-// ----------------------------------------------------
-// お申し込みフォーム（モーダル）のロジック
-// ----------------------------------------------------
-const openFormBtn = document.getElementById('openFormBtn');
-const closeFormBtn = document.getElementById('closeFormBtn');
-const formModal = document.getElementById('formModal');
-const formOverlayBtn = document.getElementById('formOverlayBtn');
-const applyForm = document.getElementById('applyForm');
-
-// フォームを開く
-openFormBtn.addEventListener('click', () => {
-formModal.classList.remove('hidden');
-document.body.style.overflow = 'hidden'; // 背景のスクロールを止める
-});
-
-// フォームを閉じる関数
-function closeForm() {
-formModal.classList.add('hidden');
-document.body.style.overflow = ''; // スクロールを戻す
-}
-
-// ×ボタンや背景クリックで閉じる
-closeFormBtn.addEventListener('click', closeForm);
-formOverlayBtn.addEventListener('click', closeForm);
-
-// フォーム送信（メーラー起動）の処理
-applyForm.addEventListener('submit', (e) => {
-e.preventDefault(); // 画面遷移を防ぐ
-
-// 入力された値を取得
-const name = document.getElementById('entryName').value;
-const kana = document.getElementById('entryKana').value;
-const plan = document.getElementById('entryPlan').value;
-const comment = document.getElementById('entryComment').value;
-
-// 送信先と件名
-const toEmail = "a2kara12@gmail.com";
-const subject = "【お申し込み】" + plan + " - " + name + "様";
-// メールの本文（改行を含めて組み立てる）
-let body = "以下の内容でお申し込みを受け付けました。\n\n";
-body += "【お名前】\n" + name + " (" + kana + ")\n\n";
-body += "【ご希望のプラン】\n" + plan + "\n\n";
-body += "【フリーコメント】\n" + (comment ? comment : "なし") + "\n\n";
-body += "--------------------------------------\n";
-body += "※このまま送信ボタンを押してください。";
-
-// mailto リンクを作成してページ遷移（メーラーを起動）
-// encodeURIComponent で文字化けを防ぐ
-const mailtoLink = `mailto:${toEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-// メーラーを起動
-window.location.href = mailtoLink;
-// メーラー起動後にフォームを閉じる
-setTimeout(closeForm, 500);
-});
-
-</script>
 </body>
 </html>

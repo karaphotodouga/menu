@@ -12,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;600&display=swap" rel="stylesheet">
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
+    
     <script>
         tailwind.config = {
             theme: {
@@ -35,6 +36,7 @@
             }
         }
     </script>
+    
     <style>
         body { background-color: #E6E9E6; } /* PC時の外側背景 */
         .container-app {
@@ -120,9 +122,9 @@
             </nav>
         </div>
 
-        <!-- 横長プロフィール画像 -->
+        <!-- 横長プロフィール画像（アスペクト比指定とobject-coverを削除し、画像の本来の比率を維持） -->
         <div class="relative z-10 mb-8 mt-0 w-full max-w-[340px]">
-            <img src="profile01.jpg" alt="プロフィール画像" class="w-full h-auto rounded-[12px] object-cover aspect-[3/2] shadow-sm" onerror="this.src='https://placehold.co/340x227/ecf5f1/82b899?text=Profile+Image'">
+            <img src="profile01.jpg" alt="プロフィール画像" class="w-full h-auto rounded-[12px] shadow-sm" onerror="this.src='https://placehold.co/340x227/ecf5f1/82b899?text=Profile+Image'">
         </div>
 
         <h1 class="font-en text-[22px] tracking-[0.15em] mb-2 text-brand-text font-medium relative z-10">
@@ -134,7 +136,7 @@
         </a>
         
         <p class="text-[14.5px] leading-[2.2] tracking-wider font-medium relative z-10 mb-8 text-center">
-            <span class="ib">SNSで使いやすい</span>
+            <span class="ib">SNSで使いやすい</span><br>
             <span class="ib">写真・動画素材の撮影と</span>
             <span class="ib">編集サポート</span>
         </p>
@@ -146,7 +148,6 @@
     </header>
 
     <div class="w-full overflow-hidden leading-none relative z-10 bg-brand-section -mt-1">
-        <!-- 添付画像の角度を精密に再現した曲線 -->
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" preserveAspectRatio="none" class="w-full h-12 sm:h-16 fill-white">
             <path d="M0,60 C320,110 600,10 1000,50 C1250,70 1350,60 1440,40 L1440,0 L0,0 Z"></path>
         </svg>
@@ -165,7 +166,7 @@
         </div>
 
         <div class="space-y-4 relative z-10 max-w-[340px] mx-auto">
-            <!-- 悩み 1 (左アイコン、右テキスト) -->
+            <!-- 悩み 1 -->
             <div class="bg-white rounded-[16px] p-5 shadow-sm flex items-center gap-5">
                 <div class="w-[46px] h-[46px] rounded-full bg-brand-yellow flex items-center justify-center shrink-0">
                     <i data-lucide="image-off" class="w-[22px] h-[22px] text-brand-main stroke-[1.2]"></i>
@@ -316,7 +317,6 @@
                     <span class="ib">使いやすい素材づくりを</span>
                 </h3>
                 <div class="content-text text-brand-text space-y-4">
-                    <!-- trackingを詰めて「す」が落ちるのを防ぐ -->
                     <p class="tracking-[-0.02em]">
                         <span class="ib">iPhoneでも光の見方・角度・余白・色味を</span>
                         <span class="ib">少し整えるだけで見え方は大きく変わります</span>
@@ -345,7 +345,7 @@
             <p class="text-[15px] font-medium tracking-wider text-brand-text">サポート事例</p>
         </div>
 
-        <div class="space-y-10 relative z-10 max-w-[340px] mx-auto">
+        <div class="space-y-10 relative z-10 max-w-[400px] mx-auto">
             <!-- Case 1 -->
             <div class="bg-white rounded-[16px] p-6 shadow-sm flex flex-col items-center">
                 <div class="mb-4 text-center">
@@ -354,8 +354,9 @@
                         <span class="ib">ちょっとの工夫でここまで変わる</span>
                     </h3>
                 </div>
+                <!-- ★変更点：画像拡張子をjpgに修正、aspect-[4/3]とobject-coverを削除 -->
                 <div class="mb-5 w-full">
-                    <img src="before-after.png" alt="iPhone撮影のBefore/After" class="w-full h-auto rounded-[12px] object-cover aspect-[4/3]" onerror="this.src='https://placehold.co/400x300/ecf5f1/82b899?text=Before/After'">
+                    <img src="before-after.jpg" alt="iPhone撮影のBefore/After" class="w-full h-auto rounded-[12px] shadow-sm" onerror="this.src='https://placehold.co/400x300/ecf5f1/82b899?text=Before/After'">
                 </div>
                 <div class="content-text text-brand-text text-center space-y-4">
                     <p class="font-medium text-[14px] leading-[1.7] text-brand-main">
@@ -379,16 +380,16 @@
                         <span class="ib">投稿やストーリーズにも</span>
                     </h3>
                 </div>
+                <!-- ★変更点：画像拡張子をjpgに修正、aspect-[4/3]とobject-coverを削除 -->
                 <div class="mb-5 w-full">
-                    <img src="studio-example.png" alt="スタジオ撮影の事例" class="w-full h-auto rounded-[12px] object-cover aspect-[4/3]" onerror="this.src='https://placehold.co/400x300/ecf5f1/82b899?text=Studio+Example'">
+                    <img src="studio-example.jpg" alt="スタジオ撮影の事例" class="w-full h-auto rounded-[12px] shadow-sm" onerror="this.src='https://placehold.co/400x300/ecf5f1/82b899?text=Studio+Example'">
                 </div>
                 <div class="content-text text-brand-text text-center">
                     <p>
                         <span class="ib">レンタルルームで撮影した写真を</span>
-                        <span class="ib">ランディングページ（LP）にご使用いただいた</span>
-                        <span class="ib">一例です。</span>
+                        <span class="ib">ランディングページにご使用いただいた一例です</span>
                         <span class="ib">使い回ししやすい余白や構図を考えて撮るため</span>
-                        <span class="ib">日々の発信にもご活用いただいています。</span>
+                        <span class="ib">日々の発信にもご活用いただいています</span>
                     </p>
                 </div>
             </div>
@@ -401,8 +402,9 @@
                         <span class="ib">届けたリールが共感と集客に繋がる</span>
                     </h3>
                 </div>
+                <!-- ★変更点：aspect-[4/3]とobject-coverを削除 -->
                 <div class="mb-5 w-full">
-                    <img src="result.png" alt="サポート実績" class="w-full h-auto rounded-[12px] object-cover aspect-[4/3]" onerror="this.src='https://placehold.co/400x300/ecf5f1/82b899?text=Support+Result'">
+                    <img src="result.png" alt="サポート実績" class="w-full h-auto rounded-[12px] shadow-sm" onerror="this.src='https://placehold.co/400x300/ecf5f1/82b899?text=Support+Result'">
                 </div>
                 <div class="content-text text-brand-text text-center space-y-4">
                     <p class="font-medium text-[14px] leading-[1.7] text-brand-main">

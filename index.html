@@ -83,6 +83,17 @@
         details > summary::-webkit-details-marker { display: none; }
         .accordion-icon::before { content: '+'; font-size: 1.2rem; font-weight: 400; }
         details[open] .accordion-icon::before { content: '−'; }
+
+        /* スクロールアニメーション（ぼわんと表示）用のクラス */
+        .reveal {
+            opacity: 0; /* 最初は透明 */
+            transform: translateY(30px); /* 最初は少し下にズレている */
+            transition: opacity 0.8s cubic-bezier(0.3, 0, 0, 1), transform 0.8s cubic-bezier(0.3, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1; /* はっきりと表示 */
+            transform: translateY(0); /* 元の位置に戻る */
+        }
     </style>
 </head>
 <body class="text-brand-text font-sans antialiased selection:bg-brand-main selection:text-white relative">
@@ -975,6 +986,45 @@
             window.location.href = `mailto:${toEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
             setTimeout(closeForm, 500);
         });
+
+        /* =========================================
+           スクロールアニメーション (ふわっと表示)
+        ========================================= */
+        // アニメーションさせたい要素のセレクタを指定
+        const revealTargets = document.querySelectorAll(`
+            section > div.text-center,
+            #worries .bg-white,
+            #concept .content-text,
+            #reasons .flex-col,
+            #cases .bg-white,
+            #menu-section .bg-white,
+            #menu-other .bg-white,
+            #flow .flex,
+            #contact .bg-white
+        `);
+
+        // 取得した要素に、あらかじめ初期クラスを付与しておく
+        revealTargets.forEach(el => el.classList.add('reveal'));
+
+        // 監視オプション（画面の下から15%入ったところで発火）
+        const revealOptions = {
+            root: null,
+            rootMargin: '0px 0px -15% 0px',
+            threshold: 0
+        };
+
+        // オブザーバーの作成（画面に入ったかチェックする機能）
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active'); // 画面に入ったら active を付与
+                    observer.unobserve(entry.target);     // 一度表示されたら監視を解除（1回だけ動く）
+                }
+            });
+        }, revealOptions);
+
+        // 各要素の監視を開始
+        revealTargets.forEach(el => revealObserver.observe(el));
     </script>
 </div>
 </body>

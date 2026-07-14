@@ -97,6 +97,7 @@
 
 <div class="container-app overflow-hidden relative">
 
+    <!-- 冒頭：白 -->
     <header class="pt-16 pb-12 px-8 text-center flex flex-col items-center relative z-10 bg-white" id="top">
         <button id="menuBtn" class="absolute top-6 right-6 p-2 text-brand-text hover:text-brand-main transition-colors focus:outline-none z-50">
             <i data-lucide="menu" id="icon-menu" class="w-7 h-7 stroke-[1.5]"></i>
@@ -131,7 +132,8 @@
         </div>
 
         <div class="relative z-10 mb-8 mt-0 w-full max-w-[340px] reveal">
-            <img src="profile01.jpg" alt="プロフィール画像" class="w-full h-auto rounded-[12px] object-contain aspect-[3/2] shadow-sm" onerror="this.src='https://placehold.co/340x227/ecf5f1/82b899?text=Profile+Image'">
+            <!-- 余白が出ないようにアスペクト比指定とobject-containを削除 -->
+            <img src="profile01.jpg" alt="プロフィール画像" class="w-full h-auto rounded-[12px] shadow-sm" onerror="this.src='https://placehold.co/340x227/ecf5f1/82b899?text=Profile+Image'">
         </div>
 
         <h1 class="font-en text-[22px] tracking-[0.15em] mb-2 text-brand-text font-medium relative z-10 reveal">
@@ -160,7 +162,7 @@
         </svg>
     </div>
 
-    <!-- 背景色1: 薄緑 -->
+    <!-- FOR YOU：薄緑 -->
     <section id="worries" class="py-16 px-6 bg-brand-section scroll-mt-8 relative z-10">
         <div class="text-center mb-10 relative z-10 reveal">
             <h2 class="font-en text-[16px] tracking-[0.2em] text-brand-main mb-2 font-medium">FOR YOU</h2>
@@ -173,8 +175,9 @@
             </p>
         </div>
 
-        <div class="space-y-4 relative z-10 max-w-[340px] mx-auto reveal">
-            <div class="bg-white rounded-[16px] p-5 shadow-sm flex items-center gap-5">
+        <div class="space-y-4 relative z-10 max-w-[340px] mx-auto">
+            <!-- 個々のカードにrevealを追加 -->
+            <div class="bg-white rounded-[16px] p-5 shadow-sm flex items-center gap-5 reveal">
                 <div class="w-[46px] h-[46px] rounded-full bg-brand-yellow flex items-center justify-center shrink-0">
                     <i data-lucide="image-off" class="w-[22px] h-[22px] text-brand-main stroke-[1.2]"></i>
                 </div>
@@ -184,7 +187,7 @@
                 </p>
             </div>
             
-            <div class="bg-white rounded-[16px] p-5 shadow-sm flex items-center gap-5">
+            <div class="bg-white rounded-[16px] p-5 shadow-sm flex items-center gap-5 reveal">
                 <div class="w-[46px] h-[46px] rounded-full bg-brand-yellow flex items-center justify-center shrink-0">
                     <i data-lucide="type" class="w-[22px] h-[22px] text-brand-main stroke-[1.2]"></i>
                 </div>
@@ -194,7 +197,7 @@
                 </p>
             </div>
             
-            <div class="bg-white rounded-[16px] p-5 shadow-sm flex items-center gap-5">
+            <div class="bg-white rounded-[16px] p-5 shadow-sm flex items-center gap-5 reveal">
                 <div class="w-[46px] h-[46px] rounded-full bg-brand-yellow flex items-center justify-center shrink-0">
                     <i data-lucide="film" class="w-[22px] h-[22px] text-brand-main stroke-[1.2]"></i>
                 </div>
@@ -213,7 +216,7 @@
         </svg>
     </div>
 
-    <!-- 背景色2: 白 -->
+    <!-- CONCEPT：白 -->
     <section id="concept" class="py-20 px-8 relative overflow-hidden scroll-mt-8 bg-white z-10">
         <div class="text-center relative z-10 mb-14 reveal">
             <h2 class="font-en text-[16px] tracking-[0.2em] text-brand-main mb-2 font-medium">CONCEPT</h2>
@@ -269,7 +272,7 @@
         </svg>
     </div>
 
-    <!-- 背景色3: 薄緑 -->
+    <!-- WHY ME：薄緑 -->
     <section id="reasons" class="py-20 px-6 bg-brand-section relative scroll-mt-8 z-10">
         <div class="text-center mb-14 reveal">
             <h2 class="font-en text-[16px] tracking-[0.2em] text-brand-main mb-2 font-medium">WHY ME</h2>
@@ -277,8 +280,8 @@
             <p class="text-[15px] font-medium tracking-wider text-brand-text">選ばれる理由</p>
         </div>
 
-        <div class="space-y-12 max-w-[340px] mx-auto reveal">
-            <div class="flex flex-col items-center text-center">
+        <div class="space-y-12 max-w-[340px] mx-auto">
+            <div class="flex flex-col items-center text-center reveal">
                 <span class="font-en text-4xl text-brand-yellow font-medium block mb-2">01</span>
                 <h3 class="text-[16px] font-medium leading-[1.7] tracking-wide mb-4 text-brand-text">
                     <span class="ib">SNS発信に関わってきた</span>
@@ -300,10 +303,9 @@
                 </div>
             </div>
 
-            <!-- 背景が薄緑なので区切り線は白にする -->
-            <div class="w-10 h-[1px] bg-white mx-auto"></div>
+            <div class="w-10 h-[1px] bg-white mx-auto reveal"></div>
 
-            <div class="flex flex-col items-center text-center">
+            <div class="flex flex-col items-center text-center reveal">
                 <span class="font-en text-4xl text-brand-yellow font-medium block mb-2">02</span>
                 <h3 class="text-[16px] font-medium leading-[1.7] tracking-wide mb-4 text-brand-text">
                     <span class="ib">カメラに詳しくない方にも</span>
@@ -324,9 +326,9 @@
                 </div>
             </div>
 
-            <div class="w-10 h-[1px] bg-white mx-auto"></div>
+            <div class="w-10 h-[1px] bg-white mx-auto reveal"></div>
 
-            <div class="flex flex-col items-center text-center">
+            <div class="flex flex-col items-center text-center reveal">
                 <span class="font-en text-4xl text-brand-yellow font-medium block mb-2">03</span>
                 <h3 class="text-[16px] font-medium leading-[1.7] tracking-wide mb-4 text-brand-text">
                     <span class="ib">iPhoneでも投稿に</span>
@@ -355,7 +357,7 @@
         </svg>
     </div>
 
-    <!-- 背景色4: 白 -->
+    <!-- WORKS：白 -->
     <section id="cases" class="py-20 px-4 bg-white scroll-mt-8 relative z-10">
         <div class="text-center mb-14 relative z-10 reveal">
             <h2 class="font-en text-[16px] tracking-[0.2em] text-brand-main mb-2 font-medium">WORKS</h2>
@@ -363,8 +365,9 @@
             <p class="text-[15px] font-medium tracking-wider text-brand-text">サポート事例</p>
         </div>
 
-        <div class="space-y-10 relative z-10 max-w-[400px] mx-auto reveal">
-            <div class="bg-white rounded-[16px] p-6 shadow-sm border border-brand-section flex flex-col items-center">
+        <div class="space-y-10 relative z-10 max-w-[400px] mx-auto">
+            <!-- 各カードごとにreveal。画像はアスペクト比を外して自然な比率に。 -->
+            <div class="bg-white rounded-[16px] p-6 shadow-sm border border-brand-section flex flex-col items-center reveal">
                 <div class="mb-4 text-center">
                     <span class="font-en text-[11px] font-medium tracking-widest text-brand-main block mb-1">CASE 01: Lesson</span>
                     <h3 class="text-[15px] font-medium tracking-wide text-brand-text">
@@ -372,7 +375,7 @@
                     </h3>
                 </div>
                 <div class="mb-5 w-full">
-                    <img src="before-after.png" alt="iPhone撮影のBefore/After" class="w-full h-auto rounded-[12px] object-contain aspect-[4/3]" onerror="this.src='https://placehold.co/400x300/ecf5f1/82b899?text=Before/After'">
+                    <img src="before-after.png" alt="iPhone撮影のBefore/After" class="w-full h-auto rounded-[12px]" onerror="this.src='https://placehold.co/400x300/ecf5f1/82b899?text=Before/After'">
                 </div>
                 <div class="content-text text-brand-text text-center space-y-4">
                     <p class="font-medium text-[14px] leading-[1.7] text-brand-main">
@@ -387,7 +390,7 @@
                 </div>
             </div>
 
-            <div class="bg-white rounded-[16px] p-6 shadow-sm border border-brand-section flex flex-col items-center">
+            <div class="bg-white rounded-[16px] p-6 shadow-sm border border-brand-section flex flex-col items-center reveal">
                 <div class="mb-4 text-center">
                     <span class="font-en text-[11px] font-medium tracking-widest text-brand-main block mb-1">CASE 02: Studio</span>
                     <h3 class="text-[15px] font-medium tracking-wide text-brand-text">
@@ -396,7 +399,7 @@
                     </h3>
                 </div>
                 <div class="mb-5 w-full">
-                    <img src="studio-example.png" alt="スタジオ撮影の事例" class="w-full h-auto rounded-[12px] object-contain aspect-[4/3]" onerror="this.src='https://placehold.co/400x300/ecf5f1/82b899?text=Studio+Example'">
+                    <img src="studio-example.png" alt="スタジオ撮影の事例" class="w-full h-auto rounded-[12px]" onerror="this.src='https://placehold.co/400x300/ecf5f1/82b899?text=Studio+Example'">
                 </div>
                 <div class="content-text text-brand-text text-center">
                     <p>
@@ -407,7 +410,7 @@
                 </div>
             </div>
 
-            <div class="bg-white rounded-[16px] p-6 shadow-sm border border-brand-section flex flex-col items-center">
+            <div class="bg-white rounded-[16px] p-6 shadow-sm border border-brand-section flex flex-col items-center reveal">
                 <div class="mb-4 text-center">
                     <span class="font-en text-[11px] font-medium tracking-widest text-brand-main block mb-1">CASE 03: Reel</span>
                     <h3 class="text-[15px] font-medium tracking-wide text-brand-text">
@@ -415,7 +418,7 @@
                     </h3>
                 </div>
                 <div class="mb-5 w-full">
-                    <img src="result.png" alt="サポート実績" class="w-full h-auto rounded-[12px] object-contain aspect-[4/3]" onerror="this.src='https://placehold.co/400x300/ecf5f1/82b899?text=Support+Result'">
+                    <img src="result.png" alt="サポート実績" class="w-full h-auto rounded-[12px]" onerror="this.src='https://placehold.co/400x300/ecf5f1/82b899?text=Support+Result'">
                 </div>
                 <div class="content-text text-brand-text text-center space-y-4">
                     <p class="font-medium text-[14px] leading-[1.7] text-brand-main">
@@ -439,7 +442,7 @@
         </svg>
     </div>
 
-    <!-- 背景色5: 薄緑 -->
+    <!-- MENU：薄緑 -->
     <section id="menu-section" class="py-20 px-4 bg-brand-section scroll-mt-8 relative z-10">
         <div class="text-center mb-14 px-2 reveal">
             <h2 class="font-en text-[16px] tracking-[0.2em] text-brand-main mb-2 font-medium">MENU</h2>
@@ -450,8 +453,9 @@
             </p>
         </div>
 
-        <div class="space-y-12 max-w-[340px] mx-auto reveal">
-            <div id="menu1" class="bg-white rounded-[16px] p-6 shadow-sm border border-brand-section scroll-mt-12 flex flex-col items-center">
+        <div class="space-y-12 max-w-[340px] mx-auto">
+            <!-- 各メニューカードごとにrevealを追加 -->
+            <div id="menu1" class="bg-white rounded-[16px] p-6 shadow-sm border border-brand-section scroll-mt-12 flex flex-col items-center reveal">
                 <div class="mb-5 pb-5 border-b border-brand-section text-center w-full">
                     <h3 class="text-[16px] font-medium text-brand-text leading-[1.5] mb-3">iPhone写真素材撮影</h3>
                     <p class="font-en text-[22px] text-brand-main font-medium tracking-wide">12,800<span class="text-[12px] text-brand-text ml-0.5 font-sans">円</span></p>
@@ -492,7 +496,7 @@
                 </div>
             </div>
 
-            <div id="menu2" class="bg-white rounded-[16px] p-6 shadow-sm border border-brand-section scroll-mt-12 flex flex-col items-center">
+            <div id="menu2" class="bg-white rounded-[16px] p-6 shadow-sm border border-brand-section scroll-mt-12 flex flex-col items-center reveal">
                 <div class="mb-5 pb-5 border-b border-brand-section text-center w-full">
                     <h3 class="text-[16px] font-medium text-brand-text leading-[1.5] mb-3">iPhone動画素材撮影</h3>
                     <p class="font-en text-[22px] text-brand-main font-medium tracking-wide">29,800<span class="text-[12px] text-brand-text ml-0.5 font-sans">円〜</span></p>
@@ -532,7 +536,7 @@
                 </div>
             </div>
 
-            <div id="menu3" class="bg-white rounded-[16px] p-6 shadow-sm border border-brand-section scroll-mt-12 flex flex-col items-center">
+            <div id="menu3" class="bg-white rounded-[16px] p-6 shadow-sm border border-brand-section scroll-mt-12 flex flex-col items-center reveal">
                 <div class="mb-5 pb-5 border-b border-brand-section text-center w-full">
                     <h3 class="text-[16px] font-medium text-brand-text leading-[1.5] mb-3">iPhone撮り方実践レッスン</h3>
                     <p class="font-en text-[22px] text-brand-main font-medium tracking-wide">16,500<span class="text-[12px] text-brand-text ml-0.5 font-sans">円</span></p>
@@ -576,7 +580,7 @@
                 </div>
             </div>
 
-            <div id="menu4" class="bg-white rounded-[16px] p-6 shadow-sm border border-brand-section scroll-mt-12 flex flex-col items-center">
+            <div id="menu4" class="bg-white rounded-[16px] p-6 shadow-sm border border-brand-section scroll-mt-12 flex flex-col items-center reveal">
                 <div class="mb-5 pb-5 border-b border-brand-section text-center w-full">
                     <h3 class="text-[16px] font-medium text-brand-text leading-[1.5] mb-3">カメラでのスタジオ撮影</h3>
                     <p class="font-en text-[22px] text-brand-main font-medium tracking-wide">29,800<span class="text-[12px] text-brand-text ml-0.5 font-sans">円〜</span></p>
@@ -626,11 +630,11 @@
         </svg>
     </div>
 
-    <!-- 背景色6: 白 -->
+    <!-- FLOW・撮影場所：白 -->
     <section id="flow-section" class="py-20 px-4 bg-white scroll-mt-8 relative z-10">
         
-        <div id="flow-in-menu" class="reveal mb-16">
-            <div class="text-center mb-14">
+        <div id="flow-in-menu" class="mb-16">
+            <div class="text-center mb-14 reveal">
                 <h2 class="font-en text-[16px] tracking-[0.2em] text-brand-main mb-2 font-medium">FLOW</h2>
                 <div class="w-6 h-[1px] bg-brand-main/50 mx-auto mb-4"></div>
                 <p class="text-[13px] text-brand-text">
@@ -638,13 +642,12 @@
                 </p>
             </div>
 
-            <div class="max-w-[340px] mx-auto space-y-3">
+            <div class="max-w-[340px] mx-auto space-y-3 reveal">
                 <!-- Step 1 -->
                 <div class="flex items-center">
                     <div class="w-12 h-12 rounded-full bg-brand-main flex items-center justify-center shrink-0 z-10 shadow-sm relative mr-[-16px]">
                         <span class="font-en text-[18px] text-white font-medium">01</span>
                     </div>
-                    <!-- 背景色をベージュ(brand-yellow/30)にして可愛いデザインに戻す -->
                     <div class="flex-1 bg-brand-yellow/30 rounded-r-full py-4 pr-6 pl-8 text-left">
                         <h3 class="text-[14px] font-medium text-brand-main tracking-wide">お問い合わせ</h3>
                         <p class="text-[11px] text-brand-text mt-1 leading-relaxed">
@@ -726,7 +729,6 @@
         </div>
 
         <div class="max-w-[340px] mx-auto reveal">
-            <!-- 白背景の上に白カードなのでborderをつける -->
             <div class="bg-white rounded-[16px] p-6 border border-brand-section flex flex-col items-center text-center shadow-sm">
                 <h3 class="text-[15px] font-medium text-brand-main mb-4 flex items-center gap-2">
                     <i data-lucide="map-pin" class="w-4 h-4"></i>撮影・レッスンの場所について
@@ -753,15 +755,14 @@
         </svg>
     </div>
 
-    <!-- 背景色7: 薄緑 -->
+    <!-- その他メニュー：薄緑 -->
     <section id="menu-other" class="py-20 px-4 bg-brand-section scroll-mt-8 relative z-10">
         <div class="text-center mb-10 px-2 reveal">
             <h3 class="text-[15px] font-medium tracking-wide text-brand-text">リール・その他のサポート</h3>
         </div>
         
-        <div class="space-y-6 max-w-[340px] mx-auto reveal">
-            <!-- 緑背景なのでカードは白にする -->
-            <div class="bg-white rounded-[16px] p-6 shadow-sm border border-brand-section flex flex-col items-center text-center">
+        <div class="space-y-6 max-w-[340px] mx-auto">
+            <div class="bg-white rounded-[16px] p-6 shadow-sm border border-brand-section flex flex-col items-center text-center reveal">
                 <div class="flex flex-col items-center justify-center gap-2 mb-4 w-full">
                     <span class="text-[11px] bg-brand-light/20 text-brand-text px-2.5 py-1 rounded-full font-medium tracking-widest shrink-0">満席</span>
                     <h4 class="text-[15px] font-medium text-brand-text">自走を目指す クリエイティブ伴走</h4>
@@ -773,7 +774,7 @@
                 </p>
             </div>
 
-            <div class="bg-white rounded-[16px] p-6 shadow-sm border border-brand-section flex flex-col items-center text-center">
+            <div class="bg-white rounded-[16px] p-6 shadow-sm border border-brand-section flex flex-col items-center text-center reveal">
                 <div class="flex flex-col items-center justify-center gap-2 mb-4 w-full">
                     <span class="text-[11px] bg-brand-light/20 text-brand-text px-2.5 py-1 rounded-full font-medium tracking-widest shrink-0">満席</span>
                     <h4 class="text-[15px] font-medium text-brand-text">ショート動画編集</h4>
@@ -786,7 +787,7 @@
                 </p>
             </div>
 
-            <div class="bg-white rounded-[16px] p-6 shadow-sm mt-8 border border-brand-section flex flex-col items-center text-center">
+            <div class="bg-white rounded-[16px] p-6 shadow-sm mt-8 border border-brand-section flex flex-col items-center text-center reveal">
                 <h4 class="text-[15px] font-medium mb-4 text-brand-text">少人数セミナー・動画編集個別指導</h4>
                 <div class="content-text text-[13.5px] mb-6 text-brand-text space-y-4">
                     <p>
@@ -813,7 +814,7 @@
         </svg>
     </div>
 
-    <!-- 背景色8: 白 -->
+    <!-- お申し込み・キャンセルポリシー：白 -->
     <section id="contact" class="py-10 px-6 bg-white scroll-mt-8 relative z-10">
         
         <div class="mb-14 text-center reveal bg-brand-section p-6 rounded-2xl mx-auto max-w-[340px]">
@@ -849,6 +850,7 @@
         </div>
     </section>
 
+    <!-- フッター -->
     <footer class="pt-16 pb-16 px-6 bg-brand-main text-white flex flex-col items-center text-center relative z-10">
         <p class="font-en text-[18px] font-medium tracking-[0.15em] mb-6 text-white/90">
             ATSUKO KARASAWA
@@ -868,6 +870,7 @@
         </div>
     </footer>
 
+    <!-- 申し込みフォームモーダル -->
     <div id="formModal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4">
         <div id="formOverlayBtn" class="absolute inset-0 bg-brand-text/40 backdrop-blur-sm transition-opacity"></div>
         
@@ -927,6 +930,7 @@
         </div>
     </div>
 
+    <!-- スクリプト -->
     <script>
         lucide.createIcons();
 
@@ -1005,7 +1009,6 @@
             body += "--------------------------------------\n";
             body += "※このまま送信ボタンを押してください";
 
-            // スマホ等で確実にメールアプリを立ち上げるための処理
             const mailtoLink = `mailto:${toEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
             const a = document.createElement('a');
             a.href = mailtoLink;
@@ -1028,7 +1031,7 @@
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add("active");
-                        observer.unobserve(entry.target); // 一度表示したら監視を解除
+                        observer.unobserve(entry.target); 
                     }
                 });
             }, revealOptions);

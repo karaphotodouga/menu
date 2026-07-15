@@ -9,7 +9,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Noto+Serif+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     
@@ -18,18 +18,18 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['"Noto Sans JP"', 'sans-serif'],
-                        en: ['"Jost"', 'sans-serif'],
+                        serif: ['"Noto Serif JP"', 'serif'],
+                        en: ['"Cormorant Garamond"', 'serif'],
                     },
                     colors: {
                         brand: {
-                            bg: '#ffffff',
-                            section: '#ecf5f1',   
-                            main: '#82b899',      
-                            yellow: '#f9e8b4',    
-                            text: '#5f5f5f',      
-                            light: '#949494',     
-                            border: '#D8E0DA'     
+                            bg: '#FCFAF8',        // アイボリー (メインコンテンツ背景)
+                            section: '#F8F1EB',   // ベージュ (セクション区切り)
+                            main: '#D49A89',      // テラコッタ (アクセントカラー)
+                            yellow: '#F4E3DF',    // テラコッタの淡色 (アイコン背景など)
+                            text: '#5A4C46',      // エスプレッソブラウン (メイン文字色)
+                            light: '#A89995',     // モカグレー (注釈・セカンド文字色)
+                            border: '#EBE1D8'     // 馴染むボーダー色
                         }
                     }
                 }
@@ -38,11 +38,11 @@
     </script>
     
     <style>
-        body { background-color: #E6E9E6; } 
+        body { background-color: #EFE9E5; } /* ミルクティー (外側背景色) */
         .container-app {
             max-width: 480px;
             margin: 0 auto;
-            background-color: #ffffff;
+            background-color: #FCFAF8; /* アイボリー */
             box-shadow: 0 0 30px rgba(0,0,0,0.05);
             min-height: 100vh;
         }
@@ -63,7 +63,7 @@
             position: absolute;
             left: 0;
             top: 0;
-            color: #82b899;
+            color: #D49A89; /* テラコッタ */
             font-weight: bold;
         }
         
@@ -93,12 +93,12 @@
         }
     </style>
 </head>
-<body class="text-brand-text font-sans antialiased selection:bg-brand-main selection:text-white relative">
+<body class="text-brand-text font-serif antialiased selection:bg-brand-main selection:text-white relative">
 
 <div class="container-app overflow-hidden relative">
 
-    <!-- 冒頭：白 -->
-    <header class="pt-16 pb-12 px-8 text-center flex flex-col items-center relative z-10 bg-white" id="top">
+    <!-- 冒頭：アイボリー -->
+    <header class="pt-16 pb-12 px-8 text-center flex flex-col items-center relative z-10 bg-brand-bg" id="top">
         <button id="menuBtn" class="absolute top-6 right-6 p-2 text-brand-text hover:text-brand-main transition-colors focus:outline-none z-50">
             <i data-lucide="menu" id="icon-menu" class="w-7 h-7 stroke-[1.5]"></i>
             <i data-lucide="x" id="icon-close" class="w-7 h-7 hidden stroke-[1.5]"></i>
@@ -106,7 +106,7 @@
 
         <div id="menuOverlay" class="fixed inset-0 z-40 hidden"></div>
 
-        <div id="mobileMenu" class="absolute top-16 right-6 w-[260px] max-h-[85vh] overflow-y-auto bg-white/95 backdrop-blur-md rounded-2xl shadow-xl z-50 border border-brand-section p-5 opacity-0 scale-95 pointer-events-none origin-top-right transition-all duration-300 text-left">
+        <div id="mobileMenu" class="absolute top-16 right-6 w-[260px] max-h-[85vh] overflow-y-auto bg-brand-bg/95 backdrop-blur-md rounded-2xl shadow-xl z-50 border border-brand-section p-5 opacity-0 scale-95 pointer-events-none origin-top-right transition-all duration-300 text-left">
             <nav class="flex flex-col gap-4 text-[14px] tracking-wide text-brand-text font-medium">
                 <a href="#worries" class="menu-link hover:text-brand-main transition-colors">FOR YOU</a>
                 <a href="#concept" class="menu-link hover:text-brand-main transition-colors">大切にしていること</a>
@@ -127,7 +127,7 @@
 
                 <div class="w-full h-[1px] bg-brand-section"></div>
 
-                <a href="#contact" class="menu-link block mt-2 px-4 py-3 bg-brand-main text-white text-center rounded-full text-[13px] hover:bg-brand-main/90 transition-colors shadow-sm whitespace-nowrap font-medium">お申し込み</a>
+                <a href="#contact" class="menu-link block mt-2 px-4 py-3 bg-brand-main text-white text-center rounded-full text-[13px] hover:bg-brand-main/90 transition-colors shadow-sm whitespace-nowrap font-medium font-sans">お申し込み</a>
             </nav>
         </div>
 
@@ -136,10 +136,10 @@
             <img src="profile01.jpg" alt="プロフィール画像" class="w-full h-auto rounded-[12px] shadow-sm" onerror="this.src='https://placehold.co/340x227/ecf5f1/82b899?text=Profile+Image'">
         </div>
 
-        <h1 class="font-en text-[22px] tracking-[0.15em] mb-2 text-brand-text font-medium relative z-10 reveal">
+        <h1 class="font-en text-[24px] tracking-[0.15em] mb-2 text-brand-text font-semibold relative z-10 reveal">
             ATSUKO KARASAWA
         </h1>
-        <a href="https://www.instagram.com/kara_photo.douga/" target="_blank" rel="noopener noreferrer" class="font-en text-[13px] tracking-wider text-brand-light hover:text-brand-main transition-colors mb-6 relative z-10 flex items-center justify-center gap-1.5 font-medium reveal">
+        <a href="https://www.instagram.com/kara_photo.douga/" target="_blank" rel="noopener noreferrer" class="font-en text-[14px] tracking-wider text-brand-light hover:text-brand-main transition-colors mb-6 relative z-10 flex items-center justify-center gap-1.5 font-medium reveal">
             <i data-lucide="instagram" class="w-3.5 h-3.5 stroke-[1.5]"></i>
             @kara_photo.douga
         </a>
@@ -149,23 +149,23 @@
             <span class="ib">写真・動画素材の撮影と 編集サポート</span>
         </p>
         
-        <button onclick="openFormWithPlan('')" class="relative z-10 flex items-center justify-center gap-2 bg-brand-main text-white px-10 py-4 rounded-full text-[14px] tracking-widest hover:bg-opacity-90 transition-all shadow-sm font-medium whitespace-nowrap reveal">
+        <button onclick="openFormWithPlan('')" class="relative z-10 flex items-center justify-center gap-2 bg-brand-main text-white px-10 py-4 rounded-full text-[14px] tracking-widest hover:bg-opacity-90 transition-all shadow-sm font-medium font-sans whitespace-nowrap reveal">
             <i data-lucide="mail" class="w-4 h-4 shrink-0"></i>
             <span>お申し込み</span>
         </button>
     </header>
 
-    <!-- 波A (白から緑へ) -->
+    <!-- 波A (アイボリーからベージュへ) -->
     <div class="w-full overflow-hidden leading-none relative z-10 bg-brand-section -mt-1">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" preserveAspectRatio="none" class="w-full h-12 sm:h-16 fill-white">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" preserveAspectRatio="none" class="w-full h-12 sm:h-16 fill-brand-bg">
             <path d="M0,60 C320,110 600,10 1000,50 C1250,70 1350,60 1440,40 L1440,0 L0,0 Z"></path>
         </svg>
     </div>
 
-    <!-- FOR YOU：薄緑 -->
+    <!-- FOR YOU：ベージュ -->
     <section id="worries" class="py-16 px-6 bg-brand-section scroll-mt-8 relative z-10">
         <div class="text-center mb-10 relative z-10 reveal">
-            <h2 class="font-en text-[16px] tracking-[0.2em] text-brand-main mb-2 font-medium">FOR YOU</h2>
+            <h2 class="font-en text-[18px] tracking-[0.2em] text-brand-main mb-2 font-semibold">FOR YOU</h2>
             <div class="w-6 h-[1px] bg-brand-main/50 mx-auto mb-4"></div>
             <p class="text-[15px] leading-[2] font-medium tracking-wide text-brand-text mx-auto">
                 <span class="ib">せっかく撮ったのに</span>
@@ -176,7 +176,7 @@
         </div>
 
         <div class="space-y-4 relative z-10 max-w-[340px] mx-auto">
-            <!-- 個々のカードにrevealを追加 -->
+            <!-- 個々のカードにrevealを追加。カード部分は純白(bg-white) -->
             <div class="bg-white rounded-[16px] p-5 shadow-sm flex items-center gap-5 reveal">
                 <div class="w-[46px] h-[46px] rounded-full bg-brand-yellow flex items-center justify-center shrink-0">
                     <i data-lucide="image-off" class="w-[22px] h-[22px] text-brand-main stroke-[1.2]"></i>
@@ -209,17 +209,17 @@
         </div>
     </section>
 
-    <!-- 波B (緑から白へ) -->
-    <div class="w-full overflow-hidden leading-none relative z-10 bg-white -mt-1">
+    <!-- 波B (ベージュからアイボリーへ) -->
+    <div class="w-full overflow-hidden leading-none relative z-10 bg-brand-bg -mt-1">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" preserveAspectRatio="none" class="w-full h-12 sm:h-16 fill-brand-section scale-x-[-1]">
             <path d="M0,60 C320,110 600,10 1000,50 C1250,70 1350,60 1440,40 L1440,0 L0,0 Z"></path>
         </svg>
     </div>
 
-    <!-- CONCEPT：白 -->
-    <section id="concept" class="py-20 px-8 relative overflow-hidden scroll-mt-8 bg-white z-10">
+    <!-- CONCEPT：アイボリー -->
+    <section id="concept" class="py-20 px-8 relative overflow-hidden scroll-mt-8 bg-brand-bg z-10">
         <div class="text-center relative z-10 mb-14 reveal">
-            <h2 class="font-en text-[16px] tracking-[0.2em] text-brand-main mb-2 font-medium">CONCEPT</h2>
+            <h2 class="font-en text-[18px] tracking-[0.2em] text-brand-main mb-2 font-semibold">CONCEPT</h2>
             <div class="w-6 h-[1px] bg-brand-main/50 mx-auto mb-6"></div>
             
             <p class="text-[18px] font-medium leading-[2] tracking-wider text-brand-text">
@@ -265,24 +265,24 @@
         </div>
     </section>
 
-    <!-- 波A (白から緑へ) -->
+    <!-- 波A (アイボリーからベージュへ) -->
     <div class="w-full overflow-hidden leading-none relative z-10 bg-brand-section -mt-1">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" preserveAspectRatio="none" class="w-full h-12 sm:h-16 fill-white">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" preserveAspectRatio="none" class="w-full h-12 sm:h-16 fill-brand-bg">
             <path d="M0,60 C320,110 600,10 1000,50 C1250,70 1350,60 1440,40 L1440,0 L0,0 Z"></path>
         </svg>
     </div>
 
-    <!-- WHY ME：薄緑 -->
+    <!-- WHY ME：ベージュ -->
     <section id="reasons" class="py-20 px-6 bg-brand-section relative scroll-mt-8 z-10">
         <div class="text-center mb-14 reveal">
-            <h2 class="font-en text-[16px] tracking-[0.2em] text-brand-main mb-2 font-medium">WHY ME</h2>
+            <h2 class="font-en text-[18px] tracking-[0.2em] text-brand-main mb-2 font-semibold">WHY ME</h2>
             <div class="w-6 h-[1px] bg-brand-main/50 mx-auto mb-4"></div>
             <p class="text-[15px] font-medium tracking-wider text-brand-text">選ばれる理由</p>
         </div>
 
         <div class="space-y-12 max-w-[340px] mx-auto">
             <div class="flex flex-col items-center text-center reveal">
-                <span class="font-en text-4xl text-brand-yellow font-medium block mb-2">01</span>
+                <span class="font-en text-[40px] text-brand-yellow font-semibold block mb-2 italic">01</span>
                 <h3 class="text-[16px] font-medium leading-[1.7] tracking-wide mb-4 text-brand-text">
                     <span class="ib">SNS発信に関わってきた</span>
                     <span class="ib">実績があります</span>
@@ -303,10 +303,10 @@
                 </div>
             </div>
 
-            <div class="w-10 h-[1px] bg-white mx-auto reveal"></div>
+            <div class="w-10 h-[1px] bg-brand-bg mx-auto reveal"></div>
 
             <div class="flex flex-col items-center text-center reveal">
-                <span class="font-en text-4xl text-brand-yellow font-medium block mb-2">02</span>
+                <span class="font-en text-[40px] text-brand-yellow font-semibold block mb-2 italic">02</span>
                 <h3 class="text-[16px] font-medium leading-[1.7] tracking-wide mb-4 text-brand-text">
                     <span class="ib">カメラに詳しくない方にも</span>
                     <span class="ib">わかりやすく</span>
@@ -326,10 +326,10 @@
                 </div>
             </div>
 
-            <div class="w-10 h-[1px] bg-white mx-auto reveal"></div>
+            <div class="w-10 h-[1px] bg-brand-bg mx-auto reveal"></div>
 
             <div class="flex flex-col items-center text-center reveal">
-                <span class="font-en text-4xl text-brand-yellow font-medium block mb-2">03</span>
+                <span class="font-en text-[40px] text-brand-yellow font-semibold block mb-2 italic">03</span>
                 <h3 class="text-[16px] font-medium leading-[1.7] tracking-wide mb-4 text-brand-text">
                     <span class="ib">iPhoneでも投稿に</span>
                     <span class="ib">使いやすい素材づくりを</span>
@@ -350,32 +350,32 @@
         </div>
     </section>
 
-    <!-- 波B (緑から白へ) -->
-    <div class="w-full overflow-hidden leading-none relative z-10 bg-white -mt-1">
+    <!-- 波B (ベージュからアイボリーへ) -->
+    <div class="w-full overflow-hidden leading-none relative z-10 bg-brand-bg -mt-1">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" preserveAspectRatio="none" class="w-full h-12 sm:h-16 fill-brand-section scale-x-[-1]">
             <path d="M0,60 C320,110 600,10 1000,50 C1250,70 1350,60 1440,40 L1440,0 L0,0 Z"></path>
         </svg>
     </div>
 
-    <!-- WORKS：白 -->
-    <section id="cases" class="py-20 px-4 bg-white scroll-mt-8 relative z-10">
+    <!-- WORKS：アイボリー -->
+    <section id="cases" class="py-20 px-4 bg-brand-bg scroll-mt-8 relative z-10">
         <div class="text-center mb-14 relative z-10 reveal">
-            <h2 class="font-en text-[16px] tracking-[0.2em] text-brand-main mb-2 font-medium">WORKS</h2>
+            <h2 class="font-en text-[18px] tracking-[0.2em] text-brand-main mb-2 font-semibold">WORKS</h2>
             <div class="w-6 h-[1px] bg-brand-main/50 mx-auto mb-4"></div>
             <p class="text-[15px] font-medium tracking-wider text-brand-text">サポート事例</p>
         </div>
 
         <div class="space-y-10 relative z-10 max-w-[400px] mx-auto">
-            <!-- 各カードごとにreveal。画像はアスペクト比を外して自然な比率に。 -->
-            <div class="bg-white rounded-[16px] p-6 shadow-sm border border-brand-section flex flex-col items-center reveal">
+            <!-- カードは白 -->
+            <div class="bg-white rounded-[16px] p-6 shadow-sm border border-brand-border flex flex-col items-center reveal">
                 <div class="mb-4 text-center">
-                    <span class="font-en text-[11px] font-medium tracking-widest text-brand-main block mb-1">CASE 01: Lesson</span>
+                    <span class="font-en text-[13px] font-semibold tracking-widest text-brand-main block mb-1">CASE 01: Lesson</span>
                     <h3 class="text-[15px] font-medium tracking-wide text-brand-text">
                         <span class="ib">ちょっとの工夫でここまで変わる</span>
                     </h3>
                 </div>
                 <div class="mb-5 w-full">
-                    <img src="before-after.png" alt="iPhone撮影のBefore/After" class="w-full h-auto rounded-[12px]" onerror="this.src='https://placehold.co/400x300/ecf5f1/82b899?text=Before/After'">
+                    <img src="before-after.png" alt="iPhone撮影のBefore/After" class="w-full h-auto rounded-[12px]" onerror="this.src='https://placehold.co/400x300/F8F1EB/D49A89?text=Before/After'">
                 </div>
                 <div class="content-text text-brand-text text-center space-y-4">
                     <p class="font-medium text-[14px] leading-[1.7] text-brand-main">
@@ -390,16 +390,16 @@
                 </div>
             </div>
 
-            <div class="bg-white rounded-[16px] p-6 shadow-sm border border-brand-section flex flex-col items-center reveal">
+            <div class="bg-white rounded-[16px] p-6 shadow-sm border border-brand-border flex flex-col items-center reveal">
                 <div class="mb-4 text-center">
-                    <span class="font-en text-[11px] font-medium tracking-widest text-brand-main block mb-1">CASE 02: Studio</span>
+                    <span class="font-en text-[13px] font-semibold tracking-widest text-brand-main block mb-1">CASE 02: Studio</span>
                     <h3 class="text-[15px] font-medium tracking-wide text-brand-text">
                         <span class="ib">LPはもちろん</span>
                         <span class="ib">投稿やストーリーズにも</span>
                     </h3>
                 </div>
                 <div class="mb-5 w-full">
-                    <img src="studio-example.png" alt="スタジオ撮影の事例" class="w-full h-auto rounded-[12px]" onerror="this.src='https://placehold.co/400x300/ecf5f1/82b899?text=Studio+Example'">
+                    <img src="studio-example.png" alt="スタジオ撮影の事例" class="w-full h-auto rounded-[12px]" onerror="this.src='https://placehold.co/400x300/F8F1EB/D49A89?text=Studio+Example'">
                 </div>
                 <div class="content-text text-brand-text text-center">
                     <p>
@@ -410,15 +410,15 @@
                 </div>
             </div>
 
-            <div class="bg-white rounded-[16px] p-6 shadow-sm border border-brand-section flex flex-col items-center reveal">
+            <div class="bg-white rounded-[16px] p-6 shadow-sm border border-brand-border flex flex-col items-center reveal">
                 <div class="mb-4 text-center">
-                    <span class="font-en text-[11px] font-medium tracking-widest text-brand-main block mb-1">CASE 03: Reel</span>
+                    <span class="font-en text-[13px] font-semibold tracking-widest text-brand-main block mb-1">CASE 03: Reel</span>
                     <h3 class="text-[15px] font-medium tracking-wide text-brand-text">
                         <span class="ib">届けたリールが共感と集客に繋がる</span>
                     </h3>
                 </div>
                 <div class="mb-5 w-full">
-                    <img src="result.png" alt="サポート実績" class="w-full h-auto rounded-[12px]" onerror="this.src='https://placehold.co/400x300/ecf5f1/82b899?text=Support+Result'">
+                    <img src="result.png" alt="サポート実績" class="w-full h-auto rounded-[12px]" onerror="this.src='https://placehold.co/400x300/F8F1EB/D49A89?text=Support+Result'">
                 </div>
                 <div class="content-text text-brand-text text-center space-y-4">
                     <p class="font-medium text-[14px] leading-[1.7] text-brand-main">
@@ -435,17 +435,17 @@
         </div>
     </section>
 
-    <!-- 波A (白から緑へ) -->
+    <!-- 波A (アイボリーからベージュへ) -->
     <div class="w-full overflow-hidden leading-none relative z-10 bg-brand-section -mt-1">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" preserveAspectRatio="none" class="w-full h-12 sm:h-16 fill-white">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" preserveAspectRatio="none" class="w-full h-12 sm:h-16 fill-brand-bg">
             <path d="M0,60 C320,110 600,10 1000,50 C1250,70 1350,60 1440,40 L1440,0 L0,0 Z"></path>
         </svg>
     </div>
 
-    <!-- MENU：薄緑 -->
+    <!-- MENU：ベージュ -->
     <section id="menu-section" class="py-20 px-4 bg-brand-section scroll-mt-8 relative z-10">
         <div class="text-center mb-14 px-2 reveal">
-            <h2 class="font-en text-[16px] tracking-[0.2em] text-brand-main mb-2 font-medium">MENU</h2>
+            <h2 class="font-en text-[18px] tracking-[0.2em] text-brand-main mb-2 font-semibold">MENU</h2>
             <div class="w-6 h-[1px] bg-brand-main/50 mx-auto mb-4"></div>
             <p class="text-[16px] font-medium tracking-wider text-brand-text">撮影メニュー</p>
             <p class="text-[13px] text-brand-light mt-4">
@@ -454,12 +454,11 @@
         </div>
 
         <div class="space-y-12 max-w-[340px] mx-auto">
-            <!-- 各メニューカードごとにrevealを追加 -->
-            <div id="menu1" class="bg-white rounded-[16px] p-6 shadow-sm border border-brand-section scroll-mt-12 flex flex-col items-center reveal">
-                <div class="mb-5 pb-5 border-b border-brand-section text-center w-full">
+            <div id="menu1" class="bg-white rounded-[16px] p-6 shadow-sm border border-brand-border scroll-mt-12 flex flex-col items-center reveal">
+                <div class="mb-5 pb-5 border-b border-brand-border text-center w-full">
                     <h3 class="text-[16px] font-medium text-brand-text leading-[1.5] mb-3">iPhone写真素材撮影</h3>
-                    <p class="font-en text-[22px] text-brand-main font-medium tracking-wide">12,800<span class="text-[12px] text-brand-text ml-0.5 font-sans">円</span></p>
-                    <p class="text-[12px] text-brand-light mt-1">所要時間 約1時間</p>
+                    <p class="font-en text-[26px] text-brand-main font-semibold tracking-wide">12,800<span class="text-[12px] text-brand-text ml-0.5 font-serif font-medium">円</span></p>
+                    <p class="text-[12px] text-brand-light mt-1 font-sans">所要時間 約1時間</p>
                 </div>
                 <div class="content-text mb-6 text-brand-text text-center space-y-4">
                     <p>
@@ -474,7 +473,7 @@
                     </p>
                 </div>
                 
-                <details class="group mb-6 border-t border-brand-section w-full">
+                <details class="group mb-6 border-t border-brand-border w-full">
                     <summary class="flex justify-between items-center font-medium cursor-pointer text-[14px] text-brand-main py-4 px-2">
                         <span class="tracking-wide">撮影に含まれる内容</span>
                         <span class="accordion-icon text-brand-main leading-none"></span>
@@ -490,17 +489,17 @@
                 </details>
 
                 <div class="px-4 w-full max-w-[280px]">
-                    <button onclick="openFormWithPlan('iPhone写真素材撮影')" class="w-full bg-brand-main text-white py-3.5 rounded-full text-[13px] tracking-widest font-medium hover:bg-opacity-90 transition-colors shadow-sm whitespace-nowrap">
+                    <button onclick="openFormWithPlan('iPhone写真素材撮影')" class="w-full bg-brand-main text-white py-3.5 rounded-full text-[13px] tracking-widest font-medium font-sans hover:bg-opacity-90 transition-colors shadow-sm whitespace-nowrap">
                         お申し込み
                     </button>
                 </div>
             </div>
 
-            <div id="menu2" class="bg-white rounded-[16px] p-6 shadow-sm border border-brand-section scroll-mt-12 flex flex-col items-center reveal">
-                <div class="mb-5 pb-5 border-b border-brand-section text-center w-full">
+            <div id="menu2" class="bg-white rounded-[16px] p-6 shadow-sm border border-brand-border scroll-mt-12 flex flex-col items-center reveal">
+                <div class="mb-5 pb-5 border-b border-brand-border text-center w-full">
                     <h3 class="text-[16px] font-medium text-brand-text leading-[1.5] mb-3">iPhone動画素材撮影</h3>
-                    <p class="font-en text-[22px] text-brand-main font-medium tracking-wide">29,800<span class="text-[12px] text-brand-text ml-0.5 font-sans">円〜</span></p>
-                    <p class="text-[12px] text-brand-light mt-1">所要時間 約2時間</p>
+                    <p class="font-en text-[26px] text-brand-main font-semibold tracking-wide">29,800<span class="text-[12px] text-brand-text ml-0.5 font-serif font-medium">円〜</span></p>
+                    <p class="text-[12px] text-brand-light mt-1 font-sans">所要時間 約2時間</p>
                 </div>
                 <div class="content-text mb-6 text-brand-text text-center space-y-4">
                     <p>
@@ -515,7 +514,7 @@
                     </p>
                 </div>
                 
-                <details class="group mb-6 border-t border-brand-section w-full">
+                <details class="group mb-6 border-t border-brand-border w-full">
                     <summary class="flex justify-between items-center font-medium cursor-pointer text-[14px] text-brand-main py-4 px-2">
                         <span class="tracking-wide">撮影に含まれる内容</span>
                         <span class="accordion-icon text-brand-main leading-none"></span>
@@ -530,17 +529,17 @@
                 </details>
 
                 <div class="px-4 w-full max-w-[280px]">
-                    <button onclick="openFormWithPlan('iPhone動画素材撮影')" class="w-full bg-brand-main text-white py-3.5 rounded-full text-[13px] tracking-widest font-medium hover:bg-opacity-90 transition-colors shadow-sm whitespace-nowrap">
+                    <button onclick="openFormWithPlan('iPhone動画素材撮影')" class="w-full bg-brand-main text-white py-3.5 rounded-full text-[13px] tracking-widest font-medium font-sans hover:bg-opacity-90 transition-colors shadow-sm whitespace-nowrap">
                         お申し込み
                     </button>
                 </div>
             </div>
 
-            <div id="menu3" class="bg-white rounded-[16px] p-6 shadow-sm border border-brand-section scroll-mt-12 flex flex-col items-center reveal">
-                <div class="mb-5 pb-5 border-b border-brand-section text-center w-full">
+            <div id="menu3" class="bg-white rounded-[16px] p-6 shadow-sm border border-brand-border scroll-mt-12 flex flex-col items-center reveal">
+                <div class="mb-5 pb-5 border-b border-brand-border text-center w-full">
                     <h3 class="text-[16px] font-medium text-brand-text leading-[1.5] mb-3">iPhone撮り方実践レッスン</h3>
-                    <p class="font-en text-[22px] text-brand-main font-medium tracking-wide">16,500<span class="text-[12px] text-brand-text ml-0.5 font-sans">円</span></p>
-                    <p class="text-[12px] text-brand-light mt-1">所要時間 約2時間</p>
+                    <p class="font-en text-[26px] text-brand-main font-semibold tracking-wide">16,500<span class="text-[12px] text-brand-text ml-0.5 font-serif font-medium">円</span></p>
+                    <p class="text-[12px] text-brand-light mt-1 font-sans">所要時間 約2時間</p>
                 </div>
                 <div class="content-text mb-6 text-brand-text text-center space-y-4">
                     <p>
@@ -555,7 +554,7 @@
                     </p>
                 </div>
                 
-                <details class="group mb-6 border-t border-brand-section w-full">
+                <details class="group mb-6 border-t border-brand-border w-full">
                     <summary class="flex justify-between items-center font-medium cursor-pointer text-[14px] text-brand-main py-4 px-2">
                         <span class="tracking-wide">レッスンに含まれる内容</span>
                         <span class="accordion-icon text-brand-main leading-none"></span>
@@ -566,7 +565,7 @@
                             <li class="list-item-custom">角度や余白の整え方のアドバイス</li>
                             <li class="list-item-custom">明るさ・色味調整レクチャー</li>
                         </ul>
-                        <div class="mt-4 p-3 bg-brand-section rounded-lg text-[12px] text-brand-light text-center w-full">
+                        <div class="mt-4 p-3 bg-brand-section rounded-lg text-[12px] text-brand-light font-sans text-center w-full">
                             <p>※写真納品・リール編集は含まれません</p>
                             <p>※Androidは基本操作レクチャー対象外</p>
                         </div>
@@ -574,17 +573,17 @@
                 </details>
 
                 <div class="px-4 w-full max-w-[280px]">
-                    <button onclick="openFormWithPlan('iPhone撮り方実践レッスン')" class="w-full bg-brand-main text-white py-3.5 rounded-full text-[13px] tracking-widest font-medium hover:bg-opacity-90 transition-colors shadow-sm whitespace-nowrap">
+                    <button onclick="openFormWithPlan('iPhone撮り方実践レッスン')" class="w-full bg-brand-main text-white py-3.5 rounded-full text-[13px] tracking-widest font-medium font-sans hover:bg-opacity-90 transition-colors shadow-sm whitespace-nowrap">
                         お申し込み
                     </button>
                 </div>
             </div>
 
-            <div id="menu4" class="bg-white rounded-[16px] p-6 shadow-sm border border-brand-section scroll-mt-12 flex flex-col items-center reveal">
-                <div class="mb-5 pb-5 border-b border-brand-section text-center w-full">
+            <div id="menu4" class="bg-white rounded-[16px] p-6 shadow-sm border border-brand-border scroll-mt-12 flex flex-col items-center reveal">
+                <div class="mb-5 pb-5 border-b border-brand-border text-center w-full">
                     <h3 class="text-[16px] font-medium text-brand-text leading-[1.5] mb-3">カメラでのスタジオ撮影</h3>
-                    <p class="font-en text-[22px] text-brand-main font-medium tracking-wide">29,800<span class="text-[12px] text-brand-text ml-0.5 font-sans">円〜</span></p>
-                    <p class="text-[12px] text-brand-light mt-1">所要時間 約2時間</p>
+                    <p class="font-en text-[26px] text-brand-main font-semibold tracking-wide">29,800<span class="text-[12px] text-brand-text ml-0.5 font-serif font-medium">円〜</span></p>
+                    <p class="text-[12px] text-brand-light mt-1 font-sans">所要時間 約2時間</p>
                 </div>
                 <div class="content-text mb-6 text-brand-text text-center space-y-4">
                     <p>
@@ -599,7 +598,7 @@
                     </p>
                 </div>
                 
-                <details class="group mb-6 border-t border-brand-section w-full">
+                <details class="group mb-6 border-t border-brand-border w-full">
                     <summary class="flex justify-between items-center font-medium cursor-pointer text-[14px] text-brand-main py-4 px-2">
                         <span class="tracking-wide">撮影に含まれる内容</span>
                         <span class="accordion-icon text-brand-main leading-none"></span>
@@ -610,12 +609,12 @@
                             <li class="list-item-custom">世界観や見え方の調整</li>
                             <li class="list-item-custom">レタッチ済みデータ納品</li>
                         </ul>
-                        <p class="mt-4 text-[12px] p-3 bg-brand-section rounded-lg text-brand-light w-full text-center">※スタジオ代は別途必要となります</p>
+                        <p class="mt-4 text-[12px] p-3 bg-brand-section rounded-lg text-brand-light font-sans w-full text-center">※スタジオ代は別途必要となります</p>
                     </div>
                 </details>
 
                 <div class="px-4 w-full max-w-[280px]">
-                    <button onclick="openFormWithPlan('スタジオ撮影')" class="w-full bg-brand-main text-white py-3.5 rounded-full text-[13px] tracking-widest font-medium hover:bg-opacity-90 transition-colors shadow-sm whitespace-nowrap">
+                    <button onclick="openFormWithPlan('スタジオ撮影')" class="w-full bg-brand-main text-white py-3.5 rounded-full text-[13px] tracking-widest font-medium font-sans hover:bg-opacity-90 transition-colors shadow-sm whitespace-nowrap">
                         お申し込み
                     </button>
                 </div>
@@ -623,19 +622,19 @@
         </div>
     </section>
 
-    <!-- 波B (緑から白へ) -->
-    <div class="w-full overflow-hidden leading-none relative z-10 bg-white -mt-1">
+    <!-- 波B (ベージュからアイボリーへ) -->
+    <div class="w-full overflow-hidden leading-none relative z-10 bg-brand-bg -mt-1">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" preserveAspectRatio="none" class="w-full h-12 sm:h-16 fill-brand-section scale-x-[-1]">
             <path d="M0,60 C320,110 600,10 1000,50 C1250,70 1350,60 1440,40 L1440,0 L0,0 Z"></path>
         </svg>
     </div>
 
-    <!-- FLOW・撮影場所：白 -->
-    <section id="flow-section" class="py-20 px-4 bg-white scroll-mt-8 relative z-10">
+    <!-- FLOW・撮影場所：アイボリー -->
+    <section id="flow-section" class="py-20 px-4 bg-brand-bg scroll-mt-8 relative z-10">
         
         <div id="flow-in-menu" class="mb-16">
             <div class="text-center mb-14 reveal">
-                <h2 class="font-en text-[16px] tracking-[0.2em] text-brand-main mb-2 font-medium">FLOW</h2>
+                <h2 class="font-en text-[18px] tracking-[0.2em] text-brand-main mb-2 font-semibold">FLOW</h2>
                 <div class="w-6 h-[1px] bg-brand-main/50 mx-auto mb-4"></div>
                 <p class="text-[13px] text-brand-text">
                     <span class="ib">お問い合わせから納品までの流れ</span>
@@ -646,11 +645,11 @@
                 <!-- Step 1 -->
                 <div class="flex items-center">
                     <div class="w-12 h-12 rounded-full bg-brand-main flex items-center justify-center shrink-0 z-10 shadow-sm relative mr-[-16px]">
-                        <span class="font-en text-[18px] text-white font-medium">01</span>
+                        <span class="font-en text-[20px] text-white font-semibold italic pr-0.5">01</span>
                     </div>
-                    <div class="flex-1 bg-brand-yellow/30 rounded-r-full py-4 pr-6 pl-8 text-left">
+                    <div class="flex-1 bg-brand-yellow rounded-r-full py-4 pr-6 pl-8 text-left">
                         <h3 class="text-[14px] font-medium text-brand-main tracking-wide">お問い合わせ</h3>
-                        <p class="text-[11px] text-brand-text mt-1 leading-relaxed">
+                        <p class="text-[11px] font-sans text-brand-text mt-1 leading-relaxed">
                             <span class="ib">下部フォームまたはDMよりご連絡ください</span>
                         </p>
                     </div>
@@ -663,11 +662,11 @@
                 <!-- Step 2 -->
                 <div class="flex items-center">
                     <div class="w-12 h-12 rounded-full bg-brand-main flex items-center justify-center shrink-0 z-10 shadow-sm relative mr-[-16px]">
-                        <span class="font-en text-[18px] text-white font-medium">02</span>
+                        <span class="font-en text-[20px] text-white font-semibold italic pr-0.5">02</span>
                     </div>
-                    <div class="flex-1 bg-brand-yellow/30 rounded-r-full py-4 pr-6 pl-8 text-left">
+                    <div class="flex-1 bg-brand-yellow rounded-r-full py-4 pr-6 pl-8 text-left">
                         <h3 class="text-[14px] font-medium text-brand-main tracking-wide">日程調整・ヒアリング</h3>
-                        <p class="text-[11px] text-brand-text mt-1 leading-relaxed">
+                        <p class="text-[11px] font-sans text-brand-text mt-1 leading-relaxed">
                             <span class="block">候補日と場所をお知らせいただき</span>
                             <span class="block">内容をすり合わせます</span>
                         </p>
@@ -681,11 +680,11 @@
                 <!-- Step 3 -->
                 <div class="flex items-center">
                     <div class="w-12 h-12 rounded-full bg-brand-main flex items-center justify-center shrink-0 z-10 shadow-sm relative mr-[-16px]">
-                        <span class="font-en text-[18px] text-white font-medium">03</span>
+                        <span class="font-en text-[20px] text-white font-semibold italic pr-0.5">03</span>
                     </div>
-                    <div class="flex-1 bg-brand-yellow/30 rounded-r-full py-4 pr-6 pl-8 text-left">
+                    <div class="flex-1 bg-brand-yellow rounded-r-full py-4 pr-6 pl-8 text-left">
                         <h3 class="text-[14px] font-medium text-brand-main tracking-wide">お支払い（事前決済）</h3>
-                        <p class="text-[11px] text-brand-text mt-1 leading-relaxed">
+                        <p class="text-[11px] font-sans text-brand-text mt-1 leading-relaxed">
                             <span class="ib">指定口座へのお振込みをお願いいたします</span>
                         </p>
                     </div>
@@ -698,11 +697,11 @@
                 <!-- Step 4 -->
                 <div class="flex items-center">
                     <div class="w-12 h-12 rounded-full bg-brand-main flex items-center justify-center shrink-0 z-10 shadow-sm relative mr-[-16px]">
-                        <span class="font-en text-[18px] text-white font-medium">04</span>
+                        <span class="font-en text-[20px] text-white font-semibold italic pr-0.5">04</span>
                     </div>
-                    <div class="flex-1 bg-brand-yellow/30 rounded-r-full py-4 pr-6 pl-8 text-left">
+                    <div class="flex-1 bg-brand-yellow rounded-r-full py-4 pr-6 pl-8 text-left">
                         <h3 class="text-[14px] font-medium text-brand-main tracking-wide">撮影・レッスン当日</h3>
-                        <p class="text-[11px] text-brand-text mt-1 leading-relaxed">
+                        <p class="text-[11px] font-sans text-brand-text mt-1 leading-relaxed">
                             <span class="ib">リラックスした雰囲気で楽しく進めます</span>
                         </p>
                     </div>
@@ -715,11 +714,11 @@
                 <!-- Step 5 -->
                 <div class="flex items-center">
                     <div class="w-12 h-12 rounded-full bg-brand-main flex items-center justify-center shrink-0 z-10 shadow-sm relative mr-[-16px]">
-                        <span class="font-en text-[18px] text-white font-medium">05</span>
+                        <span class="font-en text-[20px] text-white font-semibold italic pr-0.5">05</span>
                     </div>
-                    <div class="flex-1 bg-brand-yellow/30 rounded-r-full py-4 pr-6 pl-8 text-left">
+                    <div class="flex-1 bg-brand-yellow rounded-r-full py-4 pr-6 pl-8 text-left">
                         <h3 class="text-[14px] font-medium text-brand-main tracking-wide">データ納品</h3>
-                        <p class="text-[11px] text-brand-text mt-1 leading-relaxed">
+                        <p class="text-[11px] font-sans text-brand-text mt-1 leading-relaxed">
                             <span class="block">編集後、ギガファイル便にてお渡しします</span>
                             <span class="block">（約3日〜1週間）</span>
                         </p>
@@ -729,7 +728,7 @@
         </div>
 
         <div class="max-w-[340px] mx-auto reveal">
-            <div class="bg-white rounded-[16px] p-6 border border-brand-section flex flex-col items-center text-center shadow-sm">
+            <div class="bg-white rounded-[16px] p-6 border border-brand-border flex flex-col items-center text-center shadow-sm">
                 <h3 class="text-[15px] font-medium text-brand-main mb-4 flex items-center gap-2">
                     <i data-lucide="map-pin" class="w-4 h-4"></i>撮影・レッスンの場所について
                 </h3>
@@ -738,68 +737,68 @@
                         <span class="ib">場所はお客様にてご指定をお願いしております</span><br>
                         <span class="ib text-[12px] text-brand-light">（カフェ、ご自宅、レンタルスペースなど）</span>
                     </p>
-                    <div class="w-[80%] h-[1px] bg-brand-section mx-auto my-3"></div>
+                    <div class="w-[80%] h-[1px] bg-brand-border mx-auto my-3"></div>
                     <p>
                         <span class="ib">福岡市内は交通費無料でお伺いいたします</span><br>
-                        <span class="ib text-[12px] text-brand-text/90 mt-2">※市外・県外の場合は<br>別途交通費をご相談させてください</span>
+                        <span class="ib text-[12px] font-sans text-brand-text/90 mt-2">※市外・県外の場合は<br>別途交通費をご相談させてください</span>
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 波A (白から緑へ) -->
+    <!-- 波A (アイボリーからベージュへ) -->
     <div class="w-full overflow-hidden leading-none relative z-10 bg-brand-section -mt-1">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" preserveAspectRatio="none" class="w-full h-12 sm:h-16 fill-white">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" preserveAspectRatio="none" class="w-full h-12 sm:h-16 fill-brand-bg">
             <path d="M0,60 C320,110 600,10 1000,50 C1250,70 1350,60 1440,40 L1440,0 L0,0 Z"></path>
         </svg>
     </div>
 
-    <!-- その他メニュー：薄緑 -->
+    <!-- その他メニュー：ベージュ -->
     <section id="menu-other" class="py-20 px-4 bg-brand-section scroll-mt-8 relative z-10">
         <div class="text-center mb-10 px-2 reveal">
             <h3 class="text-[15px] font-medium tracking-wide text-brand-text">リール・その他のサポート</h3>
         </div>
         
         <div class="space-y-6 max-w-[340px] mx-auto">
-            <div class="bg-white rounded-[16px] p-6 shadow-sm border border-brand-section flex flex-col items-center text-center reveal">
+            <div class="bg-white rounded-[16px] p-6 shadow-sm border border-brand-border flex flex-col items-center text-center reveal">
                 <div class="flex flex-col items-center justify-center gap-2 mb-4 w-full">
-                    <span class="text-[11px] bg-brand-light/20 text-brand-text px-2.5 py-1 rounded-full font-medium tracking-widest shrink-0">満席</span>
+                    <span class="text-[11px] bg-brand-light/20 text-brand-text px-2.5 py-1 rounded-full font-medium font-sans tracking-widest shrink-0">満席</span>
                     <h4 class="text-[15px] font-medium text-brand-text">自走を目指す クリエイティブ伴走</h4>
                 </div>
-                <p class="font-en font-medium text-[16px] text-brand-main mb-3">月4本 40,000円〜 <span class="text-[12px] font-sans font-normal text-brand-light">（初回ZOOM 10,000円）</span></p>
+                <p class="font-en font-semibold text-[18px] text-brand-main mb-3">月4本 40,000円〜 <span class="text-[12px] font-serif font-normal text-brand-light">（初回ZOOM 10,000円）</span></p>
                 <p class="content-text text-[13px] text-brand-text">
                     <span class="ib">台本添削 撮影アドバイス インサイト確認など</span><br>
-                    <span class="ib">※現在新規受付停止中</span>
+                    <span class="ib text-[12px] font-sans">※現在新規受付停止中</span>
                 </p>
             </div>
 
-            <div class="bg-white rounded-[16px] p-6 shadow-sm border border-brand-section flex flex-col items-center text-center reveal">
+            <div class="bg-white rounded-[16px] p-6 shadow-sm border border-brand-border flex flex-col items-center text-center reveal">
                 <div class="flex flex-col items-center justify-center gap-2 mb-4 w-full">
-                    <span class="text-[11px] bg-brand-light/20 text-brand-text px-2.5 py-1 rounded-full font-medium tracking-widest shrink-0">満席</span>
+                    <span class="text-[11px] bg-brand-light/20 text-brand-text px-2.5 py-1 rounded-full font-medium font-sans tracking-widest shrink-0">満席</span>
                     <h4 class="text-[15px] font-medium text-brand-text">ショート動画編集</h4>
                 </div>
-                <p class="font-en font-medium text-[16px] text-brand-main mb-3">1本 4,500円〜7,000円</p>
+                <p class="font-en font-semibold text-[18px] text-brand-main mb-3">1本 4,500円〜7,000円</p>
                 <p class="content-text text-[13px] text-brand-text space-y-2">
                     <span class="ib">いただいた素材をもとに発信目的に合わせ</span>
                     <span class="ib">カットやテロップ挿入を行います</span><br>
-                    <span class="ib">※現在新規受付停止中</span>
+                    <span class="ib text-[12px] font-sans">※現在新規受付停止中</span>
                 </p>
             </div>
 
-            <div class="bg-white rounded-[16px] p-6 shadow-sm mt-8 border border-brand-section flex flex-col items-center text-center reveal">
+            <div class="bg-white rounded-[16px] p-6 shadow-sm mt-8 border border-brand-border flex flex-col items-center text-center reveal">
                 <h4 class="text-[15px] font-medium mb-4 text-brand-text">少人数セミナー・動画編集個別指導</h4>
                 <div class="content-text text-[13.5px] mb-6 text-brand-text space-y-4">
                     <p>
                         <span class="ib">スマホ写真やリール素材の撮り方セミナー</span>
                         <span class="ib">マンツーマンでの動画編集指導も承ります</span>
                     </p>
-                    <p class="text-[12px] text-brand-text text-center">
+                    <p class="text-[12px] font-sans text-brand-text text-center">
                         <span class="ib">※チケット制など詳細はお問い合わせください</span>
                     </p>
                 </div>
                 <div class="px-2 w-full max-w-[280px]">
-                    <button onclick="openFormWithPlan('その他・ご相談')" class="w-full bg-brand-main text-white py-3 rounded-full text-[13px] font-medium tracking-widest hover:bg-brand-main/90 transition-colors shadow-sm whitespace-nowrap">
+                    <button onclick="openFormWithPlan('その他・ご相談')" class="w-full bg-brand-main text-white py-3 rounded-full text-[13px] font-medium tracking-widest font-sans hover:bg-brand-main/90 transition-colors shadow-sm whitespace-nowrap">
                         ご相談・お問い合わせ
                     </button>
                 </div>
@@ -807,25 +806,25 @@
         </div>
     </section>
 
-    <!-- 波B (緑から白へ) -->
-    <div class="w-full overflow-hidden leading-none relative z-10 bg-white -mt-1">
+    <!-- 波B (ベージュからアイボリーへ) -->
+    <div class="w-full overflow-hidden leading-none relative z-10 bg-brand-bg -mt-1">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" preserveAspectRatio="none" class="w-full h-12 sm:h-16 fill-brand-section scale-x-[-1]">
             <path d="M0,60 C320,110 600,10 1000,50 C1250,70 1350,60 1440,40 L1440,0 L0,0 Z"></path>
         </svg>
     </div>
 
-    <!-- お申し込み・キャンセルポリシー：白 -->
-    <section id="contact" class="py-10 px-6 bg-white scroll-mt-8 relative z-10">
+    <!-- お申し込み・キャンセルポリシー：アイボリー -->
+    <section id="contact" class="py-10 px-6 bg-brand-bg scroll-mt-8 relative z-10">
         
         <div class="mb-14 text-center reveal bg-brand-section p-6 rounded-2xl mx-auto max-w-[340px]">
             <p class="text-[13px] font-medium tracking-widest text-brand-main mb-3">キャンセルポリシー</p>
-            <p class="text-[12px] text-brand-text leading-[1.8]">
+            <p class="text-[12px] text-brand-text leading-[1.8] font-sans">
                 <span class="ib">お支払い後の返金は致しかねます</span><br>
                 <span class="ib">あらかじめご了承ください</span>
             </p>
         </div>
 
-        <div class="text-center relative z-10 bg-white rounded-[24px] p-8 shadow-sm border border-brand-section max-w-[340px] mx-auto reveal">
+        <div class="text-center relative z-10 bg-white rounded-[24px] p-8 shadow-sm border border-brand-border max-w-[340px] mx-auto reveal">
             <h2 class="text-[16px] font-medium tracking-wide text-brand-text mb-4">
                 お申し込み・お問い合わせ
             </h2>
@@ -836,7 +835,7 @@
                 </p>
             </div>
 
-            <div class="space-y-4 max-w-[280px] mx-auto">
+            <div class="space-y-4 max-w-[280px] mx-auto font-sans">
                 <button onclick="openFormWithPlan('')" class="w-full flex items-center justify-center gap-2 bg-brand-main text-white px-8 py-3.5 rounded-full text-[14px] tracking-widest hover:bg-opacity-90 transition-shadow shadow-sm font-medium whitespace-nowrap">
                     <i data-lucide="mail" class="w-4 h-4 shrink-0"></i>
                     <span>お申し込み</span>
@@ -852,7 +851,7 @@
 
     <!-- フッター -->
     <footer class="pt-16 pb-16 px-6 bg-brand-main text-white flex flex-col items-center text-center relative z-10">
-        <p class="font-en text-[18px] font-medium tracking-[0.15em] mb-6 text-white/90">
+        <p class="font-en text-[20px] font-semibold tracking-[0.15em] mb-6 text-white/90">
             ATSUKO KARASAWA
         </p>
         
@@ -864,7 +863,7 @@
             </svg>
         </a>
         
-        <div class="text-[11px] leading-[2] text-white/80 tracking-wider">
+        <div class="text-[11px] leading-[2] text-white/80 tracking-wider font-sans">
             <p class="mb-1 font-en">&copy; 2026 kara_photo.douga</p>
             <p>無断転載はご遠慮ください</p>
         </div>
@@ -875,7 +874,7 @@
         <div id="formOverlayBtn" class="absolute inset-0 bg-brand-text/40 backdrop-blur-sm transition-opacity"></div>
         
         <div class="relative bg-white rounded-[20px] shadow-xl w-full max-w-md max-h-[90vh] flex flex-col overflow-hidden animate-[fadeIn_0.3s_ease-out]">
-            <div class="px-6 py-5 border-b border-brand-section flex justify-between items-center bg-brand-bg">
+            <div class="px-6 py-5 border-b border-brand-border flex justify-between items-center bg-brand-bg">
                 <h3 class="font-medium text-brand-text tracking-wide text-[15px] flex items-center gap-2">
                     <i data-lucide="mail" class="w-4 h-4 text-brand-main"></i>お申し込み
                 </h3>
@@ -884,7 +883,7 @@
                 </button>
             </div>
             
-            <div class="p-6 overflow-y-auto bg-white">
+            <div class="p-6 overflow-y-auto bg-white font-sans">
                 <form id="applyForm" class="space-y-5 text-left">
                     <div>
                         <label for="entryName" class="block text-[12px] font-medium text-brand-text mb-1.5">お名前 <span class="text-brand-main">*</span></label>

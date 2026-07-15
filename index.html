@@ -85,12 +85,19 @@
         .reveal {
             opacity: 0;
             transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+            transition: opacity 0.8s cubic-bezier(0.5, 0, 0, 1), transform 0.8s cubic-bezier(0.5, 0, 0, 1);
         }
         .reveal.active {
             opacity: 1;
             transform: translateY(0);
         }
+        
+        /* 順番に表示するためのディレイ（遅延）クラス */
+        .delay-100 { transition-delay: 0.1s; }
+        .delay-200 { transition-delay: 0.2s; }
+        .delay-300 { transition-delay: 0.3s; }
+        .delay-400 { transition-delay: 0.4s; }
+        .delay-500 { transition-delay: 0.5s; }
     </style>
 </head>
 <body class="text-brand-text font-serif antialiased selection:bg-brand-main selection:text-white relative">
@@ -136,20 +143,20 @@
             <img src="profile01.jpg" alt="プロフィール画像" class="w-full h-auto rounded-[12px] shadow-sm" onerror="this.src='https://placehold.co/340x227/ecf5f1/82b899?text=Profile+Image'">
         </div>
 
-        <h1 class="font-en text-[24px] tracking-[0.15em] mb-2 text-brand-text font-semibold relative z-10 reveal">
+        <h1 class="font-en text-[24px] tracking-[0.15em] mb-2 text-brand-text font-semibold relative z-10 reveal delay-100">
             ATSUKO KARASAWA
         </h1>
-        <a href="https://www.instagram.com/kara_photo.douga/" target="_blank" rel="noopener noreferrer" class="font-en text-[14px] tracking-wider text-brand-light hover:text-brand-main transition-colors mb-6 relative z-10 flex items-center justify-center gap-1.5 font-medium reveal">
+        <a href="https://www.instagram.com/kara_photo.douga/" target="_blank" rel="noopener noreferrer" class="font-en text-[14px] tracking-wider text-brand-light hover:text-brand-main transition-colors mb-6 relative z-10 flex items-center justify-center gap-1.5 font-medium reveal delay-200">
             <i data-lucide="instagram" class="w-3.5 h-3.5 stroke-[1.5]"></i>
             @kara_photo.douga
         </a>
         
-        <p class="text-[14.5px] leading-[2.2] tracking-wider font-medium relative z-10 mb-8 text-center reveal">
+        <p class="text-[14.5px] leading-[2.2] tracking-wider font-medium relative z-10 mb-8 text-center reveal delay-300">
             <span class="ib">SNSで使いやすい</span><br>
             <span class="ib">写真・動画素材の撮影と 編集サポート</span>
         </p>
         
-        <button onclick="openFormWithPlan('')" class="relative z-10 flex items-center justify-center gap-2 bg-brand-main text-white px-10 py-4 rounded-full text-[14px] tracking-widest hover:bg-opacity-90 transition-all shadow-sm font-medium font-sans whitespace-nowrap reveal">
+        <button onclick="openFormWithPlan('')" class="relative z-10 flex items-center justify-center gap-2 bg-brand-main text-white px-10 py-4 rounded-full text-[14px] tracking-widest hover:bg-opacity-90 transition-all shadow-sm font-medium font-sans whitespace-nowrap reveal delay-400">
             <i data-lucide="mail" class="w-4 h-4 shrink-0"></i>
             <span>お申し込み</span>
         </button>
@@ -187,7 +194,7 @@
                 </p>
             </div>
             
-            <div class="bg-white rounded-[16px] p-5 shadow-sm flex items-center gap-5 reveal">
+            <div class="bg-white rounded-[16px] p-5 shadow-sm flex items-center gap-5 reveal delay-100">
                 <div class="w-[46px] h-[46px] rounded-full bg-brand-yellow flex items-center justify-center shrink-0">
                     <i data-lucide="type" class="w-[22px] h-[22px] text-brand-main stroke-[1.2]"></i>
                 </div>
@@ -197,7 +204,7 @@
                 </p>
             </div>
             
-            <div class="bg-white rounded-[16px] p-5 shadow-sm flex items-center gap-5 reveal">
+            <div class="bg-white rounded-[16px] p-5 shadow-sm flex items-center gap-5 reveal delay-200">
                 <div class="w-[46px] h-[46px] rounded-full bg-brand-yellow flex items-center justify-center shrink-0">
                     <i data-lucide="film" class="w-[22px] h-[22px] text-brand-main stroke-[1.2]"></i>
                 </div>
@@ -228,20 +235,20 @@
             </p>
         </div>
 
-        <div class="content-text space-y-7 relative z-10 text-brand-text text-center mx-auto max-w-[340px] reveal">
-            <p>
+        <div class="content-text space-y-7 relative z-10 text-brand-text text-center mx-auto max-w-[340px]">
+            <p class="reveal">
                 <span class="ib">写真や動画はただきれいに撮れたら</span>
                 <span class="ib">終わりではなく</span>
                 <span class="ib">その後、投稿やストーリーズ、リールで</span>
                 <span class="ib">「使いやすいか」がとても大切です</span>
             </p>
-            <p>
+            <p class="reveal delay-100">
                 <span class="ib">私はこれまで、Instagramのリール編集や</span>
                 <span class="ib">撮影、ストーリーズづくりに関わる中で</span>
                 <span class="ib">素材が活かしきれていない場面を</span>
                 <span class="ib">たくさん見てきました</span>
             </p>
-            <p>
+            <p class="reveal delay-200">
                 <span class="ib">だからこそ、撮影やレッスンでは</span>
                 <span class="ib">角度や明るさだけでなく</span>
                 <span class="ib">投稿にした時の余白</span>
@@ -249,13 +256,13 @@
                 <span class="ib">リールにした時のつながりまで</span>
                 <span class="ib">考えています</span>
             </p>
-            <p>
+            <p class="reveal delay-300">
                 <span class="ib">大切にしているのは</span>
                 <span class="ib">作り込みすぎた不自然な写真ではなく</span>
                 <span class="ib">その人らしい雰囲気が自然に伝わり</span>
                 <span class="ib">あとから発信に使いやすい素材になること</span>
             </p>
-            <div class="mt-10 pt-8 border-t border-brand-section text-center">
+            <div class="mt-10 pt-8 border-t border-brand-section text-center reveal delay-400">
                 <p class="font-medium text-[15px] text-brand-main leading-[2]">
                     <span class="ib">「撮って終わり」ではなく</span>
                     <span class="ib">「投稿に使えるところ」まで</span>
@@ -641,9 +648,9 @@
                 </p>
             </div>
 
-            <div class="max-w-[340px] mx-auto space-y-3 reveal">
+            <div class="max-w-[340px] mx-auto space-y-3">
                 <!-- Step 1 -->
-                <div class="flex items-center">
+                <div class="flex items-center reveal">
                     <div class="w-12 h-12 rounded-full bg-brand-main flex items-center justify-center shrink-0 z-10 shadow-sm relative mr-[-16px]">
                         <span class="font-en text-[20px] text-white font-semibold italic pr-0.5">01</span>
                     </div>
@@ -655,12 +662,12 @@
                     </div>
                 </div>
                 
-                <div class="flex justify-center py-1">
+                <div class="flex justify-center py-1 reveal">
                     <i data-lucide="chevron-down" class="w-4 h-4 text-brand-light/30"></i>
                 </div>
 
                 <!-- Step 2 -->
-                <div class="flex items-center">
+                <div class="flex items-center reveal">
                     <div class="w-12 h-12 rounded-full bg-brand-main flex items-center justify-center shrink-0 z-10 shadow-sm relative mr-[-16px]">
                         <span class="font-en text-[20px] text-white font-semibold italic pr-0.5">02</span>
                     </div>
@@ -673,12 +680,12 @@
                     </div>
                 </div>
 
-                <div class="flex justify-center py-1">
+                <div class="flex justify-center py-1 reveal">
                     <i data-lucide="chevron-down" class="w-4 h-4 text-brand-light/30"></i>
                 </div>
 
                 <!-- Step 3 -->
-                <div class="flex items-center">
+                <div class="flex items-center reveal">
                     <div class="w-12 h-12 rounded-full bg-brand-main flex items-center justify-center shrink-0 z-10 shadow-sm relative mr-[-16px]">
                         <span class="font-en text-[20px] text-white font-semibold italic pr-0.5">03</span>
                     </div>
@@ -690,12 +697,12 @@
                     </div>
                 </div>
 
-                <div class="flex justify-center py-1">
+                <div class="flex justify-center py-1 reveal">
                     <i data-lucide="chevron-down" class="w-4 h-4 text-brand-light/30"></i>
                 </div>
 
                 <!-- Step 4 -->
-                <div class="flex items-center">
+                <div class="flex items-center reveal">
                     <div class="w-12 h-12 rounded-full bg-brand-main flex items-center justify-center shrink-0 z-10 shadow-sm relative mr-[-16px]">
                         <span class="font-en text-[20px] text-white font-semibold italic pr-0.5">04</span>
                     </div>
@@ -707,12 +714,12 @@
                     </div>
                 </div>
 
-                <div class="flex justify-center py-1">
+                <div class="flex justify-center py-1 reveal">
                     <i data-lucide="chevron-down" class="w-4 h-4 text-brand-light/30"></i>
                 </div>
 
                 <!-- Step 5 -->
-                <div class="flex items-center">
+                <div class="flex items-center reveal">
                     <div class="w-12 h-12 rounded-full bg-brand-main flex items-center justify-center shrink-0 z-10 shadow-sm relative mr-[-16px]">
                         <span class="font-en text-[20px] text-white font-semibold italic pr-0.5">05</span>
                     </div>
@@ -773,7 +780,7 @@
                 </p>
             </div>
 
-            <div class="bg-white rounded-[16px] p-6 shadow-sm border border-brand-border flex flex-col items-center text-center reveal">
+            <div class="bg-white rounded-[16px] p-6 shadow-sm border border-brand-border flex flex-col items-center text-center reveal delay-100">
                 <div class="flex flex-col items-center justify-center gap-2 mb-4 w-full">
                     <span class="text-[11px] bg-brand-light/20 text-brand-text px-2.5 py-1 rounded-full font-medium font-sans tracking-widest shrink-0">満席</span>
                     <h4 class="text-[15px] font-medium text-brand-text">ショート動画編集</h4>
@@ -786,7 +793,7 @@
                 </p>
             </div>
 
-            <div class="bg-white rounded-[16px] p-6 shadow-sm mt-8 border border-brand-border flex flex-col items-center text-center reveal">
+            <div class="bg-white rounded-[16px] p-6 shadow-sm mt-8 border border-brand-border flex flex-col items-center text-center reveal delay-200">
                 <h4 class="text-[15px] font-medium mb-4 text-brand-text">少人数セミナー・動画編集個別指導</h4>
                 <div class="content-text text-[13.5px] mb-6 text-brand-text space-y-4">
                     <p>
@@ -824,7 +831,7 @@
             </p>
         </div>
 
-        <div class="text-center relative z-10 bg-white rounded-[24px] p-8 shadow-sm border border-brand-border max-w-[340px] mx-auto reveal">
+        <div class="text-center relative z-10 bg-white rounded-[24px] p-8 shadow-sm border border-brand-border max-w-[340px] mx-auto reveal delay-100">
             <h2 class="text-[16px] font-medium tracking-wide text-brand-text mb-4">
                 お申し込み・お問い合わせ
             </h2>
